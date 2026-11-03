@@ -7,7 +7,7 @@
 <script>
 // ============ Edit this block to update the tracker ============
 const DEADLINE = "2026-11-03T17:30:00-06:00"; // Tue Nov 3, 5:30 PM Central (CST)
-const UPDATED = "Mon Nov 2, 6:30 PM";
+const UPDATED = "Mon Nov 2, 6:35 PM";
 
 // status: "todo" | "doing" | "done"
 const STEPS = [
@@ -17,8 +17,8 @@ const STEPS = [
     you: ["Pick the source", "Read the two snapshots and decide which fields matter"],
     agent: ["Call Passio twice, a few minutes apart", "Show what changed and explain each field"],
     ask: "Explain this response: what each field means, how often it changes, and which fields my app needs.",
-    status: "doing",
-    notes: "No key needed. 2 calls 3 min apart: all 15 shuttles moved (17 m to 1.1 km). Timestamps are minute-only. Waiting on your field choices.",
+    status: "done",
+    notes: "Passio GO, system 1068, no key. All 15 shuttles moved in 3 min. Users follow routes; fields chosen (see AGENTS.md).",
   },
   {
     title: "Give the agent access",
@@ -45,7 +45,7 @@ const STEPS = [
     agent: ["Write the function in supabase/functions", "Deploy it and set the schedule through the MCP server", "Write the test against a saved response", "Add supabase to the tsconfig exclude list"],
     ask: "Show me the worker's logs from its last three runs, and explain each line.",
     status: "todo",
-    notes: "Confirm the platform: Edge Function here vs. a Node worker on Railway in the setup notes.",
+    notes: "Decided: Edge Function + Supabase Cron, every 20 seconds.",
   },
   {
     title: "Make the page live",
