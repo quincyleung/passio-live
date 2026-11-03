@@ -7,7 +7,7 @@
 <script>
 // ============ Edit this block to update the tracker ============
 const DEADLINE = "2026-11-03T17:30:00-06:00"; // Tue Nov 3, 5:30 PM Central (CST)
-const UPDATED = "Tue Nov 3, 10:57 AM";
+const UPDATED = "Tue Nov 3, 10:58 AM";
 
 // status: "todo" | "doing" | "done"
 const STEPS = [
@@ -62,8 +62,8 @@ const STEPS = [
     you: ["Set the environment variables in Vercel", "Have a classmate sign in, follow routes and watch", "Set usage limits and spending alerts"],
     agent: ["Check the build and the runs table", "Read the logs and fix what breaks"],
     ask: "Walk me through the free tier limits for each service my app uses, and how to set usage limits and spending alerts for each one.",
-    status: "doing",
-    notes: "Checked: about 2,000 worker runs since the schedule started, none failed; the database is 15 MB of 500 MB. The live site uses Clerk development keys, which Clerk requires on a vercel.app address (100-user cap). Added a daily cleanup of the run logs (your call). Ask answered: free-plan limits for Supabase, Vercel, Clerk, OSM and Passio, and where each shows usage and alerts. Your friend signed up on the live site, followed routes and watched it update. Left: checking each account's plan and usage page.",
+    status: "done",
+    notes: "Checked: about 2,000 worker runs, none failed; the database is 15 MB of 500 MB. The live site uses Clerk development keys, which Clerk requires on a vercel.app address (100-user cap). Added a daily cleanup of the run logs (your call). Ask answered: free-plan limits for Supabase, Vercel, Clerk, OSM and Passio, and where each shows usage. Your friend signed up on the live site, followed routes and watched it update. You confirmed Supabase, Vercel and Clerk are all on free plans with no card.",
   },
   {
     title: "README and quiz",

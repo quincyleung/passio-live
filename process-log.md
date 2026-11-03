@@ -330,7 +330,7 @@
 - **Found while closing (my mistake):** since `1133629`, step 5's tracker notes had `"Start tracking"` in plain double quotes inside a double-quoted JavaScript string. That broke the tracker's script, so `docs/tracker.html` probably showed no steps. I rewrote the notes without inner quotes and now run `node --check` on the tracker's script before committing it.
 - **The user checked:** the live site works signed in, including stops and the new landing page. Step 5 is complete.
 
-## Step 6: Deploy and test (2026-11-03, in progress)
+## Step 6: Deploy and test (2026-11-03, complete)
 
 - **The user asked:** move on to step 6.
 - **Checked first (my part: the build and the runs table):**
@@ -358,3 +358,4 @@
   - OSM tiles and Passio have no account and no published numbers. OSM has a usage policy we follow. For Passio, we set our own limits.
   - None of the three accounts can charge without a card. Spend caps and spend management exist only on paid plans (Supabase Pro, Vercel Pro). On the free plans, the "limit" is that service stops or restricts, so the user's job is to confirm no card is attached and know where the usage pages and alerts are.
 - **The user's friend tested the live site:** they signed up, followed routes and saw buses update. The database agrees: two different people now have follows, both added in the last two hours, and each sees only their own.
+- **The user checked** Supabase, Vercel and Clerk: all three are on free plans. Step 6 is complete.
