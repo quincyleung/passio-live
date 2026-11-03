@@ -7,7 +7,7 @@
 <script>
 // ============ Edit this block to update the tracker ============
 const DEADLINE = "2026-11-03T17:30:00-06:00"; // Tue Nov 3, 5:30 PM Central (CST)
-const UPDATED = "Mon Nov 2, 11:15 PM";
+const UPDATED = "Mon Nov 2, 11:25 PM";
 
 // status: "todo" | "doing" | "done"
 const STEPS = [
@@ -45,7 +45,7 @@ const STEPS = [
     agent: ["Write the function in supabase/functions", "Deploy it and set the schedule through the MCP server", "Write the test against a saved response", "Add supabase to the tsconfig exclude list"],
     ask: "Show me the worker's logs from its last three runs, and explain each line.",
     status: "doing",
-    notes: "Worker deployed, 30 tests pass, run 3 times by hand (all ok). Buses every 20 s, routes every 5 min, wait 3 empty lists before clearing. Key in Vault. Left: turn on the 20-second schedule (needs your OK), read the test.",
+    notes: "Worker deployed, 30 tests pass. Running every 20 s on a schedule (all ok so far). Buses every run, routes every 5 min, wait 3 empty lists before clearing. Key in Vault. Within Free plan limits. Left: read the test.",
   },
   {
     title: "Make the page live",

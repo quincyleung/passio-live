@@ -176,11 +176,19 @@
   - I added label changes (name, route name, color, Passio's `outdated`) as reasons to write, so saved labels never go stale, and told the user.
   - Runs within 15 s of the last one are turned away, which keeps Passio polling polite even if someone else calls the worker.
 - **The user did:** saved the project's secret key in Vault as `worker_secret_key`. Neither the code nor I ever see it.
-- **Blocked:** auto mode denied the migration that creates the 20-second cron job, because it's a standing change. That's left for the user.
+- **Blocked:** auto mode denied the migration that creates the 20-second cron job, because it's a standing change. I asked the user instead (see below).
 - **Ask Your Agent ("Show me the worker's logs from its last three runs, and explain each line"):** I showed and explained the function log lines and the request-log lines for runs 1–3:
   - `booted` and `shutdown` come from Supabase starting and stopping copies of the worker.
   - The routes line appears only on runs that fetch routes.
   - The buses line counts each bus under its first reason.
   - Run 3's "1 new GPS time" is parked bus 1657, whose GPS time ticked without it moving 10 m. That's how a parked bus differs from a frozen one.
-- **Pushed back:** None.
+- **Turned on the schedule (user's OK):**
+  - Cost check first:
+    - About 130,000 worker calls a month, against 500,000 on the Free plan.
+    - Data out is well under 1 GB a month, against 5 GB.
+    - The database grows about 100 MB a month from `runs` and the cron history, against 500 MB. I'll suggest a cleanup job in step 6.
+    - The Free plan has no overage charges. Going over limits restricts the project instead of billing. I can't see the organization's plan from this MCP server, so the user can check it under Organization → Billing.
+  - Applied migration `schedule_worker_every_20_seconds` (saved as `20261103052023_…`). It creates the cron job `passio-worker`, which reads the key from Vault.
+  - Checked after a minute: six runs from 11:20:44 to 11:22:24 PM, each 20 s apart. Every cron run succeeded, every call returned 200, and every `runs` row is ok, in 0.4–1.1 s. The first one also fetched routes (0 changed), because the last route fetch was more than 5 minutes earlier.
+- **Pushed back:** Before approving the schedule, the user asked me to confirm it wouldn't cost anything.
 - **Caught:** The user couldn't find Vault where I said to look (Integrations → Vault). I hadn't confirmed its place in the dashboard, and the docs don't give it, so I gave a direct link and a SQL Editor fallback.
