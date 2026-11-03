@@ -1,6 +1,6 @@
 # Data flow
 
-**Status: step 3 plan.** Decided: a bus counts as changed under [option B](#what-counts-as-a-change) with a 10 m threshold (we may tune it later). The worker fetches buses every 20 seconds and routes every 5 minutes.
+**Status: step 3 plan, tables approved.** Decided: a bus counts as changed under [option B](#what-counts-as-a-change) with a 10 m threshold (we may tune it later). The worker fetches buses every 20 seconds and routes every 5 minutes.
 
 ```mermaid
 flowchart LR

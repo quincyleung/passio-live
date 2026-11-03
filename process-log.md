@@ -101,7 +101,7 @@
     - `signInUrl` is `/sign-in`, so the URL variables took effect.
     - The sign-in form itself is drawn in the browser, so `curl` can't see it. The server-side page has no errors.
 
-## Step 3: Plan the data flow (2026-11-02, in progress)
+## Step 3: Plan the data flow (2026-11-02)
 
 - **Asked:** Move on to step 3: a chart of Passio → worker → Supabase → Realtime → page, and the tables, before any code.
 - **Made:** `docs/data-flow.md`, written in Markdown so it can go into the README in step 7. It has:
@@ -117,5 +117,32 @@
   - What counts as a change is option B: a bus is written when it moved 10 m or more, or its route, service status or Passio GPS time changed, or it joined or left the feed. The user may tune the threshold later.
   - B means parked buses are written about once a minute instead of on every run, and a frozen GPS (like bus 2207's) stops being written, so the page can flag it.
   - Buses every 20 seconds and routes every 5 minutes, so most runs make one Passio call instead of two.
+  - The user approved the four tables as proposed.
 - **Pushed back:** None.
 - **Caught:** The user said "20 seconds is good to get the latest updates". I misread that as also fetching routes on every run, changed the plan and committed it (`3d167db`). The user corrected me: they meant buses every 20 seconds and routes back to 5 minutes, as first proposed.
+
+### Step 3, Ask Your Agent: walk through the chart (2026-11-02, 10:36 PM)
+
+- **Asked:** Walk me through the chart: what each part sends to the next, and what would break if one part changed it.
+- **Answered,** arrow by arrow. The main break cases:
+  - **1 · Cron → Worker:** if it stops firing, no new runs happen and buses freeze. The page still shows stale, because no new `runs` rows arrive. Firing faster breaks the polite-polling rule.
+  - **2 · Worker → Passio:** a changed address, form format or new key requirement makes the call fail. The worker should log `ok = false` and touch no bus rows. A wrong system ID would quietly save another school's buses.
+  - **3 · Passio → Worker:**
+    - A renamed field could put buses at (0, 0), so the worker has to check each bus before saving.
+    - An empty but successful response looks like "every bus went home" and would mark them all gone.
+    - A changed route ID leaves people following the old one with no buses.
+  - **4 · Worker → Postgres:** a renamed column makes the save fail, which shows in `runs`. Comparing text with numbers (`"41.79"` vs `41.79`) would make every row look changed. Nothing visibly breaks, but Realtime traffic roughly triples.
+  - **5 · Postgres → Realtime:** if `buses` dropped out of Realtime, `runs` events would still arrive, so the page would say it's fresh while the buses don't move. Deleting bus rows would send every delete to every page.
+  - **6 · Realtime → Page:**
+    - The "my routes" filter is set when the page subscribes, so following a new route needs a new subscription.
+    - Changes during a dropped connection aren't resent, so the page reloads after reconnecting.
+    - An expired Clerk token (they last about a minute) silently stops updates.
+  - **7 · Page → Postgres:** without the Clerk token, requests count as signed out and get nothing. A forged `user_id` is rejected by the policies. The page subscribes before loading so it doesn't miss changes.
+  - **8 · Clerk → Page:** Supabase needs the `role: authenticated` claim. Switching Clerk to production gives every user a new ID, so existing follows would belong to nobody.
+- **The pattern:** failures at arrows 1–4 stop `runs`, so the page shows stale and is honest about it. Failures at 5–6 keep `runs` arriving, so the page says fresh while the buses don't move.
+- **To handle later:**
+  - Step 4: check each bus's fields before saving, decide what an empty feed means, compare cleaned numbers, and never delete buses.
+  - Step 5: subscribe before loading, subscribe again when follows change, reload after reconnecting, keep the Realtime token fresh, and set up Clerk with Supabase (the role claim plus third-party auth).
+  - Later: a Clerk production instance changes every user ID.
+- **Pushed back:** None.
+- **Caught:** None.
