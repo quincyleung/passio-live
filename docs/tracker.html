@@ -7,7 +7,7 @@
 <script>
 // ============ Edit this block to update the tracker ============
 const DEADLINE = "2026-11-03T17:30:00-06:00"; // Tue Nov 3, 5:30 PM Central (CST)
-const UPDATED = "Tue Nov 3, 10:24 AM";
+const UPDATED = "Tue Nov 3, 10:26 AM";
 
 // status: "todo" | "doing" | "done"
 const STEPS = [
@@ -53,8 +53,8 @@ const STEPS = [
     you: ["Design the loading, fresh, stale and down states", "Decide what counts as stale (how many missed runs)", "Try it signed in"],
     agent: ["Add tables to Realtime, grant read access, write RLS policies", "Build route following with RLS", "Pass the Clerk token to Realtime"],
     ask: "Trace one update for me, from the source to my screen, and name every part it passes through.",
-    status: "doing",
-    notes: "You chose: supabase-js, a Leaflet map, stale after 2 missed runs (60 s), down after 5 min or a lost connection. Clerk is connected to Supabase; you signed in, followed routes, and saw a bus update live. Fixed the 0 px map (you caught it). Worker now skips CTA buses (your call). Ask answered: traced a real 9:59 AM update from the bus to your map. You added the Vercel env vars; pushed, and the live build has them. Left: you check the live site signed in. You asked about showing stops (possible; not decided). Landing page now has one "Start tracking" button (your call); sign-in and sign-up stay separate pages. Added stops (your call): the worker fetches them hourly, and the map shows them only for routes you follow. You checked it works; clicking a stop no longer does anything.",
+    status: "done",
+    notes: "You chose: supabase-js, a Leaflet map, stale after 2 missed runs (60 s), down after 5 min or a lost connection. Clerk is connected to Supabase; you signed in, followed routes, and saw buses update live, locally and on Vercel. Fixed the 0 px map (you caught it). The worker skips CTA buses (your call). Ask answered: traced a real 9:59 AM update from the bus to your map. Your additions: one Start tracking button on a centered landing page (sign-in and sign-up stay separate pages), and stops on the routes you follow, fetched hourly, with the name on hover.",
   },
   {
     title: "Deploy and test",
@@ -62,7 +62,7 @@ const STEPS = [
     you: ["Set the environment variables in Vercel", "Have a classmate sign in, follow routes and watch", "Set usage limits and spending alerts"],
     agent: ["Check the build and the runs table", "Read the logs and fix what breaks"],
     ask: "Walk me through the free tier limits for each service my app uses, and how to set usage limits and spending alerts for each one.",
-    status: "todo",
+    status: "doing",
     notes: "",
   },
   {

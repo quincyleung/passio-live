@@ -195,7 +195,7 @@
 - **Reading the test:** the user asked me to open `lib.test.ts`. I opened it in VS Code and gave a short guide to reading it: the setup at the top, `describe` and `test`, what each `assert` means, Cmd+click to jump to `lib.ts`, and `npm run test:worker`. The user read it and moved on without walking me through it.
 - **Done.** Step 4 closed at the user's word.
 
-## Step 5: Make the page live (2026-11-02, in progress)
+## Step 5: Make the page live (2026-11-02 to 11-03, complete)
 
 - **Asked:** Move on. I closed step 4 first: the schedule was on and the user had read the test.
 - **Checked first:**
@@ -327,3 +327,5 @@
   - The blue was most likely the browser's focus outline, which Chrome draws around a map shape you click.
   - Stops now have their own class (`bus-stop`): a normal arrow cursor and no focus outline. Hover still shows the name.
   - Stops can't be reached with the keyboard, so removing the outline doesn't take a focus ring away from anyone.
+- **Found while closing (my mistake):** since `1133629`, step 5's tracker notes had `"Start tracking"` in plain double quotes inside a double-quoted JavaScript string. That broke the tracker's script, so `docs/tracker.html` probably showed no steps. I rewrote the notes without inner quotes and now run `node --check` on the tracker's script before committing it.
+- **The user checked:** the live site works signed in, including stops and the new landing page. Step 5 is complete.
