@@ -257,3 +257,15 @@
   - Realtime's log shows it reloading the project's settings at 12:02 AM, right after the user added Clerk, then starting up at the page's first connection.
 - **Pushed back:** None yet.
 - **Caught:** The user asked, "is there supposed to be a map". There was no map. Its box was `h-full` inside a parent that had only a minimum height, so it ended up 0 px tall. The loading placeholder had the same bug. I fixed it by pinning the map to its parent's edges (`absolute inset-0`) and added a ResizeObserver so Leaflet redraws when its box changes size. The build checks passed because this is a layout bug only a person looking at the page would see.
+- **"I don't see anything moving for Central":**
+  - I checked the database instead of guessing. Central's only bus, 1659, dropped out of Passio's feed at 12:08:29 AM, a few miles northwest of campus, probably done for the night.
+  - The only UChicago shuttle reporting was 1657 on MED Medical Shuttle. It moved 119 m between two runs.
+  - The user followed it and confirmed the dot updates without refreshing. That means live updates work end to end.
+- **Found while checking:** Passio's bus list had started including CTA buses (24 at 12:10 AM, none earlier in the evening). The worker dropped CTA routes but still saved their buses, and they made up most of each run's writes.
+  - I asked; the user said to skip them.
+- **Worker version 2:**
+  - `parseBuses` leaves out buses on routes starting with "cta" and reports how many in the log.
+  - They still count toward the list size, so a list of only CTA buses doesn't trigger the 3-empty-lists rule.
+  - Added a test; the worker now has 31.
+  - Deployed. The first run marked the 23 saved CTA buses gone, and the next run wrote nothing for them.
+  - Then I deleted the 27 old CTA rows. 5 UChicago bus rows remain.
