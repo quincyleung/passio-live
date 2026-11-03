@@ -43,3 +43,23 @@
   - Users follow routes, not stops.
 - **Pushed back:** None.
 - **Caught:** None.
+
+## Step 2: Give the agent access (2026-11-02, in progress)
+
+- **Asked:** The user created the Supabase project `passio-live` (ref `wyrfwbhjeowaclkxrwya`) and an empty GitHub repo, and thought they had run the Clerk CLI through npx in Assignment 4.
+- **Made:**
+  - `.mcp.json` with the Supabase MCP server scoped to this project. Same features as date-night (database, functions, debugging, development, docs, account, branching), and not read-only, so the agent can deploy the worker and set its schedule.
+  - Confirmed from date-night's log and the npx cache that the Clerk CLI is the `clerk` npm package (v4), run as `npx clerk`, and that Assignment 4 used `clerk init --login` to create a real development app with keys in `.env.local`.
+  - Confirmed the GitHub repo exists and is empty.
+- **Blocked:** Auto mode denied two of my commands:
+  - Downloading the Clerk CLI with `npx --yes`.
+  - Adding the GitHub remote with a repo URL I had guessed instead of getting from the user.
+
+  The user will run both. `clerk init` is interactive and opens a browser sign-in anyway.
+- **Left for the user:**
+  - Push to GitHub.
+  - Run `npx clerk init --login`.
+  - Restart Claude Code inside `passio-live` so `.mcp.json` and AGENTS.md load, then sign in to the Supabase MCP server.
+  - Import the repo into Vercel.
+- **Pushed back:** None.
+- **Caught:** None.

@@ -7,7 +7,7 @@
 <script>
 // ============ Edit this block to update the tracker ============
 const DEADLINE = "2026-11-03T17:30:00-06:00"; // Tue Nov 3, 5:30 PM Central (CST)
-const UPDATED = "Mon Nov 2, 6:35 PM";
+const UPDATED = "Mon Nov 2, 6:50 PM";
 
 // status: "todo" | "doing" | "done"
 const STEPS = [
@@ -26,8 +26,8 @@ const STEPS = [
     you: ["Create the Supabase project and the Clerk app", "Approve the Supabase MCP sign-in", "Install and sign in to the Clerk CLI", "Connect the GitHub repo to Vercel"],
     agent: ["Add .mcp.json scoped to the project", "Check that each tool works"],
     ask: "List the MCP servers and CLIs you can use in this project, and what you'd use each one for. Then check that each one works.",
-    status: "todo",
-    notes: "clerk, vercel and gh CLIs are not installed yet.",
+    status: "doing",
+    notes: "Supabase project passio-live (wyrfwbhjeowaclkxrwya); .mcp.json committed. Left for you: push to GitHub, npx clerk init --login, restart Claude in passio-live to sign in to the MCP server, import to Vercel.",
   },
   {
     title: "Plan the data flow",
