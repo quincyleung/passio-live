@@ -146,3 +146,41 @@
   - Later: a Clerk production instance changes every user ID.
 - **Pushed back:** None.
 - **Caught:** None.
+
+## Step 4: Build the worker (2026-11-02, in progress)
+
+- **Asked:** Move on to step 4.
+- **Checked first:**
+  - The project has the legacy anon key plus the new publishable key. `pg_cron` and `pg_net` were available but off.
+  - In the Supabase docs:
+    - Edge Functions get the new secret key in `SUPABASE_SECRET_KEYS`.
+    - The new secret key works only on the `apikey` header; as a Bearer token it's rejected.
+    - The built-in `verify_jwt` check only understands the legacy JWT keys. With the new keys, you turn it off and check the key in your own code.
+    - `pg_cron` accepts `'20 seconds'`.
+  - Node 22 can run TypeScript tests directly, so the tests need no Deno and no new package.
+- **Made:**
+  - **Test data:** two real Passio responses saved for the tests: buses at 10:20 PM (7 buses), and routes at 10:45 PM (20 UChicago and 13 CTA).
+  - **`supabase/functions/worker/lib.ts`:** the rules. It cleans up Passio's values, applies the change rule, waits for 3 empty bus lists, and handles the 5-minute route timing and a 15-second minimum between runs. It uses no Deno or Node APIs, so Node can test it.
+  - **`index.ts`:** the network and database parts. It reaches the database through its REST API with plain `fetch`, so no package. It refuses calls without a project secret key and logs one line per stage.
+  - **`lib.test.ts`:** 30 tests against the saved responses, run with `npm run test:worker`. All pass, and TypeScript and ESLint are clean.
+  - **Migrations, applied through the MCP server and saved in `supabase/migrations`:**
+    - `routes`, `buses` and `runs`, with RLS on and no policies until step 5.
+    - Turned on `pg_net` and `pg_cron`. Both migrations got the same timestamp at first, so the second was refused and I applied it again.
+  - **Deployed `worker`** with `verify_jwt` off. A call with no key gets 401, a fake `sb_secret_` key gets 401 from Supabase's gateway, and a GET gets 405. The security advisor only reports "RLS enabled, no policy", which is expected until step 5.
+  - **Ran it 3 times by hand from SQL,** using `net.http_post` with the key from Vault and only after 20 seconds or more since the last run:
+    - Run 1: 5 buses joined and 20 routes saved, in 1.2 s.
+    - Run 2: 4 moved, and the fifth, parked, wasn't written. 0.8 s, routes skipped.
+    - Run 3: 4 moved and 1 new GPS time, 0.8 s.
+- **Decisions:**
+  - The user chose to wait for 3 empty bus lists in a row before marking every bus gone. The rule uses `runs.buses_seen`, so it needs no new column.
+  - I added label changes (name, route name, color, Passio's `outdated`) as reasons to write, so saved labels never go stale, and told the user.
+  - Runs within 15 s of the last one are turned away, which keeps Passio polling polite even if someone else calls the worker.
+- **The user did:** saved the project's secret key in Vault as `worker_secret_key`. Neither the code nor I ever see it.
+- **Blocked:** auto mode denied the migration that creates the 20-second cron job, because it's a standing change. That's left for the user.
+- **Ask Your Agent ("Show me the worker's logs from its last three runs, and explain each line"):** I showed and explained the function log lines and the request-log lines for runs 1–3:
+  - `booted` and `shutdown` come from Supabase starting and stopping copies of the worker.
+  - The routes line appears only on runs that fetch routes.
+  - The buses line counts each bus under its first reason.
+  - Run 3's "1 new GPS time" is parked bus 1657, whose GPS time ticked without it moving 10 m. That's how a parked bus differs from a frozen one.
+- **Pushed back:** None.
+- **Caught:** The user couldn't find Vault where I said to look (Integrations → Vault). I hadn't confirmed its place in the dashboard, and the docs don't give it, so I gave a direct link and a SQL Editor fallback.
