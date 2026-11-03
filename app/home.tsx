@@ -29,14 +29,14 @@ export default function Home() {
         <main className="mx-auto flex max-w-md flex-1 flex-col justify-center gap-4 px-4 py-16">
           <h2 className="text-2xl font-semibold">Watch UChicago shuttles move, live.</h2>
           <p className="text-zinc-600 dark:text-zinc-400">
-            Pick the routes you ride and see their buses on a map, updated every 20 seconds without refreshing.
+            Pick the routes you ride and track the buses on a map.
           </p>
-          <div className="flex flex-col items-start gap-2">
-            <Link href="/sign-in" className="rounded-md bg-[#800000] px-5 py-2.5 text-sm font-medium text-white hover:bg-[#6a0000]">
-              Start tracking
-            </Link>
-            <p className="text-xs text-zinc-500">New here? The next screen has a link to make an account.</p>
-          </div>
+          <Link
+            href="/sign-in"
+            className="self-start rounded-md bg-[#800000] px-5 py-2.5 text-sm font-medium text-white hover:bg-[#6a0000]"
+          >
+            Start tracking
+          </Link>
         </main>
       )}
     </div>

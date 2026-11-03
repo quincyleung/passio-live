@@ -298,3 +298,4 @@
   - `/sign-in` now uses Clerk's sign-in-or-up form (`<SignIn withSignUp />`), so an email with no account goes straight on to make one. `/sign-up` still works for old links.
   - Checks: types and lint pass; `/` and `/sign-in` load on the dev server. Clerk's form loads from Clerk's servers, so the user checks how it looks.
 - **Pushed back:** the user asked to keep sign-in and sign-up as separate pages, like before. I put back the plain `<SignIn />` form, which links to `/sign-up`. The one "Start tracking" button stays. Its hint now says "New here? The next screen has a link to make an account."
+- **The user asked:** change the landing text to "Pick the routes you ride and track the buses on a map" and remove the "New here?" line. Done (with a period, like the heading above it).
