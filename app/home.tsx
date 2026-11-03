@@ -26,14 +26,14 @@ export default function Home() {
       ) : isSignedIn ? (
         <LiveTracker />
       ) : (
-        <main className="mx-auto flex max-w-md flex-1 flex-col justify-center gap-4 px-4 py-16">
-          <h2 className="text-2xl font-semibold">Watch UChicago shuttles move, live.</h2>
+        <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col items-center justify-center gap-4 px-4 py-16 text-center">
+          <h2 className="text-2xl font-semibold text-balance sm:whitespace-nowrap">Watch UChicago shuttles move, live.</h2>
           <p className="text-zinc-600 dark:text-zinc-400">
             Pick the routes you ride and track the buses on a map.
           </p>
           <Link
             href="/sign-in"
-            className="self-start rounded-md bg-[#800000] px-5 py-2.5 text-sm font-medium text-white hover:bg-[#6a0000]"
+            className="rounded-md bg-[#800000] px-5 py-2.5 text-sm font-medium text-white hover:bg-[#6a0000]"
           >
             Start tracking
           </Link>
