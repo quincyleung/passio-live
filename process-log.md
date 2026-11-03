@@ -86,4 +86,12 @@
   - Fix: change `CLERK_SECRET_KEY` to Secret. The publishable key can stay Secret, since it reaches the browser anyway through its `NEXT_PUBLIC_` name.
   - The user asked whether the four `NEXT_PUBLIC_CLERK_SIGN_*` URLs belong in Vercel too. Yes, as Config. Without the sign-in and sign-up URLs, the live site would send people to Clerk's hosted sign-in page instead of `/sign-in`. The two fallback redirects are already Clerk's default of `/`, but adding them keeps Vercel matching `.env.local`.
   - Development is left unchecked, because we don't use the Vercel CLI and local dev reads `.env.local`.
-  - Then I pushed the step 2 commits.
+  - Then I pushed the step 2 commits. The user confirmed they had switched `CLERK_SECRET_KEY` to Secret before the push.
+- **Recheck after the push (10:20 PM):** The user asked the step 2 prompt again, and everything passed.
+  - Supabase MCP: right project, Postgres 17.11, 0 tables, 0 functions.
+  - Clerk: `doctor` passes everything but the two warnings, no production instance and no shell completion.
+  - GitHub: `main` is at `e3460c4`.
+  - Vercel: "Deployment has completed" on `e3460c4` at 10:19 PM, the first deploy with Clerk.
+  - Passio: HTTP 200, 7 buses at night.
+  - `tsc` and ESLint pass.
+  - Still unchecked: the live site itself, because I don't know its production URL. `8723c9e` shows "pending" on GitHub because Vercel only builds the newest commit in a push.
