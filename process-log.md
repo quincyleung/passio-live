@@ -375,3 +375,5 @@
   - Scripts, versions, test counts (23 and 44) and setting names come from the repo, not memory.
   - The README has no key values: only setting names, plus the four Clerk page paths, which aren't secret.
   - Fixed two of my own inaccuracies before committing: Realtime sends run updates to every signed-in page, not only to route followers. And the schedule migration has this project's worker URL, so a copy must change it.
+- **Pushed back:** the user checked the assignment PDF. It doesn't ask for a README or have a step 7. I cut the README to the basics, from 175 lines to 48: what it does, the live link, a simple chart, three lines on how it works, the stack, how to run it, and links to the data-flow plan and this log. A short one stays because GitHub shows it on the repo's front page, and the old one described a blank Next.js starter.
+- **The user asked to be quizzed.** I'm using my own questions until they paste the PDF's "Be Ready to Explain" list, if it has one.
