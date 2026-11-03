@@ -323,3 +323,7 @@
     - As a signed-in user following Downtown Campus Connector, the database returns its 14 stops. A signed-out visitor gets 0.
     - Supabase's security advisor has no warnings.
     - Types, lint and a production build pass.
+- **The user checked:** stops work. They liked the hover name, and asked that clicking a stop not do anything or turn it blue.
+  - The blue was most likely the browser's focus outline, which Chrome draws around a map shape you click.
+  - Stops now have their own class (`bus-stop`): a normal arrow cursor and no focus outline. Hover still shows the name.
+  - Stops can't be reached with the keyboard, so removing the outline doesn't take a focus ring away from anyone.

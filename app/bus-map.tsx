@@ -28,7 +28,15 @@ const SAFE_COLOR = /^#[0-9a-f]{3,8}$/i;
 const FALLBACK_COLOR = "#52525b";
 // Stops are small white circles. Leaflet draws them in a layer below the bus
 // markers, so a bus at a stop is always on top.
-const STOP_STYLE: L.CircleMarkerOptions = { radius: 4, color: "#3f3f46", weight: 2, fillColor: "#ffffff", fillOpacity: 1 };
+// Hovering shows the name; clicking does nothing (see .bus-stop in globals.css).
+const STOP_STYLE: L.CircleMarkerOptions = {
+  radius: 4,
+  color: "#3f3f46",
+  weight: 2,
+  fillColor: "#ffffff",
+  fillOpacity: 1,
+  className: "bus-stop",
+};
 
 function escapeHtml(text: string): string {
   return text.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);

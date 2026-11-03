@@ -62,3 +62,8 @@ body {
 .bus-faded { opacity: 0.45; }
 .bus-gps-stale { border-style: dashed; }
 .bus-down { filter: grayscale(1); }
+/* Stops only show a name on hover, so they don't look or act clickable: no
+   pointer cursor, and no outline from the browser when one is clicked. They
+   can't be reached with the keyboard, so no one loses a focus ring. */
+.bus-stop { cursor: default; }
+.bus-stop:focus { outline: none; }
