@@ -44,7 +44,7 @@
 - **Pushed back:** None.
 - **Caught:** None.
 
-## Step 2: Give the agent access (2026-11-02, in progress)
+## Step 2: Give the agent access (2026-11-02)
 
 - **Asked:** The user created the Supabase project `passio-live` (ref `wyrfwbhjeowaclkxrwya`) and an empty GitHub repo, and thought they had run the Clerk CLI through npx in Assignment 4.
 - **Made:**
@@ -63,3 +63,21 @@
   - Import the repo into Vercel.
 - **Pushed back:** None.
 - **Caught:** None.
+
+### Step 2, Ask Your Agent: list the tools and check each one (2026-11-02, 6:58 PM)
+
+- **Asked:** List the MCP servers and CLIs I can use here, what I'd use each for, and check that each one works.
+- **Checked:**
+  - **Supabase MCP** (`.mcp.json`, project `wyrfwbhjeowaclkxrwya`): loaded but not signed in yet, so only its sign-in tools are visible. I started the OAuth flow and gave the user the link. For: tables, RLS, migrations, SQL, deploying the worker Edge Function, the cron schedule, logs and advisors.
+  - **Clerk CLI** (`npx clerk`, 4.1.0, already in the npx cache from the user's `clerk init --login`): `clerk doctor --json` passes login, auth (the user's account), link to app `passio-live` through the git remote, app reachable, and both keys in `.env.local`. It warns only that there's no production instance (not needed yet) and no shell completion. For: instance config, test users, checking sign-in.
+  - **git + GitHub over SSH:** `git ls-remote origin` works with no prompt, and remote `main` matches local HEAD `63107fc`, so the user's push went through. `gh` isn't installed. We don't need it, because the repo is public and plain git covers pushing.
+  - **Vercel:** no CLI or MCP. GitHub shows a "Vercel: success" status on `63107fc`, so the repo is imported and deploys on push. I can see whether a deploy passed, but I can't read build logs or set env vars.
+  - **Passio:** one `curl` returned HTTP 200 in 0.46 s with 15 buses, all in service.
+  - **Node toolchain:** Node 22.12, npm 11, Next 16.4.4, TypeScript 5.9.3. `tsc --noEmit` and ESLint pass on the current tree, including the user's uncommitted Clerk files.
+  - Not installed, and not needed so far: Supabase CLI and Deno (the MCP server deploys Edge Functions on Supabase's side), and the Vercel CLI. `psql` is installed but has no connection string, and the MCP server covers SQL.
+  - Account-wide claude.ai connectors (Claude Docs, Gmail, Google Calendar, Google Drive) are also loaded. They're unrelated to this project, so I didn't use or test them.
+- **Found:** The deployed commit predates Clerk. The next push carries the Clerk code, and it needs `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` and `CLERK_SECRET_KEY` in Vercel's env vars, plus the sign-in URL variables.
+- **Pushed back:** None.
+- **Caught:** The Supabase sign-in link I gave returned `{"message":"Unrecognized client_id"}`. A second link had the same `client_id`, so Claude Code was reusing a saved registration that Supabase no longer accepts. Fix: `/mcp` → supabase → Clear authentication → Authenticate, which registers a new client.
+- **Supabase, after the user signed in:** `get_project_url` returns `https://wyrfwbhjeowaclkxrwya.supabase.co`, the right project. `execute_sql` works (Postgres 17.11). `list_tables` and `list_edge_functions` come back empty, as expected for a new project. Write tools are loaded (`apply_migration`, `deploy_edge_function`, `create_edge_function_secret`), so it isn't read-only. `list_projects` isn't there, so the server can only see this project.
+- **Committed with this step:** the user's `clerk init` output: `ClerkProvider` in `app/layout.tsx`, `proxy.ts` (`clerkMiddleware`), the `/sign-in` and `/sign-up` pages, `@clerk/nextjs`, and the Clerk agent skills (`.agents/skills`, linked from `.claude/skills`, plus `skills-lock.json`). I scanned for keys first and found none. `.env.local` and `.claude/settings.local.json` are gitignored. Not pushed: Vercel needs the Clerk env vars first.
