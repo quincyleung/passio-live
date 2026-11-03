@@ -378,3 +378,13 @@
 - **Pushed back:** the user checked the assignment PDF. It doesn't ask for a README or have a step 7. I cut the README to the basics, from 175 lines to 48: what it does, the live link, a simple chart, three lines on how it works, the stack, how to run it, and links to the data-flow plan and this log. A short one stays because GitHub shows it on the repo's front page, and the old one described a blank Next.js starter.
 - **The user asked to be quizzed.** I'm using my own questions until they paste the PDF's "Be Ready to Explain" list, if it has one.
 - **The user asked** to make sure the README has no keys, then push. I checked the README and the three commits going out for key patterns (Clerk, Supabase, JWTs) and for every actual value in `.env.local`: none. Only setting names and the two sign-in page paths. Pushed.
+- **Quiz (8 questions, one at a time, my questions; the PDF list wasn't pasted):**
+  1. Where "updated 12 s ago" comes from: half right. It's the newest successful run's start time. The main reason not to use bus rows is that they're only written when something changes, not Passio's minute-level time.
+  2. What keeps follows private: partly right. Clerk proves who you are; RLS on `follows` checks `user_id = auth.jwt()->>'sub'`. The publishable key isn't the protection.
+  3. What starts the worker: right idea. Supabase Cron with pg_net, the secret key from Vault, a 401 without it, and the 15 s too-soon guard.
+  4. An empty bus list: correct. It waits for 3 empty lists in a row.
+  5. Marked, not deleted: didn't know. Realtime can filter updates by route, but not deletes.
+  6. Only real changes written: partly right. GPS jitter makes parked dots twitch, and every write is a Realtime message; it isn't more rows.
+  7. Wi-Fi drop: mostly right. Amber "Reconnecting…" for 15 s, then red with Retry. On reconnect it subscribes, then reloads.
+  8. The two keys: correct. The secret key bypasses RLS.
+  - To review before class: 2, 5 and 6.
