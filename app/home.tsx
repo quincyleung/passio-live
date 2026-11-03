@@ -1,6 +1,7 @@
 "use client";
 
-// Signed in: the live tracker. Signed out: a short intro with sign-in links.
+// Signed in: the live tracker. Signed out: a short intro with one button. It goes
+// to /sign-in, which also lets new users make an account (withSignUp).
 // This check runs in the browser. The data itself is protected by row-level
 // security, which checks the Clerk token on every request.
 
@@ -30,13 +31,11 @@ export default function Home() {
           <p className="text-zinc-600 dark:text-zinc-400">
             Pick the routes you ride and see their buses on a map, updated every 20 seconds without refreshing.
           </p>
-          <div className="flex gap-3">
-            <Link href="/sign-in" className="rounded-md bg-[#800000] px-4 py-2 text-sm font-medium text-white">
-              Sign in
+          <div className="flex flex-col items-start gap-2">
+            <Link href="/sign-in" className="rounded-md bg-[#800000] px-5 py-2.5 text-sm font-medium text-white hover:bg-[#6a0000]">
+              Start tracking
             </Link>
-            <Link href="/sign-up" className="rounded-md border border-zinc-300 px-4 py-2 text-sm font-medium dark:border-zinc-700">
-              Create an account
-            </Link>
+            <p className="text-xs text-zinc-500">New here? You can make an account on the next screen.</p>
           </div>
         </main>
       )}
