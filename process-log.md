@@ -329,3 +329,17 @@
   - Stops can't be reached with the keyboard, so removing the outline doesn't take a focus ring away from anyone.
 - **Found while closing (my mistake):** since `1133629`, step 5's tracker notes had `"Start tracking"` in plain double quotes inside a double-quoted JavaScript string. That broke the tracker's script, so `docs/tracker.html` probably showed no steps. I rewrote the notes without inner quotes and now run `node --check` on the tracker's script before committing it.
 - **The user checked:** the live site works signed in, including stops and the new landing page. Step 5 is complete.
+
+## Step 6: Deploy and test (2026-11-03, in progress)
+
+- **The user asked:** move on to step 6.
+- **Checked first (my part: the build and the runs table):**
+  - The build: the live site works signed in. The user checked this at the end of step 5.
+  - Runs since the schedule started (11:20 PM Nov 2): about 2,000, none failed, none with errors. The median took 0.65 s and the 99th percentile 2 s.
+  - 11 runs took 7–8 s, close to the 8 s limit on each Passio call. All were bus-only runs, so the time went to Passio's bus call or to the function starting up. None failed. I'm watching this, not changing it.
+  - The longest gap since the schedule started was 33 s, at 6:16 AM. A call came 13 s after a slow run and was turned away as too soon, as designed.
+  - Cron: 1,997 calls, all succeeded. pg_net holds 1,077 responses (all 200 but one 429, the turned-away call). pg_net deletes its own responses after 6 hours.
+  - Database: 15 MB of the free plan's 500 MB. The biggest tables are pg_net's responses (1.9 MB), cron's run history (1.1 MB) and `runs` (0.3 MB).
+- **Found:**
+  - The live site uses Clerk's development keys (`pk_test_`). That's expected: Clerk doesn't allow production keys on a `*.vercel.app` address. Development instances are capped at 100 users.
+  - Cron's run history and `runs` each grow by about 4,300 rows a day, and nothing deletes them. That's about 3 MB a day, so the 500 MB limit is roughly 5 months away. A daily cleanup job would fix it. Not built; it needs the user's OK.
