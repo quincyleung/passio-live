@@ -94,4 +94,9 @@
   - Vercel: "Deployment has completed" on `e3460c4` at 10:19 PM, the first deploy with Clerk.
   - Passio: HTTP 200, 7 buses at night.
   - `tsc` and ESLint pass.
-  - Still unchecked: the live site itself, because I don't know its production URL. `8723c9e` shows "pending" on GitHub because Vercel only builds the newest commit in a push.
+  - `8723c9e` shows "pending" on GitHub because Vercel only builds the newest commit in a push.
+  - Live site, once the user gave the URL (https://passio-live.vercel.app): `/`, `/sign-in` and `/sign-up` all return HTTP 200.
+    - Clerk's middleware answers on every page (`x-clerk-auth-status: signed-out`), so the secret key is set.
+    - The publishable key in the page matches `.env.local`, and Clerk's sign-in script loads from the test setup (`talented-cowbird-4190.clerk.accounts.dev`).
+    - `signInUrl` is `/sign-in`, so the URL variables took effect.
+    - The sign-in form itself is drawn in the browser, so `curl` can't see it. The server-side page has no errors.
