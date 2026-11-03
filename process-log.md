@@ -357,3 +357,4 @@
   - Clerk: the development instance is capped at 100 users. The Free plan's 50,000 retained users only applies to a production instance, which can't use a vercel.app address.
   - OSM tiles and Passio have no account and no published numbers. OSM has a usage policy we follow. For Passio, we set our own limits.
   - None of the three accounts can charge without a card. Spend caps and spend management exist only on paid plans (Supabase Pro, Vercel Pro). On the free plans, the "limit" is that service stops or restricts, so the user's job is to confirm no card is attached and know where the usage pages and alerts are.
+- **The user's friend tested the live site:** they signed up, followed routes and saw buses update. The database agrees: two different people now have follows, both added in the last two hours, and each sees only their own.
