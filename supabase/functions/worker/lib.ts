@@ -79,12 +79,19 @@ function num(v: unknown): number | null {
   return Number.isFinite(n) ? n : null;
 }
 
+/** CTA routes (IDs starting with "cta") aren't UChicago shuttles, so they're never saved. */
+export function isCtaRoute(id: string | null): boolean {
+  return id !== null && id.toLowerCase().startsWith("cta");
+}
+
 /**
- * Clean up a getBuses response. Buses with no usable ID or position are
- * skipped, not saved. `count` is how many buses Passio listed, including
- * skipped ones. Throws if the response isn't shaped like a bus list at all.
+ * Clean up a getBuses response. Buses on CTA routes are left out (`cta` counts
+ * them). Buses with no usable ID or position are skipped, not saved. `count` is
+ * how many buses Passio listed, including CTA and skipped ones, so the
+ * empty-list rule only fires when Passio really sent nothing. Throws if the
+ * response isn't shaped like a bus list at all.
  */
-export function parseBuses(json: unknown): { buses: Bus[]; skipped: Skipped[]; count: number } {
+export function parseBuses(json: unknown): { buses: Bus[]; skipped: Skipped[]; count: number; cta: number } {
   if (!isObject(json) || !("buses" in json)) {
     throw new Error('Passio bus response has no "buses" field');
   }
@@ -97,9 +104,15 @@ export function parseBuses(json: unknown): { buses: Bus[]; skipped: Skipped[]; c
 
   const buses = new Map<string, Bus>();
   const skipped: Skipped[] = [];
+  let cta = 0;
   for (const raw of raws) {
     if (!isObject(raw)) {
       skipped.push({ id: null, reason: "not an object" });
+      continue;
+    }
+    const routeId = text(raw.routeId);
+    if (isCtaRoute(routeId)) {
+      cta += 1;
       continue;
     }
     const id = text(raw.deviceId);
@@ -116,7 +129,7 @@ export function parseBuses(json: unknown): { buses: Bus[]; skipped: Skipped[]; c
     buses.set(id, {
       device_id: id,
       name: text(raw.busName),
-      route_id: text(raw.routeId),
+      route_id: routeId,
       route_name: text(raw.route),
       color: text(raw.color),
       lat,
@@ -127,7 +140,7 @@ export function parseBuses(json: unknown): { buses: Bus[]; skipped: Skipped[]; c
       gps_time: text(raw.created),
     });
   }
-  return { buses: [...buses.values()], skipped, count: raws.length };
+  return { buses: [...buses.values()], skipped, count: raws.length, cta };
 }
 
 /**
@@ -150,7 +163,7 @@ export function parseRoutes(json: unknown): { routes: Route[]; skipped: Skipped[
       skipped.push({ id: null, reason: "no myid" });
       continue;
     }
-    if (id.toLowerCase().startsWith("cta")) continue;
+    if (isCtaRoute(id)) continue;
     const name = text(raw.name);
     if (!name) {
       skipped.push({ id, reason: "no name" });

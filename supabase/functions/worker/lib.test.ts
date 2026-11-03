@@ -47,10 +47,27 @@ const first = feed[0];
 
 describe("parseBuses on the saved response", () => {
   test("keeps all 7 buses and skips none", () => {
-    const { buses, skipped, count } = parseBuses(busesJson);
+    const { buses, skipped, count, cta } = parseBuses(busesJson);
     assert.equal(buses.length, 7);
     assert.equal(count, 7);
+    assert.equal(cta, 0);
     assert.deepEqual(skipped, []);
+  });
+
+  test("leaves out buses on CTA routes, but still counts them as listed", () => {
+    // Passio started listing CTA buses at night (seen 2026-11-03 around 12:10 AM).
+    const json = {
+      buses: {
+        "1": [{ deviceId: 1, routeId: "38737", latitude: "41.79", longitude: "-87.59" }],
+        "2": [{ deviceId: 2, routeId: "cta4", latitude: "41.80", longitude: "-87.62" }],
+        "3": [{ deviceId: 3, routeId: "CTA55", latitude: "41.79", longitude: "-87.60" }],
+      },
+    };
+    const { buses, skipped, count, cta } = parseBuses(json);
+    assert.deepEqual(buses.map((b) => b.device_id), ["1"]);
+    assert.equal(cta, 2);
+    assert.equal(count, 3); // a list of only CTA buses isn't "empty"
+    assert.deepEqual(skipped, []); // and they aren't warned about as bad data
   });
 
   test("turns Passio's strings and numbers into the right types", () => {

@@ -133,7 +133,7 @@ Deno.serve(async (req: Request) => {
 
   // Buses, on every run.
   try {
-    const { buses, skipped, count } = parseBuses(await passio("getBuses=2", { s0: SYSTEM_ID, sA: 1 }));
+    const { buses, skipped, count, cta } = parseBuses(await passio("getBuses=2", { s0: SYSTEM_ID, sA: 1 }));
     for (const s of skipped) console.warn(`buses: skipped ${s.id ?? "?"}: ${s.reason}`);
 
     // An empty list is only trusted once it has lasted EMPTY_RUNS_TO_CLEAR runs.
@@ -159,7 +159,7 @@ Deno.serve(async (req: Request) => {
     run.buses_seen = count;
     run.buses_changed = writes.length;
     console.log(
-      `buses: ${count} in the list, ${writes.length} changed ` +
+      `buses: ${count} in the list${cta > 0 ? ` (${cta} CTA, left out)` : ""}, ${writes.length} changed ` +
         `(${reasons.moved} moved, ${reasons.gps} new GPS time, ${reasons.details} other details, ` +
         `${reasons.joined} joined, ${reasons.left} left)`,
     );
