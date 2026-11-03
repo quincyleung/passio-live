@@ -359,3 +359,19 @@
   - None of the three accounts can charge without a card. Spend caps and spend management exist only on paid plans (Supabase Pro, Vercel Pro). On the free plans, the "limit" is that service stops or restricts, so the user's job is to confirm no card is attached and know where the usage pages and alerts are.
 - **The user's friend tested the live site:** they signed up, followed routes and saw buses update. The database agrees: two different people now have follows, both added in the last two hours, and each sees only their own.
 - **The user checked** Supabase, Vercel and Clerk: all three are on free plans. Step 6 is complete.
+
+## Step 7: README and quiz (2026-11-03, in progress)
+
+- **The user asked:** "help me come up with a clean readme based on what you know."
+- **Made:** `README.md`, replacing the default Next.js one. It covers:
+  - What the app does, with the live link.
+  - The data-flow chart, plus the path of one update in 7 lines.
+  - The stack, and a summary of the tables and key choices, linking to `docs/data-flow.md`.
+  - The four freshness states and the security setup.
+  - The project layout, and how to run and test it locally.
+  - A one-time back-end setup for someone else's Supabase project.
+  - Free plans and limits, the limits of this version, and how it was built.
+- **Checked:**
+  - Scripts, versions, test counts (23 and 44) and setting names come from the repo, not memory.
+  - The README has no key values: only setting names, plus the four Clerk page paths, which aren't secret.
+  - Fixed two of my own inaccuracies before committing: Realtime sends run updates to every signed-in page, not only to route followers. And the schedule migration has this project's worker URL, so a copy must change it.
