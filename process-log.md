@@ -147,7 +147,7 @@
 - **Pushed back:** None.
 - **Caught:** None.
 
-## Step 4: Build the worker (2026-11-02, in progress)
+## Step 4: Build the worker (2026-11-02)
 
 - **Asked:** Move on to step 4.
 - **Checked first:**
@@ -192,3 +192,5 @@
   - Checked after a minute: six runs from 11:20:44 to 11:22:24 PM, each 20 s apart. Every cron run succeeded, every call returned 200, and every `runs` row is ok, in 0.4–1.1 s. The first one also fetched routes (0 changed), because the last route fetch was more than 5 minutes earlier.
 - **Pushed back:** Before approving the schedule, the user asked me to confirm it wouldn't cost anything.
 - **Caught:** The user couldn't find Vault where I said to look (Integrations → Vault). I hadn't confirmed its place in the dashboard, and the docs don't give it, so I gave a direct link and a SQL Editor fallback.
+- **Reading the test:** the user asked me to open `lib.test.ts`. I opened it in VS Code and gave a short guide to reading it: the setup at the top, `describe` and `test`, what each `assert` means, Cmd+click to jump to `lib.ts`, and `npm run test:worker`. The user read it and moved on without walking me through it.
+- **Done.** Step 4 closed at the user's word.
