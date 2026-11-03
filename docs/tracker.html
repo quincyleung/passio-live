@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assignment 5 Tracker</title>
+<script>
+// ============ Edit this block to update the tracker ============
+const DEADLINE = "2026-11-03T17:30:00-06:00"; // Tue Nov 3, 5:30 PM Central (CST)
+const UPDATED = "Mon Nov 2, 6:30 PM";
+
+// status: "todo" | "doing" | "done"
+const STEPS = [
+  {
+    title: "Choose a live source",
+    goal: "Confirm Passio GO (UChicago, system 1068) changes on its own, and pick the fields the app needs.",
+    you: ["Pick the source", "Read the two snapshots and decide which fields matter"],
+    agent: ["Call Passio twice, a few minutes apart", "Show what changed and explain each field"],
+    ask: "Explain this response: what each field means, how often it changes, and which fields my app needs.",
+    status: "doing",
+    notes: "No key needed. 2 calls 3 min apart: all 15 shuttles moved (17 m to 1.1 km). Timestamps are minute-only. Waiting on your field choices.",
+  },
+  {
+    title: "Give the agent access",
+    goal: "Connect the agent to Supabase (MCP, not read-only), Clerk's CLI and Vercel, so it can set things up and check its own work.",
+    you: ["Create the Supabase project and the Clerk app", "Approve the Supabase MCP sign-in", "Install and sign in to the Clerk CLI", "Connect the GitHub repo to Vercel"],
+    agent: ["Add .mcp.json scoped to the project", "Check that each tool works"],
+    ask: "List the MCP servers and CLIs you can use in this project, and what you'd use each one for. Then check that each one works.",
+    status: "todo",
+    notes: "clerk, vercel and gh CLIs are not installed yet.",
+  },
+  {
+    title: "Plan the data flow",
+    goal: "A high-level chart of Passio → worker → Supabase → Realtime → page, made before any code.",
+    you: ["Decide what counts as a change", "Approve the tables and the chart"],
+    agent: ["Draw the chart", "Propose the tables: routes, buses, follows, runs"],
+    ask: "Walk me through the chart: what each part sends to the next, and what would break if one part changed it.",
+    status: "todo",
+    notes: "",
+  },
+  {
+    title: "Build the worker",
+    goal: "An Edge Function that saves only changed rows and logs each run: deployed, called once, scheduled with Supabase Cron, and tested on a saved Passio response.",
+    you: ["Choose how often it runs", "Watch the rows change after the first call", "Read the test and explain what it checks"],
+    agent: ["Write the function in supabase/functions", "Deploy it and set the schedule through the MCP server", "Write the test against a saved response", "Add supabase to the tsconfig exclude list"],
+    ask: "Show me the worker's logs from its last three runs, and explain each line.",
+    status: "todo",
+    notes: "Confirm the platform: Edge Function here vs. a Node worker on Railway in the setup notes.",
+  },
+  {
+    title: "Make the page live",
+    goal: "The page updates without a refresh. Each person follows routes, sees only their own choices, and can tell how fresh the data is.",
+    you: ["Design the loading, fresh, stale and down states", "Decide what counts as stale (how many missed runs)", "Try it signed in"],
+    agent: ["Add tables to Realtime, grant read access, write RLS policies", "Build route following with RLS", "Pass the Clerk token to Realtime"],
+    ask: "Trace one update for me, from the source to my screen, and name every part it passes through.",
+    status: "todo",
+    notes: "",
+  },
+  {
+    title: "Deploy and test",
+    goal: "The page on Vercel with its environment variables, the worker running, and a classmate signing in to watch it update.",
+    you: ["Set the environment variables in Vercel", "Have a classmate sign in, follow routes and watch", "Set usage limits and spending alerts"],
+    agent: ["Check the build and the runs table", "Read the logs and fix what breaks"],
+    ask: "Walk me through the free tier limits for each service my app uses, and how to set usage limits and spending alerts for each one.",
+    status: "todo",
+    notes: "",
+  },
+  {
+    title: "README and quiz",
+    goal: "A README and a commit history that show the work, both URLs submitted, and you ready to explain it in class.",
+    you: ["Answer the quiz yourself", "Submit the Vercel and GitHub URLs in Google Classroom"],
+    agent: ["Draft the README with the data-flow chart", "Quiz you, one question at a time"],
+    ask: "Quiz me on how my system works, one question at a time, and tell me what I got wrong. Start with the questions in Be Ready to Explain.",
+    status: "todo",
+    notes: "",
+  },
+];
+// ===============================================================
+</script>
+<style>
+  :root {
+    --bg: #f6f5f1;
+    --surface: #ffffff;
+    --text: #1d1d1b;
+    --muted: #6b6a65;
+    --line: #e4e2db;
+    --accent: #800000;
+    --accent-soft: #f6eaea;
+    --ask-bg: #f2f0ea;
+    --todo: #b9b7af;
+    --doing: #b26b00;
+    --doing-soft: #fcf1df;
+    --done: #2f7d4f;
+    --done-soft: #e4f2e9;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141413;
+      --surface: #1e1e1c;
+      --text: #ecebe6;
+      --muted: #a3a19a;
+      --line: #343330;
+      --accent: #e08a8a;
+      --accent-soft: #3a2323;
+      --ask-bg: #272724;
+      --todo: #5a5953;
+      --doing: #e3a64a;
+      --doing-soft: #3a2d17;
+      --done: #62bb85;
+      --done-soft: #1b3124;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  main { max-width: 760px; margin: 0 auto; padding: 32px 16px 64px; }
+
+  .eyebrow { margin: 0; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+  h1 { margin: 4px 0 4px; font-size: 32px; line-height: 1.15; letter-spacing: -.01em; }
+  .sub { margin: 0; color: var(--muted); }
+
+  .panel {
+    margin-top: 24px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 20px;
+  }
+
+  /* Countdown */
+  .due { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .due-label { font-weight: 600; }
+  .due-when { color: var(--muted); font-size: 14px; }
+  .clock { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 14px; }
+  .unit { background: var(--bg); border-radius: 10px; padding: 10px 4px; text-align: center; }
+  .unit b { display: block; font-size: 30px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .unit span { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+  .urgent .unit b { color: var(--accent); }
+  .past .unit b { color: var(--muted); }
+  .past-msg { display: none; margin: 12px 0 0; color: var(--accent); font-weight: 600; }
+  .past .past-msg { display: block; }
+
+  /* Progress */
+  .progress-head { display: flex; justify-content: space-between; align-items: baseline; margin-top: 20px; gap: 12px; }
+  .progress-head span { color: var(--muted); font-size: 14px; }
+  .progress-head b { font-variant-numeric: tabular-nums; }
+  .bar { display: flex; gap: 4px; margin-top: 8px; }
+  .seg { flex: 1; height: 10px; border-radius: 5px; background: var(--todo); opacity: .55; }
+  .seg.is-doing { background: var(--doing); opacity: 1; }
+  .seg.is-done { background: var(--done); opacity: 1; }
+
+  /* Steps */
+  .steps { display: grid; gap: 16px; margin-top: 24px; }
+  .step {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 20px;
+  }
+  .step.is-doing { border-color: var(--doing); box-shadow: inset 4px 0 0 var(--doing); }
+  .step.is-done { opacity: .82; }
+
+  .step-head { display: flex; align-items: center; gap: 12px; }
+  .num {
+    flex: none; width: 30px; height: 30px; border-radius: 50%;
+    display: grid; place-items: center;
+    font-size: 14px; font-weight: 700;
+    background: var(--bg); color: var(--muted);
+  }
+  .is-doing .num { background: var(--doing-soft); color: var(--doing); }
+  .is-done .num { background: var(--done-soft); color: var(--done); }
+  .step h2 { margin: 0; font-size: 19px; line-height: 1.3; flex: 1; min-width: 0; }
+  .pill {
+    flex: none; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px;
+    background: var(--bg); color: var(--muted); white-space: nowrap;
+  }
+  .is-doing .pill { background: var(--doing-soft); color: var(--doing); }
+  .is-done .pill { background: var(--done-soft); color: var(--done); }
+
+  .goal { margin: 12px 0 0; }
+
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
+  .col { border-top: 1px solid var(--line); padding-top: 10px; }
+  .col h3 { margin: 0 0 4px; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+  .col ul { margin: 0; padding-left: 18px; font-size: 15px; }
+  .col li + li { margin-top: 2px; }
+
+  .ask { margin: 14px 0 0; padding: 12px 14px; background: var(--ask-bg); border-radius: 10px; }
+  .ask-label { display: block; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+  .ask p { margin: 4px 0 0; font-size: 15px; }
+
+  .notes { margin: 12px 0 0; font-size: 14px; color: var(--muted); }
+  .notes-label { font-weight: 600; color: var(--text); margin-right: 6px; }
+
+  footer { margin-top: 28px; text-align: center; font-size: 13px; color: var(--muted); }
+
+  @media (max-width: 560px) {
+    main { padding-top: 24px; }
+    h1 { font-size: 26px; }
+    .panel, .step { padding: 16px; }
+    .unit b { font-size: 24px; }
+    .split { grid-template-columns: 1fr; }
+    .step h2 { font-size: 17px; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <p class="eyebrow">Design, Build, Ship · Assignment 5</p>
+  <h1>Passio Live</h1>
+  <p class="sub">A live UChicago shuttle tracker: Passio GO → worker → Supabase → Realtime → page.</p>
+
+  <section class="panel" id="countdown" aria-label="Time left">
+    <div class="due">
+      <span class="due-label">Due</span>
+      <span class="due-when">Tue, Nov 3 · 5:30 PM Central</span>
+    </div>
+    <div class="clock">
+      <div class="unit"><b id="cd-d">–</b><span>days</span></div>
+      <div class="unit"><b id="cd-h">–</b><span>hours</span></div>
+      <div class="unit"><b id="cd-m">–</b><span>min</span></div>
+      <div class="unit"><b id="cd-s">–</b><span>sec</span></div>
+    </div>
+    <p class="past-msg">The deadline has passed.</p>
+
+    <div class="progress-head">
+      <span id="progress-text"></span>
+      <b id="progress-pct"></b>
+    </div>
+    <div class="bar" id="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+  </section>
+
+  <div class="steps" id="steps"></div>
+
+  <footer id="updated"></footer>
+</main>
+
+<script>
+  const LABEL = { todo: "To do", doing: "In progress", done: "Done" };
+
+  function el(tag, cls, text) {
+    const n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
+  }
+
+  function renderSteps() {
+    const list = document.getElementById("steps");
+    STEPS.forEach((s, i) => {
+      const card = el("article", "step is-" + s.status);
+
+      const head = el("header", "step-head");
+      head.append(el("span", "num", String(i + 1)), el("h2", null, s.title), el("span", "pill", LABEL[s.status] || s.status));
+      card.append(head, el("p", "goal", s.goal));
+
+      const split = el("div", "split");
+      [["You", s.you], ["Agent", s.agent]].forEach(([label, items]) => {
+        const col = el("section", "col");
+        const ul = el("ul");
+        (items || []).forEach((t) => ul.append(el("li", null, t)));
+        col.append(el("h3", null, label), ul);
+        split.append(col);
+      });
+      card.append(split);
+
+      const ask = el("blockquote", "ask");
+      ask.append(el("span", "ask-label", "Ask your agent"), el("p", null, "“" + s.ask + "”"));
+      card.append(ask);
+
+      const notes = el("p", "notes");
+      notes.append(el("span", "notes-label", "Notes"), document.createTextNode(s.notes || "—"));
+      card.append(notes);
+
+      list.append(card);
+    });
+  }
+
+  function renderProgress() {
+    const bar = document.getElementById("bar");
+    STEPS.forEach((s, i) => {
+      const seg = el("span", "seg is-" + s.status);
+      seg.title = `${i + 1}. ${s.title}: ${LABEL[s.status] || s.status}`;
+      bar.append(seg);
+    });
+    const done = STEPS.filter((s) => s.status === "done").length;
+    const doing = STEPS.filter((s) => s.status === "doing").length;
+    const pct = Math.round((done / STEPS.length) * 100);
+    bar.setAttribute("aria-valuenow", pct);
+    document.getElementById("progress-text").textContent =
+      `${done} of ${STEPS.length} steps done` + (doing ? ` · ${doing} in progress` : "");
+    document.getElementById("progress-pct").textContent = pct + "%";
+  }
+
+  const target = new Date(DEADLINE).getTime();
+  const pad = (n) => String(n).padStart(2, "0");
+
+  function tick() {
+    const box = document.getElementById("countdown");
+    const ms = Math.max(0, target - Date.now());
+    document.getElementById("cd-d").textContent = Math.floor(ms / 86400000);
+    document.getElementById("cd-h").textContent = pad(Math.floor(ms / 3600000) % 24);
+    document.getElementById("cd-m").textContent = pad(Math.floor(ms / 60000) % 60);
+    document.getElementById("cd-s").textContent = pad(Math.floor(ms / 1000) % 60);
+    box.classList.toggle("past", ms === 0);
+    box.classList.toggle("urgent", ms > 0 && ms < 6 * 3600000);
+  }
+
+  renderSteps();
+  renderProgress();
+  document.getElementById("updated").textContent = "Last updated " + UPDATED;
+  tick();
+  setInterval(tick, 1000);
+</script>
+</body>
+</html>
