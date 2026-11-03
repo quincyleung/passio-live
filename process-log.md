@@ -269,3 +269,22 @@
   - Added a test; the worker now has 31.
   - Deployed. The first run marked the 23 saved CTA buses gone, and the next run wrote nothing for them.
   - Then I deleted the 27 old CTA rows. 5 UChicago bus rows remain.
+- **The Ask:** "Trace one update for me, from the source to my screen, and name every part it passes through."
+  - I traced a real update instead of describing the code: the 9:59:12 AM run, which moved bus 1654 on Downtown Campus Connector (the route the user follows).
+  - The path:
+    - The bus's GPS, then Passio's servers.
+    - pg_cron, then pg_net with the key from Vault, then the Edge Functions gateway, then the worker (Deno).
+    - Passio `getBuses`, then `parseBuses`, then a PostgREST read, then `diffBuses`, then a PostgREST upsert.
+    - The `buses` table in Postgres, then the WAL, the `supabase_realtime` publication and its replication slot.
+    - Realtime: `list_changes`, then `apply_rls` checking the row as the user, plus the route filter.
+    - The WebSocket, then supabase-js, then `applyRow`, React, and Leaflet's `setLatLng`.
+  - The evidence:
+    - The cron run at 9:59:12.121 and pg_net response 1916 (200).
+    - The function booted in 26 ms, and the edge logs show each database call.
+    - The worker logged "116 in the list (99 CTA, left out), 16 changed (9 moved, 7 new GPS time)".
+    - Runs row 1915 took 891 ms.
+    - The page's two `realtime.subscription` rows were made at 9:58:59 AM.
+  - Not on the path: Vercel and Next.js (they only serve the page's code), Clerk (only the token), and OpenStreetMap (only map tiles).
+  - What I couldn't see from the server: the WebSocket delivery and the marker moving. Both happen in the browser.
+  - Noticed: in the morning, 99 of Passio's 116 listed buses are CTA, so skipping them matters.
+- **The user did:** added `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` in Vercel.
