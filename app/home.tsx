@@ -1,7 +1,7 @@
 "use client";
 
 // Signed in: the live tracker. Signed out: a short intro with one button. It goes
-// to /sign-in, which also lets new users make an account (withSignUp).
+// to /sign-in, which links to the separate /sign-up page for new users.
 // This check runs in the browser. The data itself is protected by row-level
 // security, which checks the Clerk token on every request.
 
@@ -35,7 +35,7 @@ export default function Home() {
             <Link href="/sign-in" className="rounded-md bg-[#800000] px-5 py-2.5 text-sm font-medium text-white hover:bg-[#6a0000]">
               Start tracking
             </Link>
-            <p className="text-xs text-zinc-500">New here? You can make an account on the next screen.</p>
+            <p className="text-xs text-zinc-500">New here? The next screen has a link to make an account.</p>
           </div>
         </main>
       )}
