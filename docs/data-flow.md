@@ -1,6 +1,6 @@
 # Data flow
 
-**Status: step 3 plan.** Decided: a bus counts as changed under [option B](#what-counts-as-a-change) with a 10 m threshold (we may tune it later). The worker fetches buses and routes every 20 seconds.
+**Status: step 3 plan.** Decided: a bus counts as changed under [option B](#what-counts-as-a-change) with a 10 m threshold (we may tune it later). The worker fetches buses every 20 seconds and routes every 5 minutes.
 
 ```mermaid
 flowchart LR
@@ -29,8 +29,8 @@ flowchart LR
 | # | From → to | What it sends |
 |---|---|---|
 | 1 | Cron → Worker | An HTTP request every 20 seconds that starts one run. Nothing else. |
-| 2 | Worker → Passio | `POST getBuses=2` and `POST getRoutes=2` on every run. That's two calls per run, but each endpoint is asked only once every 20 seconds. |
-| 3 | Passio → Worker | Every UChicago bus (about 15 by day, 7 at night) and all 33 routes. Raw Passio values: latitude and longitude as strings, `created` only to the minute. |
+| 2 | Worker → Passio | `POST getBuses=2` on every run, and `POST getRoutes=2` when the last route fetch was 5 or more minutes ago. Routes only change when a service starts or stops, so most runs make one Passio call instead of two. |
+| 3 | Passio → Worker | Every UChicago bus (about 15 by day, 7 at night) and, every 5 minutes, all 33 routes. Raw Passio values: latitude and longitude as strings, `created` only to the minute. |
 | 4 | Worker → Postgres | First the worker cleans the data: numbers instead of strings, trimmed names, true/false values, CTA routes dropped. Then it writes **only the bus and route rows that changed**, plus one `runs` row with its own fetch time and counts. It writes with the secret key, which bypasses row-level security. |
 | 5 | Postgres → Realtime | Every insert and update on `buses` and `runs`, which are added to Realtime. |
 | 6 | Realtime → Page | Over a websocket: bus updates filtered to `route_id=in.(my routes)`, plus each new `runs` row, for "updated 12 s ago". Realtime checks row-level security with the user's Clerk token before sending anything. |
@@ -105,7 +105,7 @@ The primary key is (`user_id`, `route_id`). Policies for select, insert and dele
 | `ok` | boolean | |
 | `buses_seen` | integer | |
 | `buses_changed` | integer | |
-| `routes_changed` | integer | |
+| `routes_changed` | integer | Null on runs that don't fetch routes |
 | `error` | text | Null when `ok` |
 
 ## Choices in this plan

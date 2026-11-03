@@ -36,7 +36,7 @@ const STEPS = [
     agent: ["Draw the chart", "Propose the tables: routes, buses, follows, runs"],
     ask: "Walk me through the chart: what each part sends to the next, and what would break if one part changed it.",
     status: "doing",
-    notes: "Plan in docs/data-flow.md (chart, tables, reasons). Decided: a bus counts as changed if it moved 10 m or more, or its route, service status or GPS time changed, or it joined or left the feed (we may tune it later). Buses and routes are fetched every 20 s. Left: approve the tables and chart.",
+    notes: "Plan in docs/data-flow.md (chart, tables, reasons). Decided: a bus counts as changed if it moved 10 m or more, or its route, service status or GPS time changed, or it joined or left the feed (we may tune it later). Buses are fetched every 20 s, routes every 5 min. Left: approve the tables and chart.",
   },
   {
     title: "Build the worker",

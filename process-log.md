@@ -116,6 +116,6 @@
 - **Decisions:**
   - What counts as a change is option B: a bus is written when it moved 10 m or more, or its route, service status or Passio GPS time changed, or it joined or left the feed. The user may tune the threshold later.
   - B means parked buses are written about once a minute instead of on every run, and a frozen GPS (like bus 2207's) stops being written, so the page can flag it.
-  - The run interval stays at 20 seconds.
-- **Pushed back:** Partly. I proposed fetching routes every 5 minutes, to make one Passio call per run instead of two. The user said "20 seconds is good to get the latest updates", which I read as fetching routes on every run too, so the plan now does that.
-- **Caught:** None.
+  - Buses every 20 seconds and routes every 5 minutes, so most runs make one Passio call instead of two.
+- **Pushed back:** None.
+- **Caught:** The user said "20 seconds is good to get the latest updates". I misread that as also fetching routes on every run, changed the plan and committed it (`3d167db`). The user corrected me: they meant buses every 20 seconds and routes back to 5 minutes, as first proposed.
