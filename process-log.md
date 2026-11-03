@@ -249,5 +249,11 @@
   - A bus is faded after 3 minutes without a new GPS time.
   - A lost connection shows "Reconnecting…" for 15 s before "Not live".
   - Followable routes that aren't running are shown faded with "(not running)".
+- **The user did:** connected Clerk to Supabase in both dashboards, signed in on localhost, and followed Central and Downtown Campus Connector (and followed then unfollowed one more).
+- **Checked from my side:**
+  - The follows rows have a `user_` ID, which came from the Clerk token, so Supabase accepted it.
+  - Every request from the browser succeeded (follows, routes, buses, runs, an insert, a delete), and the websocket opened (101).
+  - `realtime.subscription` shows the page listening as `authenticated` with the user's Clerk ID: `runs`, and `buses` filtered to `route_id in (38737, 61142)`.
+  - Realtime's log shows it reloading the project's settings at 12:02 AM, right after the user added Clerk, then starting up at the page's first connection.
 - **Pushed back:** None yet.
-- **Caught:** None yet.
+- **Caught:** The user asked, "is there supposed to be a map". There was no map. Its box was `h-full` inside a parent that had only a minimum height, so it ended up 0 px tall. The loading placeholder had the same bug. I fixed it by pinning the map to its parent's edges (`absolute inset-0`) and added a ResizeObserver so Leaflet redraws when its box changes size. The build checks passed because this is a layout bug only a person looking at the page would see.

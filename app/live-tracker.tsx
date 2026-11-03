@@ -25,7 +25,7 @@ import { supabaseConfigured, useSupabase } from "./lib/supabase-browser";
 
 const BusMap = dynamic(() => import("./bus-map"), {
   ssr: false,
-  loading: () => <div className="h-full w-full animate-pulse bg-zinc-100 dark:bg-zinc-900" />,
+  loading: () => <div className="absolute inset-0 animate-pulse bg-zinc-100 dark:bg-zinc-900" />,
 });
 
 type Route = { id: string; name: string; short_name: string | null; color: string | null; active: boolean };

@@ -67,8 +67,13 @@ export default function BusMap({ buses, mode }: { buses: MapBus[]; mode: MapMode
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(map);
     mapRef.current = map;
+    // Leaflet only notices window resizes. Tell it when its own box changes size,
+    // for example when the route buttons wrap onto another line.
+    const resize = new ResizeObserver(() => map.invalidateSize());
+    resize.observe(box.current);
     const current = markers.current;
     return () => {
+      resize.disconnect();
       map.remove();
       mapRef.current = null;
       current.clear();
@@ -114,5 +119,7 @@ export default function BusMap({ buses, mode }: { buses: MapBus[]; mode: MapMode
     }
   }, [buses, mode]);
 
-  return <div ref={box} className="h-full w-full" aria-label="Map of buses on your routes" role="region" />;
+  // Pinned to the edges of its parent (which is `relative` with a minimum height).
+  // A 100% height wouldn't work there: the parent has no fixed height to take 100% of.
+  return <div ref={box} className="absolute inset-0" aria-label="Map of buses on your routes" role="region" />;
 }
