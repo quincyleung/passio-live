@@ -360,7 +360,7 @@
 - **The user's friend tested the live site:** they signed up, followed routes and saw buses update. The database agrees: two different people now have follows, both added in the last two hours, and each sees only their own.
 - **The user checked** Supabase, Vercel and Clerk: all three are on free plans. Step 6 is complete.
 
-## Step 7: README and quiz (2026-11-03, in progress)
+## Step 7: README and quiz (2026-11-03, complete)
 
 - **The user asked:** "help me come up with a clean readme based on what you know."
 - **Made:** `README.md`, replacing the default Next.js one. It covers:
@@ -388,3 +388,4 @@
   7. Wi-Fi drop: mostly right. Amber "Reconnecting…" for 15 s, then red with Retry. On reconnect it subscribes, then reloads.
   8. The two keys: correct. The secret key bypasses RLS.
   - To review before class: 2, 5 and 6.
+- **The user submitted** the Vercel and GitHub URLs in Google Classroom. Step 7 is complete, and so is the project.
