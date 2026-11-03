@@ -7,7 +7,7 @@
 <script>
 // ============ Edit this block to update the tracker ============
 const DEADLINE = "2026-11-03T17:30:00-06:00"; // Tue Nov 3, 5:30 PM Central (CST)
-const UPDATED = "Mon Nov 2, 11:25 PM";
+const UPDATED = "Mon Nov 2, 11:50 PM";
 
 // status: "todo" | "doing" | "done"
 const STEPS = [
@@ -53,8 +53,8 @@ const STEPS = [
     you: ["Design the loading, fresh, stale and down states", "Decide what counts as stale (how many missed runs)", "Try it signed in"],
     agent: ["Add tables to Realtime, grant read access, write RLS policies", "Build route following with RLS", "Pass the Clerk token to Realtime"],
     ask: "Trace one update for me, from the source to my screen, and name every part it passes through.",
-    status: "todo",
-    notes: "",
+    status: "doing",
+    notes: "You chose: supabase-js, a Leaflet map, stale after 2 missed runs (60 s), down after 5 min or a lost connection. Done: follows table + policies (tested), Realtime on buses and runs, the live page and map (build passes, 20 tests). Left: connect Clerk to Supabase in both dashboards, try it signed in.",
   },
   {
     title: "Deploy and test",

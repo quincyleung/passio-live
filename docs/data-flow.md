@@ -1,6 +1,6 @@
 # Data flow
 
-**Status: step 3 plan, tables approved.** Decided: a bus counts as changed under [option B](#what-counts-as-a-change) with a 10 m threshold (we may tune it later). The worker fetches buses every 20 seconds and routes every 5 minutes.
+**Status: step 3 plan, tables approved; step 5 freshness states added at the end.** Decided: a bus counts as changed under [option B](#what-counts-as-a-change) with a 10 m threshold (we may tune it later). The worker fetches buses every 20 seconds and routes every 5 minutes.
 
 ```mermaid
 flowchart LR
@@ -115,3 +115,16 @@ The primary key is (`user_id`, `route_id`). Policies for select, insert and dele
 - **Per-bus staleness uses `gps_changed_at`**, because Passio's `outdated` flag stayed 0 on a frozen bus.
 - **No foreign key from `buses.route_id` to `routes`.** If a bus reported a route we haven't saved, the foreign key would make the worker's whole write fail. The page joins on the ID instead.
 - **Clerk user IDs are text (`user_…`), not UUIDs.** So `follows.user_id` is text, and the policies use `auth.jwt()->>'sub'`. `auth.uid()` expects a UUID.
+
+## How fresh the page is (step 5)
+
+The page reads freshness from the newest good run (`runs.ok = true`), which reaches it over Realtime about every 20 seconds.
+
+| State | When | What the page shows |
+|---|---|---|
+| Loading | Before the first load finishes | Gray dot, "Connecting…" |
+| Fresh | Last good run 60 s ago or less | Green dot, "Live · updated 12 s ago" |
+| Stale | More than 60 s: **2 missed runs** (user's choice). Also for the first 15 s after the live connection drops | Amber dot, "Behind" or "Reconnecting…", buses faded |
+| Down | **No good run in 5 minutes**, or the connection has been down 15 s or more (user's choice) | Red dot, "Not live", buses faded and gray, a Retry button when the connection is lost |
+
+A bus whose GPS time hasn't changed in 3 minutes is drawn faded with a dashed edge and listed as "GPS not updating" (a default; we can tune it).

@@ -194,3 +194,60 @@
 - **Caught:** The user couldn't find Vault where I said to look (Integrations → Vault). I hadn't confirmed its place in the dashboard, and the docs don't give it, so I gave a direct link and a SQL Editor fallback.
 - **Reading the test:** the user asked me to open `lib.test.ts`. I opened it in VS Code and gave a short guide to reading it: the setup at the top, `describe` and `test`, what each `assert` means, Cmd+click to jump to `lib.ts`, and `npm run test:worker`. The user read it and moved on without walking me through it.
 - **Done.** Step 4 closed at the user's word.
+
+## Step 5: Make the page live (2026-11-02, in progress)
+
+- **Asked:** Move on. I closed step 4 first: the schedule was on and the user had read the test.
+- **Checked first:**
+  - **Clerk and Supabase docs:**
+    - Clerk's "Connect with Supabase" page adds `role: authenticated` to session tokens.
+    - Supabase then trusts Clerk once it's added under Third-party auth.
+    - The free plan includes 50,000 Clerk users a month.
+    - I gave the user both dashboard links from the docs, not from memory, after the Vault mix-up in step 4.
+  - **supabase-js source:**
+    - With an `accessToken` callback, Realtime asks for a token when it connects and every 25 s after.
+    - If the token expires in between, the server closes the channel and doesn't resubscribe.
+  - **Next.js docs in `node_modules`:**
+    - This project has `cacheComponents` on, so a server-side session read must sit inside `<Suspense>`.
+    - `NEXT_PUBLIC_` values are baked in at build time.
+    - Leaflet needs `dynamic(..., { ssr: false })` from a client component.
+- **Decided by the user (asked together):**
+  - Add `@supabase/supabase-js`.
+  - Show a map with Leaflet: `leaflet` plus `@types/leaflet`, with OpenStreetMap tiles and no key.
+  - Stale after 2 missed runs (60 s).
+  - Down after 5 minutes with no good run, or a lost connection.
+- **Made:**
+  - **Packages:** `@supabase/supabase-js` 2.118.0, `leaflet` 1.9.4 and `@types/leaflet` 1.9.22, each released at least two weeks ago. The audit warnings are all from ESLint's own dependencies and were there before.
+  - **Migration `step5_follows_read_access_realtime`:**
+    - The `follows` table, with select, insert and delete policies on `auth.jwt()->>'sub'`.
+    - Read-only policies on routes, buses and runs for signed-in users.
+    - `buses` and `runs` added to Realtime.
+  - **Checked the policies in a rolled-back transaction:**
+    - User A sees only their own follow.
+    - User B sees none of A's follows and can't delete them.
+    - A can't add a follow under B's name.
+    - Signed-out visitors see 0 rows.
+  - **`.env.local`:** added the Supabase URL and publishable key. Both are public by design, and the file is git-ignored.
+  - **`app/lib/live.ts`:**
+    - The four page states, faded buses after 3 minutes without a new GPS time, and reading Postgres timestamps in any browser.
+    - Combining a load with live updates by `changed_at`, so a late update can't overwrite a newer one.
+    - 20 tests in `live.test.ts`, run with `npm run test:page`.
+  - **`app/lib/supabase-browser.ts`:**
+    - One client per user, using the Clerk token.
+    - If Clerk's cached token has less than 30 s left, it fetches a new one, so Realtime's 25 s check never sends a token that's about to expire.
+  - **`app/live-tracker.tsx`:**
+    - Subscribes before loading, reloads after every reconnect, and retries with a growing wait.
+    - Resubscribes when follows change, with follow and unfollow buttons.
+    - A status line that screen readers announce only when the state changes.
+  - **`app/bus-map.tsx`:**
+    - Leaflet markers in the route's color, with an arrow for heading.
+    - Passio's bus names are escaped and colors checked before they go into the map's HTML.
+  - **`app/home.tsx`:** checks sign-in in the browser, since the data is protected by RLS. It shows the tracker when signed in and an intro when signed out.
+  - **Checks:** TypeScript, ESLint and a production build pass. A smoke test of the built site served `/` and `/sign-in`.
+- **Lint caught:** React's lint flagged the token callback as running during render. Clerk's `getToken` turned out to be stable, so I dropped the ref and moved the expiry check into a plain function.
+- **Defaults I picked (the user can change them):**
+  - A bus is faded after 3 minutes without a new GPS time.
+  - A lost connection shows "Reconnecting…" for 15 s before "Not live".
+  - Followable routes that aren't running are shown faded with "(not running)".
+- **Pushed back:** None yet.
+- **Caught:** None yet.
