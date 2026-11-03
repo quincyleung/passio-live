@@ -7,7 +7,7 @@
 <script>
 // ============ Edit this block to update the tracker ============
 const DEADLINE = "2026-11-03T17:30:00-06:00"; // Tue Nov 3, 5:30 PM Central (CST)
-const UPDATED = "Mon Nov 2, 10:18 PM";
+const UPDATED = "Mon Nov 2, 10:30 PM";
 
 // status: "todo" | "doing" | "done"
 const STEPS = [
@@ -35,8 +35,8 @@ const STEPS = [
     you: ["Decide what counts as a change", "Approve the tables and the chart"],
     agent: ["Draw the chart", "Propose the tables: routes, buses, follows, runs"],
     ask: "Walk me through the chart: what each part sends to the next, and what would break if one part changed it.",
-    status: "todo",
-    notes: "",
+    status: "doing",
+    notes: "Plan in docs/data-flow.md (chart, tables, reasons). Decided: a bus counts as changed if it moved 10 m or more, or its route, service status or GPS time changed, or it joined or left the feed (we may tune it later). Buses and routes are fetched every 20 s. Left: approve the tables and chart.",
   },
   {
     title: "Build the worker",

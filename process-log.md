@@ -100,3 +100,22 @@
     - The publishable key in the page matches `.env.local`, and Clerk's sign-in script loads from the test setup (`talented-cowbird-4190.clerk.accounts.dev`).
     - `signInUrl` is `/sign-in`, so the URL variables took effect.
     - The sign-in form itself is drawn in the browser, so `curl` can't see it. The server-side page has no errors.
+
+## Step 3: Plan the data flow (2026-11-02, in progress)
+
+- **Asked:** Move on to step 3: a chart of Passio → worker → Supabase → Realtime → page, and the tables, before any code.
+- **Made:** `docs/data-flow.md`, written in Markdown so it can go into the README in step 7. It has:
+  - A Mermaid chart with 8 numbered arrows, and a table of what each arrow sends.
+  - Three options for what counts as a change, using the step 1 measurements.
+  - Proposed `routes`, `buses`, `follows` and `runs` tables, with types and where each column comes from in Passio.
+  - The reasons behind each choice.
+
+  Before relying on them, I checked two things in the Supabase docs through the MCP server:
+  - Realtime can't filter deletes, so a bus that leaves the feed gets `in_feed = false` instead of being deleted. Its `in` filter for "my routes" is supported.
+  - With Clerk as third-party auth, the user ID is the token's `sub` claim (`user_…`, not a UUID). So `follows.user_id` is text, and the policies use `auth.jwt()->>'sub'`, not `auth.uid()`.
+- **Decisions:**
+  - What counts as a change is option B: a bus is written when it moved 10 m or more, or its route, service status or Passio GPS time changed, or it joined or left the feed. The user may tune the threshold later.
+  - B means parked buses are written about once a minute instead of on every run, and a frozen GPS (like bus 2207's) stops being written, so the page can flag it.
+  - The run interval stays at 20 seconds.
+- **Pushed back:** Partly. I proposed fetching routes every 5 minutes, to make one Passio call per run instead of two. The user said "20 seconds is good to get the latest updates", which I read as fetching routes on every run too, so the plan now does that.
+- **Caught:** None.
