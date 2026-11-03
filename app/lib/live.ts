@@ -117,3 +117,22 @@ export function mergeLoad<T extends Timed>(rows: Map<string, T>, loaded: T[], ar
   }
   return next;
 }
+
+/** A stop as the page loads it: the UChicago routes that stop there are in `route_ids`. */
+export type StopRow = { id: string; name: string; lat: number; lng: number; route_ids: string[] };
+
+/** A stop to draw, with the names of the user's routes that stop there. */
+export type MapStop = { id: string; name: string; lat: number; lng: number; routes: string[] };
+
+/**
+ * Only the stops on routes the user follows. A stop shared with a route they
+ * don't follow lists only their routes.
+ */
+export function stopsOnRoutes(stops: StopRow[], follows: Set<string>, routeNames: Map<string, string>): MapStop[] {
+  return stops.flatMap((s) => {
+    const mine = s.route_ids.filter((id) => follows.has(id));
+    if (mine.length === 0) return [];
+    const routes = mine.map((id) => routeNames.get(id) ?? id).sort((a, b) => a.localeCompare(b));
+    return [{ id: s.id, name: s.name, lat: s.lat, lng: s.lng, routes }];
+  });
+}

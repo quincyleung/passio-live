@@ -1,7 +1,7 @@
 // Supabase Edge Function: fetch UChicago's buses from Passio GO and save only
 // what changed. Supabase Cron calls it every 20 seconds (see
-// supabase/migrations). Routes are fetched every 5 minutes. Every call that
-// passes the checks adds one row to `runs`.
+// supabase/migrations). Routes are fetched every 5 minutes and stops every
+// hour. Every call that passes the checks adds one row to `runs`.
 //
 // The rules are in lib.ts. This file handles the network and the database.
 
@@ -9,13 +9,17 @@ import {
   type BusRow,
   diffBuses,
   diffRoutes,
+  diffStops,
   EMPTY_RUNS_TO_CLEAR,
   emptyStreak,
   parseBuses,
   parseRoutes,
+  parseStops,
   type RouteRow,
   safeEqual,
   shouldFetchRoutes,
+  shouldFetchStops,
+  type StopRow,
   tooSoon,
 } from "./lib.ts";
 
@@ -35,6 +39,7 @@ type Run = {
   buses_seen: number | null;
   buses_changed: number | null;
   routes_changed: number | null; // null on runs that don't fetch routes
+  stops_changed: number | null; // null on runs that don't try stops
   error: string | null;
 };
 
@@ -110,6 +115,7 @@ Deno.serve(async (req: Request) => {
     buses_seen: null,
     buses_changed: null,
     routes_changed: null,
+    stops_changed: null,
     error: null,
   };
   const errors: string[] = [];
@@ -165,6 +171,26 @@ Deno.serve(async (req: Request) => {
     );
   } catch (e) {
     errors.push(`buses: ${message(e)}`);
+  }
+
+  // Stops, every hour, after the buses so they never delay a bus update. A
+  // failed try still counts, so a broken stop fetch waits an hour too instead
+  // of pulling Passio's 2 MB stop list on every run.
+  try {
+    const [lastTry] = await dbGet<{ started_at: string }>(
+      "runs?select=started_at&stops_changed=not.is.null&order=started_at.desc&limit=1",
+    );
+    if (shouldFetchStops(lastTry ? startedMs - Date.parse(lastTry.started_at) : null)) {
+      run.stops_changed = 0;
+      const { routeStops, stops, skipped } = parseStops(await passio("getStops=2", { s0: SYSTEM_ID, sA: 1 }));
+      for (const s of skipped) console.warn(`stops: skipped ${s.id ?? "?"}: ${s.reason}`);
+      const writes = diffStops(routeStops, stops, await dbGet<StopRow>("stops?select=*"), now);
+      if (writes.length > 0) await dbWrite("stops", writes, "id");
+      run.stops_changed = writes.length;
+      console.log(`stops: ${stops.length} stops on ${routeStops.size} UChicago routes, ${writes.length} changed`);
+    }
+  } catch (e) {
+    errors.push(`stops: ${message(e)}`);
   }
 
   run.error = errors.length > 0 ? errors.join("; ") : null;

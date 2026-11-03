@@ -3,7 +3,7 @@
 // The live part of the page (step 5). For the data flow, see docs/data-flow.md:
 //   1. Load the user's follows (row-level security returns only theirs).
 //   2. Subscribe to Realtime: bus changes on those routes, and each new run.
-//   3. Once subscribed, load routes, buses and the latest good run. Subscribing
+//   3. Once subscribed, load routes, buses, stops and the latest good run. Subscribing
 //      first means no update falls in the gap between loading and listening.
 //   4. If the connection drops, retry with a growing wait, and load again once
 //      it's back. Following or unfollowing a route starts again at step 2.
@@ -18,8 +18,10 @@ import {
   mergeLoad,
   pageStatus,
   parseTime,
+  stopsOnRoutes,
   type Connection,
   type Status,
+  type StopRow,
 } from "./lib/live";
 import { supabaseConfigured, useSupabase } from "./lib/supabase-browser";
 
@@ -62,6 +64,7 @@ export default function LiveTracker() {
   const [routes, setRoutes] = useState<Route[]>([]);
   const [follows, setFollows] = useState<string[] | null>(null); // null until loaded
   const [buses, setBuses] = useState<Map<string, Bus>>(() => new Map());
+  const [stops, setStops] = useState<StopRow[]>([]); // loaded, not live: they change about never
   const [lastOkRunAt, setLastOkRunAt] = useState<number | null>(null);
   const [loaded, setLoaded] = useState(false);
   const [connection, setConnection] = useState<Connection>("connecting");
@@ -120,14 +123,15 @@ export default function LiveTracker() {
     async function load() {
       const pending = new Set<string>();
       arrived.current = pending;
-      const [routesRes, busesRes, runRes] = await Promise.all([
+      const [routesRes, busesRes, stopsRes, runRes] = await Promise.all([
         db.from("routes").select("id,name,short_name,color,active").order("name"),
         ids.length > 0 ? db.from("buses").select(BUS_COLUMNS).in("route_id", ids).eq("in_feed", true) : null,
+        ids.length > 0 ? db.from("stops").select("id,name,lat,lng,route_ids").overlaps("route_ids", ids) : null,
         db.from("runs").select("started_at").eq("ok", true).order("started_at", { ascending: false }).limit(1),
       ]);
       if (arrived.current === pending) arrived.current = null;
       if (disposed) return;
-      const error = routesRes.error ?? busesRes?.error ?? runRes.error;
+      const error = routesRes.error ?? busesRes?.error ?? stopsRes?.error ?? runRes.error;
       if (error) {
         setLoadProblem(`Couldn't load the latest data: ${error.message}`);
         return;
@@ -135,6 +139,7 @@ export default function LiveTracker() {
       setLoadProblem(null);
       setRoutes(routesRes.data as Route[]);
       setBuses((current) => mergeLoad(current, (busesRes?.data ?? []) as Bus[], pending));
+      setStops((stopsRes?.data ?? []) as StopRow[]);
       const last = parseTime((runRes.data as Run[])[0]?.started_at);
       if (last !== null) setLastOkRunAt((prev) => Math.max(prev ?? 0, last));
       setLoaded(true);
@@ -211,6 +216,9 @@ export default function LiveTracker() {
     [routes],
   );
 
+  // Filtered here too, so an unfollowed route's stops go at once, not after the reload.
+  const mapStops = useMemo(() => stopsOnRoutes(stops, followSet, routeNames), [stops, followSet, routeNames]);
+
   const mapBuses: MapBus[] = useMemo(
     () =>
       [...buses.values()]
@@ -286,7 +294,7 @@ export default function LiveTracker() {
       {loadProblem && <p className="bg-red-50 px-4 py-2 text-sm text-red-800">{loadProblem}</p>}
 
       <div className="relative min-h-[60vh] flex-1">
-        <BusMap buses={mapBuses} mode={mode} />
+        <BusMap buses={mapBuses} stops={mapStops} mode={mode} />
         {loaded && mapBuses.length === 0 && (
           <div className="pointer-events-none absolute inset-0 z-[1000] flex items-center justify-center">
             <p className="rounded-md bg-white/90 px-4 py-2 text-sm text-zinc-700 shadow">

@@ -300,3 +300,26 @@
 - **Pushed back:** the user asked to keep sign-in and sign-up as separate pages, like before. I put back the plain `<SignIn />` form, which links to `/sign-up`. The one "Start tracking" button stays. Its hint now says "New here? The next screen has a link to make an account."
 - **The user asked:** change the landing text to "Pick the routes you ride and track the buses on a map" and remove the "New here?" line. Done (with a period, like the heading above it).
 - **The user asked:** keep the landing heading on one line and center everything. The column is now wider and centered. The heading stays on one line on screens 640 px and wider. On a phone it's too long for one line at that size, so it wraps evenly (`text-balance`).
+- **The user asked:** add stops, shown only for routes the user follows.
+  - **Checked first:** Passio's `getStops=2` response.
+    - `routes` lists each route's stops in order. Loop routes list their first stop again at the end.
+    - `stops` has each stop's name and position, keyed `ID<stopId>`. CTA stops have no `routeId`.
+    - The route IDs match ours. `excludedRoutesID` looks like "not running now"; we already get that from routes, so it isn't used.
+  - **Defaults I picked (the user can change them):**
+    - Fetch stops once an hour, after the buses so they never delay a bus update. A failed try also waits an hour, so a broken fetch can't pull 2 MB every 20 s.
+    - Each stop row lists its routes in `route_ids`, instead of a separate table.
+    - A route missing from a fetch keeps its stops. Stops are never deleted.
+    - Stops are loaded with the page, not over Realtime.
+    - On the map: small white circles under the buses, with the stop name and the user's routes on hover. The map zooms to buses and stops the first time either appears.
+  - **Made:**
+    - Migration `stops_table`: the `stops` table, readable by signed-in users, plus `runs.stops_changed`.
+    - Worker version 3: `parseStops`, `diffStops`, `shouldFetchStops`. The position check is now shared with buses.
+    - 13 new worker tests on a trimmed real response (`fixtures/stops.json`, 80 KB), for 44 in all.
+    - The page: `stopsOnRoutes` (3 tests, 23 in all), stops loaded with `route_ids && my routes`, and drawn by `BusMap`.
+    - `docs/data-flow.md`: the stops table and the choices above.
+  - **Checked from my side:**
+    - The first run with stops (10:19:33 AM) logged "95 stops on 20 UChicago routes, 95 changed", with nothing skipped. The next run didn't fetch stops.
+    - 36 stops are on more than one route.
+    - As a signed-in user following Downtown Campus Connector, the database returns its 14 stops. A signed-out visitor gets 0.
+    - Supabase's security advisor has no warnings.
+    - Types, lint and a production build pass.

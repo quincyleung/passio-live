@@ -1,12 +1,13 @@
 "use client";
 
 // The map. Leaflet needs the browser, so live-tracker.tsx loads this file with
-// ssr: false. Bus names and colors come from Passio, so they're escaped or
-// checked before they go into the marker's HTML.
+// ssr: false. Bus and stop names and colors come from Passio, so they're
+// escaped or checked before they go into the map's HTML.
 
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { useEffect, useRef } from "react";
+import type { MapStop } from "./lib/live";
 
 export type MapBus = {
   id: string;
@@ -25,6 +26,9 @@ export type MapMode = "normal" | "stale" | "down";
 const CAMPUS: L.LatLngTuple = [41.7886, -87.5987];
 const SAFE_COLOR = /^#[0-9a-f]{3,8}$/i;
 const FALLBACK_COLOR = "#52525b";
+// Stops are small white circles. Leaflet draws them in a layer below the bus
+// markers, so a bus at a stop is always on top.
+const STOP_STYLE: L.CircleMarkerOptions = { radius: 4, color: "#3f3f46", weight: 2, fillColor: "#ffffff", fillOpacity: 1 };
 
 function escapeHtml(text: string): string {
   return text.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
@@ -52,9 +56,10 @@ function makeIcon(html: string): L.DivIcon {
   return L.divIcon({ className: "bus-icon", html, iconSize: [18, 18], iconAnchor: [9, 9], tooltipAnchor: [12, 0] });
 }
 
-export default function BusMap({ buses, mode }: { buses: MapBus[]; mode: MapMode }) {
+export default function BusMap({ buses, stops, mode }: { buses: MapBus[]; stops: MapStop[]; mode: MapMode }) {
   const box = useRef<HTMLDivElement>(null);
   const mapRef = useRef<L.Map | null>(null);
+  const stopLayer = useRef<L.LayerGroup | null>(null);
   const markers = useRef(new Map<string, { marker: L.Marker; html: string; tip: string }>());
   const fitted = useRef(false);
 
@@ -67,6 +72,7 @@ export default function BusMap({ buses, mode }: { buses: MapBus[]; mode: MapMode
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(map);
     mapRef.current = map;
+    stopLayer.current = L.layerGroup().addTo(map);
     // Leaflet only notices window resizes. Tell it when its own box changes size,
     // for example when the route buttons wrap onto another line.
     const resize = new ResizeObserver(() => map.invalidateSize());
@@ -76,10 +82,24 @@ export default function BusMap({ buses, mode }: { buses: MapBus[]; mode: MapMode
       resize.disconnect();
       map.remove();
       mapRef.current = null;
+      stopLayer.current = null;
       current.clear();
       fitted.current = false;
     };
   }, []);
+
+  // Stops on the user's routes. The list only changes when they follow or
+  // unfollow a route (or the page loads again), so it's simply redrawn.
+  useEffect(() => {
+    const layer = stopLayer.current;
+    if (!layer) return;
+    layer.clearLayers();
+    for (const stop of stops) {
+      L.circleMarker([stop.lat, stop.lng], STOP_STYLE)
+        .bindTooltip(escapeHtml(`${stop.name} · ${stop.routes.join(", ")}`))
+        .addTo(layer);
+    }
+  }, [stops]);
 
   // Move, add and remove markers. Only rebuild a marker's icon when it changed.
   useEffect(() => {
@@ -112,14 +132,19 @@ export default function BusMap({ buses, mode }: { buses: MapBus[]; mode: MapMode
         markers.current.delete(id);
       }
     }
-    // Zoom to the buses the first time there are any.
-    if (!fitted.current && buses.length > 0) {
-      map.fitBounds(L.latLngBounds(buses.map((b) => [b.lat, b.lng] as L.LatLngTuple)), { padding: [40, 40], maxZoom: 15 });
-      fitted.current = true;
-    }
   }, [buses, mode]);
+
+  // Zoom to the buses and stops the first time there are any.
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || fitted.current) return;
+    const points = [...buses, ...stops].map((p) => [p.lat, p.lng] as L.LatLngTuple);
+    if (points.length === 0) return;
+    map.fitBounds(L.latLngBounds(points), { padding: [40, 40], maxZoom: 15 });
+    fitted.current = true;
+  }, [buses, stops]);
 
   // Pinned to the edges of its parent (which is `relative` with a minimum height).
   // A 100% height wouldn't work there: the parent has no fixed height to take 100% of.
-  return <div ref={box} className="absolute inset-0" aria-label="Map of buses on your routes" role="region" />;
+  return <div ref={box} className="absolute inset-0" aria-label="Map of buses and stops on your routes" role="region" />;
 }

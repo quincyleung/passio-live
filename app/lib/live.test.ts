@@ -10,6 +10,7 @@ import {
   pageStatus,
   parseTime,
   RECONNECT_GRACE_MS,
+  stopsOnRoutes,
   tokenSecondsLeft,
 } from "./live.ts";
 
@@ -133,5 +134,31 @@ describe("combining a load with live updates", () => {
   test("a bus that joined during the load is kept even though the load missed it", () => {
     const rows = new Map([["new", row("new", T2)]]);
     assert.ok(mergeLoad(rows, [row("a", T1)], new Set(["new"])).has("new"));
+  });
+});
+
+describe("stopsOnRoutes", () => {
+  const stops = [
+    { id: "1", name: "Shared", lat: 41.79, lng: -87.6, route_ids: ["A", "B", "C"] },
+    { id: "2", name: "Only B", lat: 41.8, lng: -87.6, route_ids: ["B"] },
+    { id: "3", name: "No routes", lat: 41.8, lng: -87.6, route_ids: [] },
+  ];
+  const names = new Map([
+    ["A", "Central"],
+    ["C", "Apostolic"],
+  ]);
+
+  test("shows only stops on followed routes, naming only those routes", () => {
+    assert.deepEqual(stopsOnRoutes(stops, new Set(["A", "C"]), names), [
+      { id: "1", name: "Shared", lat: 41.79, lng: -87.6, routes: ["Apostolic", "Central"] },
+    ]);
+  });
+
+  test("following nothing shows no stops", () => {
+    assert.deepEqual(stopsOnRoutes(stops, new Set(), names), []);
+  });
+
+  test("a route with no saved name shows its ID", () => {
+    assert.deepEqual(stopsOnRoutes(stops, new Set(["B"]), names).map((s) => s.routes), [["B"], ["B"]]);
   });
 });

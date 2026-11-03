@@ -1,0 +1,4678 @@
+{
+ "stops": {
+  "ID10103": {
+   "routeId": "4009",
+   "stopId": "10103",
+   "position": "1",
+   "name": "Medical Stop",
+   "latitude": 41.79668374,
+   "longitude": -87.595753286,
+   "id": "10103",
+   "userId": "1068",
+   "radius": 36,
+   "routeName": "Medical Shuttle",
+   "routeShortname": "MED",
+   "routeGroupId": 0
+  },
+  "ID8612": {
+   "routeId": "61142",
+   "stopId": "8612",
+   "position": "3",
+   "name": "Goldblatt Pavilion",
+   "latitude": 41.787742998,
+   "longitude": -87.603607271,
+   "id": "8612",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Downtown Campus Connector",
+   "routeShortname": null,
+   "routeGroupId": 0
+  },
+  "ID8613": {
+   "routeId": "38730",
+   "stopId": "8613",
+   "position": "2",
+   "name": "Wyler Pavilion",
+   "latitude": 41.788802421,
+   "longitude": -87.604870541,
+   "id": "8613",
+   "userId": "1068",
+   "radius": 32,
+   "routeName": "Apostolic/Drexel",
+   "routeShortname": "AP/DX",
+   "routeGroupId": 0
+  },
+  "ID8615": {
+   "routeId": "38731",
+   "stopId": "8615",
+   "position": "8",
+   "name": "Bernard Mitchell Hospital",
+   "latitude": 41.789429319,
+   "longitude": -87.604870541,
+   "id": "8615",
+   "userId": "1068",
+   "radius": 32,
+   "routeName": "Midway Metra",
+   "routeShortname": "MM",
+   "routeGroupId": 0
+  },
+  "ID8616": {
+   "routeId": "38730",
+   "stopId": "8616",
+   "position": "4",
+   "name": "58th Street & Drexel",
+   "latitude": 41.789507,
+   "longitude": -87.603924,
+   "id": "8616",
+   "userId": "1068",
+   "radius": 41,
+   "routeName": "Apostolic/Drexel",
+   "routeShortname": "AP/DX",
+   "routeGroupId": 0
+  },
+  "ID8617": {
+   "routeId": "38730",
+   "stopId": "8617",
+   "position": "5",
+   "name": "Comer Children's Hospital",
+   "latitude": 41.790505,
+   "longitude": -87.603647,
+   "id": "8617",
+   "userId": "1068",
+   "radius": 40,
+   "routeName": "Apostolic/Drexel",
+   "routeShortname": "AP/DX",
+   "routeGroupId": 0
+  },
+  "ID138838": {
+   "routeId": "38601",
+   "stopId": "138838",
+   "position": "7",
+   "name": "S Drexel Ave & 57th St",
+   "latitude": 41.791136941,
+   "longitude": -87.603645327,
+   "id": "138838",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Friend Center/Metra",
+   "routeShortname": "FCM",
+   "routeGroupId": 0
+  },
+  "ID8635": {
+   "routeId": "38737",
+   "stopId": "8635",
+   "position": "17",
+   "name": "Ellis Garage & Ratner Athletic Center (East)",
+   "latitude": 41.794322,
+   "longitude": -87.601303,
+   "id": "8635",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Central",
+   "routeShortname": "CEN",
+   "routeGroupId": 0
+  },
+  "ID8618": {
+   "routeId": "38601",
+   "stopId": "8618",
+   "position": "13",
+   "name": "Ronald McDonald House & Friend Center",
+   "latitude": 41.795381,
+   "longitude": -87.604187,
+   "id": "8618",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Friend Center/Metra",
+   "routeShortname": "FCM",
+   "routeGroupId": 0
+  },
+  "ID140009": {
+   "routeId": "61142",
+   "stopId": "140009",
+   "position": "4",
+   "name": "55th Street & University",
+   "latitude": 41.795011076,
+   "longitude": -87.59799856,
+   "id": "140009",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Downtown Campus Connector",
+   "routeShortname": null,
+   "routeGroupId": 0
+  },
+  "ID8645": {
+   "routeId": "38601",
+   "stopId": "8645",
+   "position": "16",
+   "name": "Hyde Park Shopping Center (S)",
+   "latitude": 41.795096011,
+   "longitude": -87.58774502,
+   "id": "8645",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Friend Center/Metra",
+   "routeShortname": "FCM",
+   "routeGroupId": 0
+  },
+  "ID8619": {
+   "routeId": "38738",
+   "stopId": "8619",
+   "position": "3",
+   "name": "57th Street Metra Station (E)",
+   "latitude": 41.791489512,
+   "longitude": -87.586864065,
+   "id": "8619",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "South Loop Shuttle",
+   "routeShortname": "SLS",
+   "routeGroupId": 0
+  },
+  "ID8658": {
+   "routeId": "38809",
+   "stopId": "8658",
+   "position": "11",
+   "name": "59th St & Metra",
+   "latitude": 41.787917008,
+   "longitude": -87.588802109,
+   "id": "8658",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Midway Metra",
+   "routeShortname": "MM",
+   "routeGroupId": 0
+  },
+  "ID8611": {
+   "routeId": "38730",
+   "stopId": "8611",
+   "position": "9",
+   "name": "Drexel Garage",
+   "latitude": 41.784433,
+   "longitude": -87.604445,
+   "id": "8611",
+   "userId": "1068",
+   "radius": 75,
+   "routeName": "Apostolic/Drexel",
+   "routeShortname": "AP/DX",
+   "routeGroupId": 0
+  },
+  "ID8609": {
+   "routeId": "38730",
+   "stopId": "8609",
+   "position": "6",
+   "name": "57th Street & Drexel (NB)",
+   "latitude": 41.791305716,
+   "longitude": -87.603671178,
+   "id": "8609",
+   "userId": "1068",
+   "radius": 38,
+   "routeName": "Apostolic/Drexel",
+   "routeShortname": "AP/DX",
+   "routeGroupId": 0
+  },
+  "ID133007": {
+   "routeId": "38730",
+   "stopId": "133007",
+   "position": "16",
+   "name": "Kenwood & 63rd",
+   "latitude": 41.780867018,
+   "longitude": -87.592902254,
+   "id": "133007",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Apostolic/Drexel",
+   "routeShortname": "AP/DX",
+   "routeGroupId": 0
+  },
+  "ID225833": {
+   "routeId": "38730",
+   "stopId": "225833",
+   "position": "17",
+   "name": "Kimbark Garage",
+   "latitude": 41.784242,
+   "longitude": -87.594731,
+   "id": "225833",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Apostolic/Drexel",
+   "routeShortname": "AP/DX",
+   "routeGroupId": 0
+  },
+  "ID8630": {
+   "routeId": "38735",
+   "stopId": "8630",
+   "position": "16",
+   "name": "Levi Hall (W)",
+   "latitude": 41.78966,
+   "longitude": -87.6013,
+   "id": "8630",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Route South",
+   "routeShortname": "SOUTH",
+   "routeGroupId": 0
+  },
+  "ID8614": {
+   "routeId": "38730",
+   "stopId": "8614",
+   "position": "15",
+   "name": "Apostolic Lot",
+   "latitude": 41.779614,
+   "longitude": -87.593007,
+   "id": "8614",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Apostolic/Drexel",
+   "routeShortname": "AP/DX",
+   "routeGroupId": 0
+  },
+  "ID225834": {
+   "routeId": "38730",
+   "stopId": "225834",
+   "position": "11",
+   "name": "61st & Kimbark",
+   "latitude": 41.784116,
+   "longitude": -87.594921,
+   "id": "225834",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Apostolic/Drexel",
+   "routeShortname": "AP/DX",
+   "routeGroupId": 0
+  },
+  "ID141882": {
+   "routeId": "38738",
+   "stopId": "141882",
+   "position": "11",
+   "name": "57th St. & Metra (SB)",
+   "latitude": 41.791214768,
+   "longitude": -87.586801309,
+   "id": "141882",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "South Loop Shuttle",
+   "routeShortname": "SLS",
+   "routeGroupId": 0
+  },
+  "ID8607": {
+   "routeId": "62744",
+   "stopId": "8607",
+   "position": "5",
+   "name": "59th St & Kimbark / Lab School",
+   "latitude": 41.787858,
+   "longitude": -87.594508729,
+   "id": "8607",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Campus Convocation",
+   "routeShortname": "",
+   "routeGroupId": 0
+  },
+  "ID8654": {
+   "routeId": "61142",
+   "stopId": "8654",
+   "position": "2",
+   "name": "59th & Ellis",
+   "latitude": 41.787782,
+   "longitude": -87.60105,
+   "id": "8654",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Downtown Campus Connector",
+   "routeShortname": null,
+   "routeGroupId": 0
+  },
+  "ID8655": {
+   "routeId": "38809",
+   "stopId": "8655",
+   "position": "2",
+   "name": "60th & Cottage Grove",
+   "latitude": 41.78582399,
+   "longitude": -87.605957339,
+   "id": "8655",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Midway Metra",
+   "routeShortname": "MM",
+   "routeGroupId": 0
+  },
+  "ID8589": {
+   "routeId": "38809",
+   "stopId": "8589",
+   "position": "3",
+   "name": "Logan Center",
+   "latitude": 41.785851642,
+   "longitude": -87.603760225,
+   "id": "8589",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Midway Metra",
+   "routeShortname": "MM",
+   "routeGroupId": 0
+  },
+  "ID8631": {
+   "routeId": "38809",
+   "stopId": "8631",
+   "position": "4",
+   "name": "60th St. & Ellis (SE Corner)",
+   "latitude": 41.785832114,
+   "longitude": -87.601090275,
+   "id": "8631",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Midway Metra",
+   "routeShortname": "MM",
+   "routeGroupId": 0
+  },
+  "ID8598": {
+   "routeId": "38809",
+   "stopId": "8598",
+   "position": "5",
+   "name": "Law School (S)",
+   "latitude": 41.785916,
+   "longitude": -87.599045589,
+   "id": "8598",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Midway Metra",
+   "routeShortname": "MM",
+   "routeGroupId": 0
+  },
+  "ID8632": {
+   "routeId": "38809",
+   "stopId": "8632",
+   "position": "6",
+   "name": "60th St. & Woodlawn Ave (SE Corner)",
+   "latitude": 41.785940442,
+   "longitude": -87.596529863,
+   "id": "8632",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Midway Metra",
+   "routeShortname": "MM",
+   "routeGroupId": 0
+  },
+  "ID161844": {
+   "routeId": "38809",
+   "stopId": "161844",
+   "position": "7",
+   "name": "Keller Center EB",
+   "latitude": 41.785977498,
+   "longitude": -87.594032145,
+   "id": "161844",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Midway Metra",
+   "routeShortname": "MM",
+   "routeGroupId": 0
+  },
+  "ID8594": {
+   "routeId": "38809",
+   "stopId": "8594",
+   "position": "8",
+   "name": "Press Building",
+   "latitude": 41.786040001,
+   "longitude": -87.590181983,
+   "id": "8594",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Midway Metra",
+   "routeShortname": "MM",
+   "routeGroupId": 0
+  },
+  "ID8624": {
+   "routeId": "40923",
+   "stopId": "8624",
+   "position": "1",
+   "name": "Stony Island Parking Lot",
+   "latitude": 41.786325402,
+   "longitude": -87.587394971,
+   "id": "8624",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Midway Convocation ",
+   "routeShortname": null,
+   "routeGroupId": 0
+  },
+  "ID8596": {
+   "routeId": "38732",
+   "stopId": "8596",
+   "position": "27",
+   "name": "Harper Court (NE Corner)",
+   "latitude": 41.79964771,
+   "longitude": -87.588001746,
+   "id": "8596",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "53rd Street Express",
+   "routeShortname": "53RD",
+   "routeGroupId": 0
+  },
+  "ID8811": {
+   "routeId": "38732",
+   "stopId": "8811",
+   "position": "2",
+   "name": "53rd St & Kenwood",
+   "latitude": 41.799546188,
+   "longitude": -87.592514006,
+   "id": "8811",
+   "userId": "1068",
+   "radius": 55,
+   "routeName": "53rd Street Express",
+   "routeShortname": "53RD",
+   "routeGroupId": 0
+  },
+  "ID8628": {
+   "routeId": "38732",
+   "stopId": "8628",
+   "position": "3",
+   "name": "Kimbark Plaza (NE Corner)",
+   "latitude": 41.79953,
+   "longitude": -87.5965,
+   "id": "8628",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "53rd Street Express",
+   "routeShortname": "53RD",
+   "routeGroupId": 0
+  },
+  "ID8595": {
+   "routeId": "38732",
+   "stopId": "8595",
+   "position": "5",
+   "name": "Ellis & 53rd St.",
+   "latitude": 41.799121311,
+   "longitude": -87.601378989,
+   "id": "8595",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "53rd Street Express",
+   "routeShortname": "53RD",
+   "routeGroupId": 0
+  },
+  "ID8629": {
+   "routeId": "38732",
+   "stopId": "8629",
+   "position": "6",
+   "name": "Ellis Garage & Ratner Athletic (West)",
+   "latitude": 41.794627,
+   "longitude": -87.601478,
+   "id": "8629",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "53rd Street Express",
+   "routeShortname": "53RD",
+   "routeGroupId": 0
+  },
+  "ID138837": {
+   "routeId": "38732",
+   "stopId": "138837",
+   "position": "7",
+   "name": "Ellis Ave & 57th St",
+   "latitude": 41.791448487,
+   "longitude": -87.601341888,
+   "id": "138837",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "53rd Street Express",
+   "routeShortname": "53RD",
+   "routeGroupId": 0
+  },
+  "ID8599": {
+   "routeId": "40515",
+   "stopId": "8599",
+   "position": "8",
+   "name": "57th St. & Metra (NB)",
+   "latitude": 41.79139475,
+   "longitude": -87.586592096,
+   "id": "8599",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Regents Express",
+   "routeShortname": "RE",
+   "routeGroupId": 0
+  },
+  "ID8626": {
+   "routeId": "38732",
+   "stopId": "8626",
+   "position": "24",
+   "name": "Lake Park & 55th St. (SE Corner)",
+   "latitude": 41.795064,
+   "longitude": -87.587451,
+   "id": "8626",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "53rd Street Express",
+   "routeShortname": "53RD",
+   "routeGroupId": 0
+  },
+  "ID8579": {
+   "routeId": "38738",
+   "stopId": "8579",
+   "position": "14",
+   "name": "Reynolds Club",
+   "latitude": 41.791344998,
+   "longitude": -87.598020458,
+   "id": "8579",
+   "userId": "1068",
+   "radius": 66,
+   "routeName": "South Loop Shuttle",
+   "routeShortname": "SLS",
+   "routeGroupId": 0
+  },
+  "ID8633": {
+   "routeId": "40515",
+   "stopId": "8633",
+   "position": "15",
+   "name": "Regenstein Library (N)",
+   "latitude": 41.791467,
+   "longitude": -87.599609,
+   "id": "8633",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Regents Express",
+   "routeShortname": "RE",
+   "routeGroupId": 0
+  },
+  "ID8634": {
+   "routeId": "38737",
+   "stopId": "8634",
+   "position": "16",
+   "name": "Max Palevsky Residential Commons (NE Corner)",
+   "latitude": 41.793129,
+   "longitude": -87.601288,
+   "id": "8634",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Central",
+   "routeShortname": "CEN",
+   "routeGroupId": 0
+  },
+  "ID140008": {
+   "routeId": "38734",
+   "stopId": "140008",
+   "position": "6",
+   "name": "S. Drexel Ave & E 53rd St",
+   "latitude": 41.798534637,
+   "longitude": -87.603735642,
+   "id": "140008",
+   "userId": "1068",
+   "radius": 61,
+   "routeName": "Route North",
+   "routeShortname": "NORTH",
+   "routeGroupId": 0
+  },
+  "ID8637": {
+   "routeId": "38736",
+   "stopId": "8637",
+   "position": "21",
+   "name": "Alumni House (NW Corner)",
+   "latitude": 41.793312423,
+   "longitude": -87.596580181,
+   "id": "8637",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Route East",
+   "routeShortname": "EAST",
+   "routeGroupId": 0
+  },
+  "ID161849": {
+   "routeId": "38735",
+   "stopId": "161849",
+   "position": "2",
+   "name": "Woodlawn Ave & 61st St",
+   "latitude": 41.784294361,
+   "longitude": -87.596383504,
+   "id": "161849",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Route South",
+   "routeShortname": "SOUTH",
+   "routeGroupId": 0
+  },
+  "ID8659": {
+   "routeId": "38735",
+   "stopId": "8659",
+   "position": "3",
+   "name": "63rd & Woodlawn",
+   "latitude": 41.78066,
+   "longitude": -87.596383,
+   "id": "8659",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Route South",
+   "routeShortname": "SOUTH",
+   "routeGroupId": 0
+  },
+  "ID8660": {
+   "routeId": "38735",
+   "stopId": "8660",
+   "position": "4",
+   "name": "63rd & Ellis",
+   "latitude": 41.780527,
+   "longitude": -87.60129,
+   "id": "8660",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Route South",
+   "routeShortname": "SOUTH",
+   "routeGroupId": 0
+  },
+  "ID8661": {
+   "routeId": "38735",
+   "stopId": "8661",
+   "position": "5",
+   "name": "Cottage Grove & 63rd",
+   "latitude": 41.780569,
+   "longitude": -87.60582,
+   "id": "8661",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Route South",
+   "routeShortname": "SOUTH",
+   "routeGroupId": 0
+  },
+  "ID141863": {
+   "routeId": "38735",
+   "stopId": "141863",
+   "position": "6",
+   "name": "Cottage & 61st",
+   "latitude": 41.783957384,
+   "longitude": -87.605900517,
+   "id": "141863",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Route South",
+   "routeShortname": "SOUTH",
+   "routeGroupId": 0
+  },
+  "ID8623": {
+   "routeId": "38735",
+   "stopId": "8623",
+   "position": "8",
+   "name": "South Campus Resident Hall",
+   "latitude": 41.784050931,
+   "longitude": -87.601062821,
+   "id": "8623",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Route South",
+   "routeShortname": "SOUTH",
+   "routeGroupId": 0
+  },
+  "ID140011": {
+   "routeId": "38735",
+   "stopId": "140011",
+   "position": "9",
+   "name": "61st Street & University",
+   "latitude": 41.784076129,
+   "longitude": -87.598017172,
+   "id": "140011",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Route South",
+   "routeShortname": "SOUTH",
+   "routeGroupId": 0
+  },
+  "ID140010": {
+   "routeId": "38735",
+   "stopId": "140010",
+   "position": "10",
+   "name": "61st St & Woodlawn Ave",
+   "latitude": 41.784096353,
+   "longitude": -87.596656986,
+   "id": "140010",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Route South",
+   "routeShortname": "SOUTH",
+   "routeGroupId": 0
+  },
+  "ID8652": {
+   "routeId": "38737",
+   "stopId": "8652",
+   "position": "29",
+   "name": "Booth School",
+   "latitude": 41.789554993,
+   "longitude": -87.596357635,
+   "id": "8652",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Central",
+   "routeShortname": "CEN",
+   "routeGroupId": 0
+  },
+  "ID20132": {
+   "routeId": "38736",
+   "stopId": "20132",
+   "position": "6",
+   "name": "53 & Kimbark (EB)",
+   "latitude": 41.79938202,
+   "longitude": -87.595122294,
+   "id": "20132",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Route East",
+   "routeShortname": "EAST",
+   "routeGroupId": 0
+  },
+  "ID8627": {
+   "routeId": "38736",
+   "stopId": "8627",
+   "position": "8",
+   "name": "Harper Court (EB)",
+   "latitude": 41.799532287,
+   "longitude": -87.588095135,
+   "id": "8627",
+   "userId": "1068",
+   "radius": 71,
+   "routeName": "Route East",
+   "routeShortname": "EAST",
+   "routeGroupId": 0
+  },
+  "ID8578": {
+   "routeId": "40515",
+   "stopId": "8578",
+   "position": "13",
+   "name": "Regents Park Apartments",
+   "latitude": 41.8032034,
+   "longitude": -87.5854995,
+   "id": "8578",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Regents Express",
+   "routeShortname": "RE",
+   "routeGroupId": 0
+  },
+  "ID140013": {
+   "routeId": "38736",
+   "stopId": "140013",
+   "position": "15",
+   "name": "S. Hyde Park Blvd/55th Street",
+   "latitude": 41.795371303,
+   "longitude": -87.58400883,
+   "id": "140013",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Route East",
+   "routeShortname": "EAST",
+   "routeGroupId": 0
+  },
+  "ID140014": {
+   "routeId": "38736",
+   "stopId": "140014",
+   "position": "16",
+   "name": "Hyde Park Places Apts",
+   "latitude": 41.794203427,
+   "longitude": -87.584016041,
+   "id": "140014",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Route East",
+   "routeShortname": "EAST",
+   "routeGroupId": 0
+  },
+  "ID140015": {
+   "routeId": "38736",
+   "stopId": "140015",
+   "position": "18",
+   "name": "Windermere Apts",
+   "latitude": 41.793464153,
+   "longitude": -87.58465264,
+   "id": "140015",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Route East",
+   "routeShortname": "EAST",
+   "routeGroupId": 0
+  },
+  "ID8641": {
+   "routeId": "38736",
+   "stopId": "8641",
+   "position": "19",
+   "name": "Hyde Park Shopping Center (N)",
+   "latitude": 41.795287,
+   "longitude": -87.588482,
+   "id": "8641",
+   "userId": "1068",
+   "radius": 51,
+   "routeName": "Route East",
+   "routeShortname": "EAST",
+   "routeGroupId": 0
+  },
+  "ID9593": {
+   "routeId": "38738",
+   "stopId": "9593",
+   "position": "12",
+   "name": "International House",
+   "latitude": 41.787859121,
+   "longitude": -87.591480245,
+   "id": "9593",
+   "userId": "1068",
+   "radius": 54,
+   "routeName": "South Loop Shuttle",
+   "routeShortname": "SLS",
+   "routeGroupId": 0
+  },
+  "ID8584": {
+   "routeId": "38737",
+   "stopId": "8584",
+   "position": "10",
+   "name": "Keller Center WB",
+   "latitude": 41.786109496,
+   "longitude": -87.594053602,
+   "id": "8584",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Central",
+   "routeShortname": "CEN",
+   "routeGroupId": 0
+  },
+  "ID8644": {
+   "routeId": "38737",
+   "stopId": "8644",
+   "position": "13",
+   "name": "Burton-Judson Courts (NE Corner)",
+   "latitude": 41.785990631,
+   "longitude": -87.60102355,
+   "id": "8644",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Central",
+   "routeShortname": "CEN",
+   "routeGroupId": 0
+  },
+  "ID8597": {
+   "routeId": "38737",
+   "stopId": "8597",
+   "position": "15",
+   "name": "Levi Hall (E)",
+   "latitude": 41.789497,
+   "longitude": -87.601204,
+   "id": "8597",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Central",
+   "routeShortname": "CEN",
+   "routeGroupId": 0
+  },
+  "ID140016": {
+   "routeId": "38737",
+   "stopId": "140016",
+   "position": "23",
+   "name": "55th Street & Blackstone",
+   "latitude": 41.795627199,
+   "longitude": -87.590206579,
+   "id": "140016",
+   "userId": "1068",
+   "radius": 53,
+   "routeName": "Central",
+   "routeShortname": "CEN",
+   "routeGroupId": 0
+  },
+  "ID141862": {
+   "routeId": "38737",
+   "stopId": "141862",
+   "position": "24",
+   "name": "Blackstone & 53rd",
+   "latitude": 41.799379549,
+   "longitude": -87.590303542,
+   "id": "141862",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Central",
+   "routeShortname": "CEN",
+   "routeGroupId": 0
+  },
+  "ID140012": {
+   "routeId": "38737",
+   "stopId": "140012",
+   "position": "25",
+   "name": "53 & Kimbark (WB)",
+   "latitude": 41.799562407,
+   "longitude": -87.594852165,
+   "id": "140012",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Central",
+   "routeShortname": "CEN",
+   "routeGroupId": 0
+  },
+  "ID8621": {
+   "routeId": "38738",
+   "stopId": "8621",
+   "position": "7",
+   "name": "Roosevelt CTA Station",
+   "latitude": 41.867324,
+   "longitude": -87.627071,
+   "id": "8621",
+   "userId": "1068",
+   "radius": 75,
+   "routeName": "South Loop Shuttle",
+   "routeShortname": "SLS",
+   "routeGroupId": 0
+  },
+  "ID8643": {
+   "routeId": "40515",
+   "stopId": "8643",
+   "position": "17",
+   "name": "Law School (N)",
+   "latitude": 41.785893568,
+   "longitude": -87.599060098,
+   "id": "8643",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Regents Express",
+   "routeShortname": "RE",
+   "routeGroupId": 0
+  },
+  "ID72572": {
+   "routeId": "40515",
+   "stopId": "72572",
+   "position": "10",
+   "name": "E 56th St & S Cornell Ave (SW Corner)",
+   "latitude": 41.79338,
+   "longitude": -87.585436,
+   "id": "72572",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Regents Express",
+   "routeShortname": "RE",
+   "routeGroupId": 0
+  },
+  "ID72573": {
+   "routeId": "40515",
+   "stopId": "72573",
+   "position": "11",
+   "name": "E 56th St & S Hyde Park Blvd (SW Corner)",
+   "latitude": 41.7934,
+   "longitude": -87.583958,
+   "id": "72573",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Regents Express",
+   "routeShortname": "RE",
+   "routeGroupId": 0
+  },
+  "ID8657": {
+   "routeId": "40515",
+   "stopId": "8657",
+   "position": "12",
+   "name": "Shoreland Building",
+   "latitude": 41.796152494,
+   "longitude": -87.58080984,
+   "id": "8657",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Regents Express",
+   "routeShortname": "RE",
+   "routeGroupId": 0
+  },
+  "ID8591": {
+   "routeId": "61142",
+   "stopId": "8591",
+   "position": "15",
+   "name": "Rockefeller Chapel",
+   "latitude": 41.787874,
+   "longitude": -87.59649,
+   "id": "8591",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Downtown Campus Connector",
+   "routeShortname": null,
+   "routeGroupId": 0
+  },
+  "ID67598": {
+   "routeId": "48618",
+   "stopId": "67598",
+   "position": "19",
+   "name": "Logan Center for Arts",
+   "latitude": 41.785856246,
+   "longitude": -87.603796025,
+   "id": "67598",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Red Line/Arts Block",
+   "routeShortname": "RED",
+   "routeGroupId": 0
+  },
+  "ID67599": {
+   "routeId": "48618",
+   "stopId": "67599",
+   "position": "2",
+   "name": "Institute for Study of Ancient Cultures",
+   "latitude": 41.78956,
+   "longitude": -87.60124,
+   "id": "67599",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Red Line/Arts Block",
+   "routeShortname": "RED",
+   "routeGroupId": 0
+  },
+  "ID8650": {
+   "routeId": "48618",
+   "stopId": "8650",
+   "position": "3",
+   "name": "Ellis/57th",
+   "latitude": 41.791291619,
+   "longitude": -87.601247148,
+   "id": "8650",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Red Line/Arts Block",
+   "routeShortname": "RED",
+   "routeGroupId": 0
+  },
+  "ID67600": {
+   "routeId": "48618",
+   "stopId": "67600",
+   "position": "4",
+   "name": "Smart Museum of Arts",
+   "latitude": 41.794117875,
+   "longitude": -87.601251263,
+   "id": "67600",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Red Line/Arts Block",
+   "routeShortname": "RED",
+   "routeGroupId": 0
+  },
+  "ID67601": {
+   "routeId": "48618",
+   "stopId": "67601",
+   "position": "5",
+   "name": "Garfield Green Line Station",
+   "latitude": 41.794942602,
+   "longitude": -87.618327276,
+   "id": "67601",
+   "userId": "1068",
+   "radius": 52,
+   "routeName": "Red Line/Arts Block",
+   "routeShortname": "RED",
+   "routeGroupId": 0
+  },
+  "ID161393": {
+   "routeId": "48618",
+   "stopId": "161393",
+   "position": "6",
+   "name": "Garfield & Wabash (WB)",
+   "latitude": 41.794780266,
+   "longitude": -87.623670672,
+   "id": "161393",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Red Line/Arts Block",
+   "routeShortname": "RED",
+   "routeGroupId": 0
+  },
+  "ID67602": {
+   "routeId": "48618",
+   "stopId": "67602",
+   "position": "7",
+   "name": "Garfield Red Line Station (WB)",
+   "latitude": 41.794665405,
+   "longitude": -87.63111,
+   "id": "67602",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Red Line/Arts Block",
+   "routeShortname": "RED",
+   "routeGroupId": 0
+  },
+  "ID69624": {
+   "routeId": "48618",
+   "stopId": "69624",
+   "position": "8",
+   "name": "Garfield Red Line Station (EB)",
+   "latitude": 41.794162669,
+   "longitude": -87.631233015,
+   "id": "69624",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Red Line/Arts Block",
+   "routeShortname": "RED",
+   "routeGroupId": 0
+  },
+  "ID161392": {
+   "routeId": "48618",
+   "stopId": "161392",
+   "position": "9",
+   "name": "Garfield & Wabash (EB)",
+   "latitude": 41.7942447,
+   "longitude": -87.623651649,
+   "id": "161392",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Red Line/Arts Block",
+   "routeShortname": "RED",
+   "routeGroupId": 0
+  },
+  "ID67603": {
+   "routeId": "48618",
+   "stopId": "67603",
+   "position": "10",
+   "name": "Washington Park Arts Incubator",
+   "latitude": 41.794386,
+   "longitude": -87.618199,
+   "id": "67603",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Red Line/Arts Block",
+   "routeShortname": "RED",
+   "routeGroupId": 0
+  },
+  "ID138836": {
+   "routeId": "48618",
+   "stopId": "138836",
+   "position": "11",
+   "name": "Midway Plaisance & Cottage Grove",
+   "latitude": 41.786350363,
+   "longitude": -87.606243577,
+   "id": "138836",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Red Line/Arts Block",
+   "routeShortname": "RED",
+   "routeGroupId": 0
+  },
+  "ID8605": {
+   "routeId": "55466",
+   "stopId": "8605",
+   "position": "1",
+   "name": "Booth - Harper Center",
+   "latitude": 41.789554993,
+   "longitude": -87.596357635,
+   "id": "8605",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Gleacher Express",
+   "routeShortname": "GE",
+   "routeGroupId": 0
+  },
+  "ID132963": {
+   "routeId": "61142",
+   "stopId": "132963",
+   "position": "9",
+   "name": "Gleacher Center",
+   "latitude": 41.889646,
+   "longitude": -87.621982,
+   "id": "132963",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Downtown Campus Connector",
+   "routeShortname": null,
+   "routeGroupId": 0
+  },
+  "ID151794": {
+   "routeId": "61142",
+   "stopId": "151794",
+   "position": "5",
+   "name": "S Lake Park & E 53rd St",
+   "latitude": 41.799543,
+   "longitude": -87.587182,
+   "id": "151794",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Downtown Campus Connector",
+   "routeShortname": null,
+   "routeGroupId": 0
+  },
+  "ID155005": {
+   "routeId": "61142",
+   "stopId": "155005",
+   "position": "6",
+   "name": "S Lake Park Ave & E Hyde Park Blvd",
+   "latitude": 41.80297,
+   "longitude": -87.587907,
+   "id": "155005",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Downtown Campus Connector",
+   "routeShortname": null,
+   "routeGroupId": 0
+  },
+  "ID132965": {
+   "routeId": "61142",
+   "stopId": "132965",
+   "position": "7",
+   "name": "S Michigan Ave/Roosevelt",
+   "latitude": 41.867904836,
+   "longitude": -87.624004287,
+   "id": "132965",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Downtown Campus Connector",
+   "routeShortname": null,
+   "routeGroupId": 0
+  },
+  "ID155006": {
+   "routeId": "61142",
+   "stopId": "155006",
+   "position": "8",
+   "name": "E Randolph St & S Michigan Ave",
+   "latitude": 41.884327,
+   "longitude": -87.623828,
+   "id": "155006",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Downtown Campus Connector",
+   "routeShortname": null,
+   "routeGroupId": 0
+  },
+  "ID132964": {
+   "routeId": "61142",
+   "stopId": "132964",
+   "position": "10",
+   "name": "UCHICAGO Medicine - River East",
+   "latitude": 41.891918354,
+   "longitude": -87.618124474,
+   "id": "132964",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Downtown Campus Connector",
+   "routeShortname": null,
+   "routeGroupId": 0
+  },
+  "ID151792": {
+   "routeId": "61142",
+   "stopId": "151792",
+   "position": "11",
+   "name": "N (Upper) Wacker Dr & W Madison St",
+   "latitude": 41.881945,
+   "longitude": -87.637063,
+   "id": "151792",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Downtown Campus Connector",
+   "routeShortname": null,
+   "routeGroupId": 0
+  },
+  "ID151793": {
+   "routeId": "61142",
+   "stopId": "151793",
+   "position": "12",
+   "name": "S (Upper) Wacker Dr & W Adams St",
+   "latitude": 41.879487,
+   "longitude": -87.63705,
+   "id": "151793",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Downtown Campus Connector",
+   "routeShortname": null,
+   "routeGroupId": 0
+  },
+  "ID132967": {
+   "routeId": "61142",
+   "stopId": "132967",
+   "position": "13",
+   "name": "UCHICAGO Medicine - South Loop",
+   "latitude": 41.869748,
+   "longitude": -87.639331,
+   "id": "132967",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Downtown Campus Connector",
+   "routeShortname": null,
+   "routeGroupId": 0
+  },
+  "ID132968": {
+   "routeId": "61142",
+   "stopId": "132968",
+   "position": "14",
+   "name": "Roosevelt Station",
+   "latitude": 41.867337,
+   "longitude": -87.626857,
+   "id": "132968",
+   "userId": "1068",
+   "radius": 50,
+   "routeName": "Downtown Campus Connector",
+   "routeShortname": null,
+   "routeGroupId": 0
+  },
+  "IDcta76": {
+   "id": "cta76",
+   "stopId": "cta76",
+   "latitude": 41.87814286,
+   "longitude": -87.62419875,
+   "name": "Michigan & Jackson (CTA)"
+  },
+  "IDcta1560": {
+   "id": "cta1560",
+   "stopId": "cta1560",
+   "latitude": 41.83298285,
+   "longitude": -87.62171274,
+   "name": "Indiana & 34th Street (CTA)"
+  },
+  "IDcta1562": {
+   "id": "cta1562",
+   "stopId": "cta1562",
+   "latitude": 41.83643785,
+   "longitude": -87.62176374,
+   "name": "Indiana & 32nd Street (CTA)"
+  },
+  "IDcta1563": {
+   "id": "cta1563",
+   "stopId": "cta1563",
+   "latitude": 41.83825585,
+   "longitude": -87.62183074,
+   "name": "Indiana & 31st Street (CTA)"
+  },
+  "IDcta1564": {
+   "id": "cta1564",
+   "stopId": "cta1564",
+   "latitude": 41.84060985,
+   "longitude": -87.62312074,
+   "name": "3000 S Michigan (CTA)"
+  },
+  "IDcta1565": {
+   "id": "cta1565",
+   "stopId": "cta1565",
+   "latitude": 41.84188985,
+   "longitude": -87.62324574,
+   "name": "Michigan & 29th Street (CTA)"
+  },
+  "IDcta1566": {
+   "id": "cta1566",
+   "stopId": "cta1566",
+   "latitude": 41.84363785,
+   "longitude": -87.62325374,
+   "name": "Michigan & 28th Street (CTA)"
+  },
+  "IDcta1567": {
+   "id": "cta1567",
+   "stopId": "cta1567",
+   "latitude": 41.84589551,
+   "longitude": -87.62332593,
+   "name": "Michigan & 26th Street (CTA)"
+  },
+  "IDcta1568": {
+   "id": "cta1568",
+   "stopId": "cta1568",
+   "latitude": 41.84732085,
+   "longitude": -87.62350575,
+   "name": "Michigan & 25th Street (CTA)"
+  },
+  "IDcta1570": {
+   "id": "cta1570",
+   "stopId": "cta1570",
+   "latitude": 41.85115718,
+   "longitude": -87.62359165,
+   "name": "Michigan & 23rd Street (CTA)"
+  },
+  "IDcta1573": {
+   "id": "cta1573",
+   "stopId": "cta1573",
+   "latitude": 41.8545283,
+   "longitude": -87.62374702,
+   "name": "Michigan & 21st Street (CTA)"
+  },
+  "IDcta1574": {
+   "id": "cta1574",
+   "stopId": "cta1574",
+   "latitude": 41.85571821,
+   "longitude": -87.62377618,
+   "name": "Michigan & Cullerton (CTA)"
+  },
+  "IDcta1575": {
+   "id": "cta1575",
+   "stopId": "cta1575",
+   "latitude": 41.85813463,
+   "longitude": -87.62383315,
+   "name": "Michigan & 18th Street (CTA)"
+  },
+  "IDcta1579": {
+   "id": "cta1579",
+   "stopId": "cta1579",
+   "latitude": 41.86599158,
+   "longitude": -87.62400465,
+   "name": "Michigan & 13th Street (CTA)"
+  },
+  "IDcta1580": {
+   "id": "cta1580",
+   "stopId": "cta1580",
+   "latitude": 41.86790056,
+   "longitude": -87.62396984,
+   "name": "Michigan & Roosevelt (CTA)"
+  },
+  "IDcta1581": {
+   "id": "cta1581",
+   "stopId": "cta1581",
+   "latitude": 41.86915256,
+   "longitude": -87.62397025,
+   "name": "Michigan & 11th Street (CTA)"
+  },
+  "IDcta1582": {
+   "id": "cta1582",
+   "stopId": "cta1582",
+   "latitude": 41.87051049,
+   "longitude": -87.62401209,
+   "name": "Michigan & 9th Street (CTA)"
+  },
+  "IDcta1583": {
+   "id": "cta1583",
+   "stopId": "cta1583",
+   "latitude": 41.87179469,
+   "longitude": -87.62403975,
+   "name": "Michigan & 8th Street (CTA)"
+  },
+  "IDcta1584": {
+   "id": "cta1584",
+   "stopId": "cta1584",
+   "latitude": 41.87340285,
+   "longitude": -87.62408775,
+   "name": "Michigan & Balbo (CTA)"
+  },
+  "IDcta1654": {
+   "id": "cta1654",
+   "stopId": "cta1654",
+   "latitude": 41.79499456,
+   "longitude": -87.58402604,
+   "name": "S Hyde Park & 55th Street (CTA)"
+  },
+  "IDcta1655": {
+   "id": "cta1655",
+   "stopId": "cta1655",
+   "latitude": 41.79350976,
+   "longitude": -87.5839542,
+   "name": "S Hyde Park & 56th Street (CTA)"
+  },
+  "IDcta2188": {
+   "id": "cta2188",
+   "stopId": "cta2188",
+   "latitude": 41.88237486,
+   "longitude": -87.62421075,
+   "name": "Michigan & Madison (CTA)"
+  },
+  "IDcta2462": {
+   "id": "cta2462",
+   "stopId": "cta2462",
+   "latitude": 41.72240981,
+   "longitude": -87.604366,
+   "name": "Cottage Grove & 95th Street (CTA)"
+  },
+  "IDcta2464": {
+   "id": "cta2464",
+   "stopId": "cta2464",
+   "latitude": 41.72553156,
+   "longitude": -87.60443926,
+   "name": "Cottage Grove & 93rd Street (CTA)"
+  },
+  "IDcta2465": {
+   "id": "cta2465",
+   "stopId": "cta2465",
+   "latitude": 41.72743095,
+   "longitude": -87.60449733,
+   "name": "Cottage Grove & 92nd Street (CTA)"
+  },
+  "IDcta2466": {
+   "id": "cta2466",
+   "stopId": "cta2466",
+   "latitude": 41.72928276,
+   "longitude": -87.60452425,
+   "name": "Cottage Grove & 91st Street (CTA)"
+  },
+  "IDcta2467": {
+   "id": "cta2467",
+   "stopId": "cta2467",
+   "latitude": 41.73109712,
+   "longitude": -87.60456366,
+   "name": "Cottage Grove & 90th Street (CTA)"
+  },
+  "IDcta2468": {
+   "id": "cta2468",
+   "stopId": "cta2468",
+   "latitude": 41.73294481,
+   "longitude": -87.60460671,
+   "name": "Cottage Grove & 89th Street (CTA)"
+  },
+  "IDcta2469": {
+   "id": "cta2469",
+   "stopId": "cta2469",
+   "latitude": 41.73473267,
+   "longitude": -87.60465414,
+   "name": "Cottage Grove & 88th Street (CTA)"
+  },
+  "IDcta2470": {
+   "id": "cta2470",
+   "stopId": "cta2470",
+   "latitude": 41.73654552,
+   "longitude": -87.60469941,
+   "name": "Cottage Grove & 87th Street (CTA)"
+  },
+  "IDcta2471": {
+   "id": "cta2471",
+   "stopId": "cta2471",
+   "latitude": 41.73837221,
+   "longitude": -87.60474734,
+   "name": "Cottage Grove & 86th Street (CTA)"
+  },
+  "IDcta2472": {
+   "id": "cta2472",
+   "stopId": "cta2472",
+   "latitude": 41.74025865,
+   "longitude": -87.60480037,
+   "name": "Cottage Grove & 85th Street (CTA)"
+  },
+  "IDcta2473": {
+   "id": "cta2473",
+   "stopId": "cta2473",
+   "latitude": 41.74203665,
+   "longitude": -87.60485037,
+   "name": "Cottage Grove & 84th Street (CTA)"
+  },
+  "IDcta2474": {
+   "id": "cta2474",
+   "stopId": "cta2474",
+   "latitude": 41.74393536,
+   "longitude": -87.60485979,
+   "name": "Cottage Grove & 83rd Street (CTA)"
+  },
+  "IDcta2475": {
+   "id": "cta2475",
+   "stopId": "cta2475",
+   "latitude": 41.74578736,
+   "longitude": -87.60493579,
+   "name": "Cottage Grove & 82nd Street (CTA)"
+  },
+  "IDcta2477": {
+   "id": "cta2477",
+   "stopId": "cta2477",
+   "latitude": 41.74905804,
+   "longitude": -87.6050599,
+   "name": "Cottage Grove & 80th Street (CTA)"
+  },
+  "IDcta2478": {
+   "id": "cta2478",
+   "stopId": "cta2478",
+   "latitude": 41.75116654,
+   "longitude": -87.60511443,
+   "name": "Cottage Grove & 79th Street (CTA)"
+  },
+  "IDcta2479": {
+   "id": "cta2479",
+   "stopId": "cta2479",
+   "latitude": 41.75306161,
+   "longitude": -87.60510096,
+   "name": "Cottage Grove & 78th Street (CTA)"
+  },
+  "IDcta2481": {
+   "id": "cta2481",
+   "stopId": "cta2481",
+   "latitude": 41.75668861,
+   "longitude": -87.60521196,
+   "name": "Cottage Grove & 76th Street (CTA)"
+  },
+  "IDcta2487": {
+   "id": "cta2487",
+   "stopId": "cta2487",
+   "latitude": 41.76753872,
+   "longitude": -87.60553317,
+   "name": "7000 S Cottage Grove (CTA)"
+  },
+  "IDcta2488": {
+   "id": "cta2488",
+   "stopId": "cta2488",
+   "latitude": 41.76937649,
+   "longitude": -87.60555381,
+   "name": "Cottage Grove & 69th Street (CTA)"
+  },
+  "IDcta2489": {
+   "id": "cta2489",
+   "stopId": "cta2489",
+   "latitude": 41.77131048,
+   "longitude": -87.60562215,
+   "name": "Cottage Grove & 68th Street (CTA)"
+  },
+  "IDcta2491": {
+   "id": "cta2491",
+   "stopId": "cta2491",
+   "latitude": 41.77488056,
+   "longitude": -87.60569772,
+   "name": "Cottage Grove & Marquette Rd (CTA)"
+  },
+  "IDcta2495": {
+   "id": "cta2495",
+   "stopId": "cta2495",
+   "latitude": 41.78216386,
+   "longitude": -87.60586397,
+   "name": "Cottage Grove & 62nd Street (CTA)"
+  },
+  "IDcta2496": {
+   "id": "cta2496",
+   "stopId": "cta2496",
+   "latitude": 41.78398147,
+   "longitude": -87.60588367,
+   "name": "Cottage Grove & 61st Street (CTA)"
+  },
+  "IDcta2497": {
+   "id": "cta2497",
+   "stopId": "cta2497",
+   "latitude": 41.78574462,
+   "longitude": -87.60593984,
+   "name": "Cottage Grove & 60th Street (CTA)"
+  },
+  "IDcta2498": {
+   "id": "cta2498",
+   "stopId": "cta2498",
+   "latitude": 41.78763916,
+   "longitude": -87.60597797,
+   "name": "Cottage Grove & 59th Street (CTA)"
+  },
+  "IDcta2499": {
+   "id": "cta2499",
+   "stopId": "cta2499",
+   "latitude": 41.78940641,
+   "longitude": -87.60602907,
+   "name": "Cottage Grove & 58th Street (CTA)"
+  },
+  "IDcta2501": {
+   "id": "cta2501",
+   "stopId": "cta2501",
+   "latitude": 41.79309977,
+   "longitude": -87.60610984,
+   "name": "Cottage Grove & 56th Street (CTA)"
+  },
+  "IDcta2503": {
+   "id": "cta2503",
+   "stopId": "cta2503",
+   "latitude": 41.79658484,
+   "longitude": -87.60620573,
+   "name": "Cottage Grove & 54th Street (CTA)"
+  },
+  "IDcta2504": {
+   "id": "cta2504",
+   "stopId": "cta2504",
+   "latitude": 41.79855723,
+   "longitude": -87.60622944,
+   "name": "Cottage Grove & 53rd Street (CTA)"
+  },
+  "IDcta2505": {
+   "id": "cta2505",
+   "stopId": "cta2505",
+   "latitude": 41.80034084,
+   "longitude": -87.60627573,
+   "name": "Cottage Grove & 52nd Street (CTA)"
+  },
+  "IDcta2506": {
+   "id": "cta2506",
+   "stopId": "cta2506",
+   "latitude": 41.8013111,
+   "longitude": -87.60627019,
+   "name": "Cottage Grove & Drexel Square Drive (CTA)"
+  },
+  "IDcta2507": {
+   "id": "cta2507",
+   "stopId": "cta2507",
+   "latitude": 41.80248531,
+   "longitude": -87.60630386,
+   "name": "Cottage Grove & 51st Street (CTA)"
+  },
+  "IDcta2508": {
+   "id": "cta2508",
+   "stopId": "cta2508",
+   "latitude": 41.80394584,
+   "longitude": -87.60634574,
+   "name": "Cottage Grove & 50th Street (CTA)"
+  },
+  "IDcta2509": {
+   "id": "cta2509",
+   "stopId": "cta2509",
+   "latitude": 41.80573584,
+   "longitude": -87.60639574,
+   "name": "Cottage Grove & 49th Street (CTA)"
+  },
+  "IDcta2510": {
+   "id": "cta2510",
+   "stopId": "cta2510",
+   "latitude": 41.80759584,
+   "longitude": -87.60643774,
+   "name": "Cottage Grove & 48th Street (CTA)"
+  },
+  "IDcta2513": {
+   "id": "cta2513",
+   "stopId": "cta2513",
+   "latitude": 41.81305284,
+   "longitude": -87.60656574,
+   "name": "Cottage Grove & 45th Street (CTA)"
+  },
+  "IDcta2514": {
+   "id": "cta2514",
+   "stopId": "cta2514",
+   "latitude": 41.81480584,
+   "longitude": -87.60659774,
+   "name": "Cottage Grove & 44th Street (CTA)"
+  },
+  "IDcta2515": {
+   "id": "cta2515",
+   "stopId": "cta2515",
+   "latitude": 41.81671471,
+   "longitude": -87.60661618,
+   "name": "Cottage Grove & 43rd Street (CTA)"
+  },
+  "IDcta2516": {
+   "id": "cta2516",
+   "stopId": "cta2516",
+   "latitude": 41.81847085,
+   "longitude": -87.60669074,
+   "name": "Cottage Grove & 42nd Street (CTA)"
+  },
+  "IDcta2517": {
+   "id": "cta2517",
+   "stopId": "cta2517",
+   "latitude": 41.82037085,
+   "longitude": -87.60675074,
+   "name": "Cottage Grove & 41st Street (CTA)"
+  },
+  "IDcta2518": {
+   "id": "cta2518",
+   "stopId": "cta2518",
+   "latitude": 41.82136485,
+   "longitude": -87.60677774,
+   "name": "Cottage Grove & 40th Street (CTA)"
+  },
+  "IDcta2519": {
+   "id": "cta2519",
+   "stopId": "cta2519",
+   "latitude": 41.82258323,
+   "longitude": -87.60679056,
+   "name": "Cottage Grove & Oakwood (CTA)"
+  },
+  "IDcta2520": {
+   "id": "cta2520",
+   "stopId": "cta2520",
+   "latitude": 41.8242926,
+   "longitude": -87.60698481,
+   "name": "Cottage Grove & Pershing (CTA)"
+  },
+  "IDcta2522": {
+   "id": "cta2522",
+   "stopId": "cta2522",
+   "latitude": 41.82760085,
+   "longitude": -87.60868274,
+   "name": "Cottage Grove & 37th Street (CTA)"
+  },
+  "IDcta2523": {
+   "id": "cta2523",
+   "stopId": "cta2523",
+   "latitude": 41.82904394,
+   "longitude": -87.60942206,
+   "name": "Cottage Grove & 36th Street (CTA)"
+  },
+  "IDcta2524": {
+   "id": "cta2524",
+   "stopId": "cta2524",
+   "latitude": 41.83109384,
+   "longitude": -87.61048463,
+   "name": "Cottage Grove & 35th Street (CTA)"
+  },
+  "IDcta2527": {
+   "id": "cta2527",
+   "stopId": "cta2527",
+   "latitude": 41.83129085,
+   "longitude": -87.61498074,
+   "name": "Lake Meadows Shopping Center (CTA)"
+  },
+  "IDcta2528": {
+   "id": "cta2528",
+   "stopId": "cta2528",
+   "latitude": 41.83127543,
+   "longitude": -87.61665041,
+   "name": "35th Street & King Drive (CTA)"
+  },
+  "IDcta2530": {
+   "id": "cta2530",
+   "stopId": "cta2530",
+   "latitude": 41.88478786,
+   "longitude": -87.62051875,
+   "name": "Columbus & Randolph (CTA)"
+  },
+  "IDcta2893": {
+   "id": "cta2893",
+   "stopId": "cta2893",
+   "latitude": 41.69267829,
+   "longitude": -87.61226865,
+   "name": "111th Street & Vernon (CTA)"
+  },
+  "IDcta2962": {
+   "id": "cta2962",
+   "stopId": "cta2962",
+   "latitude": 41.69464982,
+   "longitude": -87.60932273,
+   "name": "11000 S Cottage Grove (CTA)"
+  },
+  "IDcta2964": {
+   "id": "cta2964",
+   "stopId": "cta2964",
+   "latitude": 41.6980792,
+   "longitude": -87.60852408,
+   "name": "Cottage Grove & 108th Street (CTA)"
+  },
+  "IDcta2966": {
+   "id": "cta2966",
+   "stopId": "cta2966",
+   "latitude": 41.70188468,
+   "longitude": -87.60769246,
+   "name": "Cottage Grove & 106th Street (CTA)"
+  },
+  "IDcta2967": {
+   "id": "cta2967",
+   "stopId": "cta2967",
+   "latitude": 41.70369942,
+   "longitude": -87.60725366,
+   "name": "Cottage Grove & 105th Street (CTA)"
+  },
+  "IDcta2968": {
+   "id": "cta2968",
+   "stopId": "cta2968",
+   "latitude": 41.70553576,
+   "longitude": -87.60684395,
+   "name": "Cottage Grove & 104th Street (CTA)"
+  },
+  "IDcta2970": {
+   "id": "cta2970",
+   "stopId": "cta2970",
+   "latitude": 41.70920218,
+   "longitude": -87.60603149,
+   "name": "10200 S Cottage Grove (CTA)"
+  },
+  "IDcta2971": {
+   "id": "cta2971",
+   "stopId": "cta2971",
+   "latitude": 41.71118807,
+   "longitude": -87.60559179,
+   "name": "Cottage Grove & 101st Street (CTA)"
+  },
+  "IDcta2972": {
+   "id": "cta2972",
+   "stopId": "cta2972",
+   "latitude": 41.71275677,
+   "longitude": -87.60521748,
+   "name": "Cottage Grove & 100th Street (CTA)"
+  },
+  "IDcta2973": {
+   "id": "cta2973",
+   "stopId": "cta2973",
+   "latitude": 41.7146381,
+   "longitude": -87.60476529,
+   "name": "Cottage Grove & 99th Street (CTA)"
+  },
+  "IDcta2974": {
+   "id": "cta2974",
+   "stopId": "cta2974",
+   "latitude": 41.71655375,
+   "longitude": -87.60436418,
+   "name": "Cottage Grove & 98th Street (CTA)"
+  },
+  "IDcta2975": {
+   "id": "cta2975",
+   "stopId": "cta2975",
+   "latitude": 41.71835061,
+   "longitude": -87.60395933,
+   "name": "9700 S Cottage Grove (CTA)"
+  },
+  "IDcta2976": {
+   "id": "cta2976",
+   "stopId": "cta2976",
+   "latitude": 41.72020183,
+   "longitude": -87.60352166,
+   "name": "9600 S Cottage Grove (CTA)"
+  },
+  "IDcta2977": {
+   "id": "cta2977",
+   "stopId": "cta2977",
+   "latitude": 41.72152752,
+   "longitude": -87.60321745,
+   "name": "Cottage Grove & 95th Street (CTA)"
+  },
+  "IDcta6524": {
+   "id": "cta6524",
+   "stopId": "cta6524",
+   "latitude": 41.79412329,
+   "longitude": -87.63105016,
+   "name": "Garfield Red Line Station (CTA)"
+  },
+  "IDcta7398": {
+   "id": "cta7398",
+   "stopId": "cta7398",
+   "latitude": 41.75910781,
+   "longitude": -87.59592368,
+   "name": "South Chicago & 75th Street/Woodlawn (CTA)"
+  },
+  "IDcta7399": {
+   "id": "cta7399",
+   "stopId": "cta7399",
+   "latitude": 41.76040044,
+   "longitude": -87.59774939,
+   "name": "South Chicago & 74th Street (CTA)"
+  },
+  "IDcta7400": {
+   "id": "cta7400",
+   "stopId": "cta7400",
+   "latitude": 41.76215207,
+   "longitude": -87.60017984,
+   "name": "South Chicago & 73rd Street/Ellis (CTA)"
+  },
+  "IDcta7401": {
+   "id": "cta7401",
+   "stopId": "cta7401",
+   "latitude": 41.76354283,
+   "longitude": -87.60212617,
+   "name": "South Chicago & Ingleside (CTA)"
+  },
+  "IDcta7629": {
+   "id": "cta7629",
+   "stopId": "cta7629",
+   "latitude": 41.83132956,
+   "longitude": -87.61183025,
+   "name": "35th Street & Cottage Grove (CTA)"
+  },
+  "IDcta7631": {
+   "id": "cta7631",
+   "stopId": "cta7631",
+   "latitude": 41.83115549,
+   "longitude": -87.61924829,
+   "name": "35th Street & Giles (CTA)"
+  },
+  "IDcta10495": {
+   "id": "cta10495",
+   "stopId": "cta10495",
+   "latitude": 41.79295192,
+   "longitude": -87.73991733,
+   "name": "55th Street & Kilpatrick (CTA)"
+  },
+  "IDcta10496": {
+   "id": "cta10496",
+   "stopId": "cta10496",
+   "latitude": 41.79300662,
+   "longitude": -87.73752499,
+   "name": "4600 W 55th Street (CTA)"
+  },
+  "IDcta10498": {
+   "id": "cta10498",
+   "stopId": "cta10498",
+   "latitude": 41.79305553,
+   "longitude": -87.73266699,
+   "name": "55th Street & Kostner (CTA)"
+  },
+  "IDcta10499": {
+   "id": "cta10499",
+   "stopId": "cta10499",
+   "latitude": 41.793072,
+   "longitude": -87.73062107,
+   "name": "55th Street & Kildare (CTA)"
+  },
+  "IDcta10500": {
+   "id": "cta10500",
+   "stopId": "cta10500",
+   "latitude": 41.79309227,
+   "longitude": -87.72781831,
+   "name": "55th Street & Keeler (CTA)"
+  },
+  "IDcta10501": {
+   "id": "cta10501",
+   "stopId": "cta10501",
+   "latitude": 41.79313461,
+   "longitude": -87.72548323,
+   "name": "55th Street & Karlov (CTA)"
+  },
+  "IDcta10502": {
+   "id": "cta10502",
+   "stopId": "cta10502",
+   "latitude": 41.79315082,
+   "longitude": -87.72267529,
+   "name": "55th Street & Pulaski (CTA)"
+  },
+  "IDcta10504": {
+   "id": "cta10504",
+   "stopId": "cta10504",
+   "latitude": 41.79320361,
+   "longitude": -87.71806923,
+   "name": "55th Street & Hamlin (CTA)"
+  },
+  "IDcta10505": {
+   "id": "cta10505",
+   "stopId": "cta10505",
+   "latitude": 41.79324162,
+   "longitude": -87.71560123,
+   "name": "55th Street & Lawndale (CTA)"
+  },
+  "IDcta10506": {
+   "id": "cta10506",
+   "stopId": "cta10506",
+   "latitude": 41.79326363,
+   "longitude": -87.71368072,
+   "name": "3600 W 55th Street (CTA)"
+  },
+  "IDcta10507": {
+   "id": "cta10507",
+   "stopId": "cta10507",
+   "latitude": 41.79334063,
+   "longitude": -87.71064172,
+   "name": "55th Street & St. Louis (CTA)"
+  },
+  "IDcta10509": {
+   "id": "cta10509",
+   "stopId": "cta10509",
+   "latitude": 41.79338915,
+   "longitude": -87.70822596,
+   "name": "55th Street & Homan (CTA)"
+  },
+  "IDcta10510": {
+   "id": "cta10510",
+   "stopId": "cta10510",
+   "latitude": 41.79342454,
+   "longitude": -87.70590881,
+   "name": "55th Street & Spaulding (CTA)"
+  },
+  "IDcta10511": {
+   "id": "cta10511",
+   "stopId": "cta10511",
+   "latitude": 41.79345985,
+   "longitude": -87.70329658,
+   "name": "55th Street & Kedzie (CTA)"
+  },
+  "IDcta10512": {
+   "id": "cta10512",
+   "stopId": "cta10512",
+   "latitude": 41.79349629,
+   "longitude": -87.70100129,
+   "name": "55th Street & Albany (CTA)"
+  },
+  "IDcta10513": {
+   "id": "cta10513",
+   "stopId": "cta10513",
+   "latitude": 41.79355046,
+   "longitude": -87.69847108,
+   "name": "55th Street & Sacramento (CTA)"
+  },
+  "IDcta10514": {
+   "id": "cta10514",
+   "stopId": "cta10514",
+   "latitude": 41.79358578,
+   "longitude": -87.69614266,
+   "name": "55th Street & Francisco (CTA)"
+  },
+  "IDcta10515": {
+   "id": "cta10515",
+   "stopId": "cta10515",
+   "latitude": 41.79363106,
+   "longitude": -87.69369595,
+   "name": "55th Street & California (CTA)"
+  },
+  "IDcta10516": {
+   "id": "cta10516",
+   "stopId": "cta10516",
+   "latitude": 41.79365776,
+   "longitude": -87.69125005,
+   "name": "55th Street & Washtenaw (CTA)"
+  },
+  "IDcta10517": {
+   "id": "cta10517",
+   "stopId": "cta10517",
+   "latitude": 41.79372256,
+   "longitude": -87.68866637,
+   "name": "55th Street & Rockwell (CTA)"
+  },
+  "IDcta10518": {
+   "id": "cta10518",
+   "stopId": "cta10518",
+   "latitude": 41.79379481,
+   "longitude": -87.68565884,
+   "name": "55th Street & Artesian (CTA)"
+  },
+  "IDcta10519": {
+   "id": "cta10519",
+   "stopId": "cta10519",
+   "latitude": 41.79380348,
+   "longitude": -87.68424494,
+   "name": "55th Street & Western Avenue (CTA)"
+  },
+  "IDcta10520": {
+   "id": "cta10520",
+   "stopId": "cta10520",
+   "latitude": 41.79339243,
+   "longitude": -87.68301495,
+   "name": "Garfield & Western Boulevard (CTA)"
+  },
+  "IDcta10521": {
+   "id": "cta10521",
+   "stopId": "cta10521",
+   "latitude": 41.79341984,
+   "longitude": -87.68082276,
+   "name": "Garfield & Oakley (CTA)"
+  },
+  "IDcta10522": {
+   "id": "cta10522",
+   "stopId": "cta10522",
+   "latitude": 41.79348479,
+   "longitude": -87.6778646,
+   "name": "Garfield & Hamilton (CTA)"
+  },
+  "IDcta10523": {
+   "id": "cta10523",
+   "stopId": "cta10523",
+   "latitude": 41.79347171,
+   "longitude": -87.6765167,
+   "name": "Garfield & Hoyne (CTA)"
+  },
+  "IDcta10524": {
+   "id": "cta10524",
+   "stopId": "cta10524",
+   "latitude": 41.79350898,
+   "longitude": -87.67399419,
+   "name": "Garfield & Damen (CTA)"
+  },
+  "IDcta10525": {
+   "id": "cta10525",
+   "stopId": "cta10525",
+   "latitude": 41.79350171,
+   "longitude": -87.67164986,
+   "name": "Garfield & Wolcott (CTA)"
+  },
+  "IDcta10526": {
+   "id": "cta10526",
+   "stopId": "cta10526",
+   "latitude": 41.79354744,
+   "longitude": -87.66919237,
+   "name": "Garfield & Wood (CTA)"
+  },
+  "IDcta10527": {
+   "id": "cta10527",
+   "stopId": "cta10527",
+   "latitude": 41.79357124,
+   "longitude": -87.66678659,
+   "name": "Garfield & Paulina (CTA)"
+  },
+  "IDcta10528": {
+   "id": "cta10528",
+   "stopId": "cta10528",
+   "latitude": 41.79362418,
+   "longitude": -87.66429999,
+   "name": "Garfield & Ashland (CTA)"
+  },
+  "IDcta10529": {
+   "id": "cta10529",
+   "stopId": "cta10529",
+   "latitude": 41.79364658,
+   "longitude": -87.66191872,
+   "name": "Garfield & Laflin (CTA)"
+  },
+  "IDcta10530": {
+   "id": "cta10530",
+   "stopId": "cta10530",
+   "latitude": 41.79369534,
+   "longitude": -87.65935636,
+   "name": "Garfield & Loomis (CTA)"
+  },
+  "IDcta10531": {
+   "id": "cta10531",
+   "stopId": "cta10531",
+   "latitude": 41.79373008,
+   "longitude": -87.65689807,
+   "name": "Garfield & Throop (CTA)"
+  },
+  "IDcta10532": {
+   "id": "cta10532",
+   "stopId": "cta10532",
+   "latitude": 41.79376488,
+   "longitude": -87.65446955,
+   "name": "Garfield & Racine (CTA)"
+  },
+  "IDcta10533": {
+   "id": "cta10533",
+   "stopId": "cta10533",
+   "latitude": 41.79379919,
+   "longitude": -87.65203931,
+   "name": "Garfield & Aberdeen (CTA)"
+  },
+  "IDcta10534": {
+   "id": "cta10534",
+   "stopId": "cta10534",
+   "latitude": 41.79383415,
+   "longitude": -87.64961527,
+   "name": "Garfield & Morgan (CTA)"
+  },
+  "IDcta10535": {
+   "id": "cta10535",
+   "stopId": "cta10535",
+   "latitude": 41.79386978,
+   "longitude": -87.64720235,
+   "name": "Garfield & Peoria (CTA)"
+  },
+  "IDcta10536": {
+   "id": "cta10536",
+   "stopId": "cta10536",
+   "latitude": 41.7939031,
+   "longitude": -87.64480493,
+   "name": "Garfield & Halsted (CTA)"
+  },
+  "IDcta10537": {
+   "id": "cta10537",
+   "stopId": "cta10537",
+   "latitude": 41.79394563,
+   "longitude": -87.64245549,
+   "name": "Garfield & Union (CTA)"
+  },
+  "IDcta10538": {
+   "id": "cta10538",
+   "stopId": "cta10538",
+   "latitude": 41.79397104,
+   "longitude": -87.64105585,
+   "name": "Garfield & Lowe (CTA)"
+  },
+  "IDcta10539": {
+   "id": "cta10539",
+   "stopId": "cta10539",
+   "latitude": 41.79403508,
+   "longitude": -87.6375288,
+   "name": "Garfield & Normal (CTA)"
+  },
+  "IDcta10543": {
+   "id": "cta10543",
+   "stopId": "cta10543",
+   "latitude": 41.79421439,
+   "longitude": -87.62750922,
+   "name": "Garfield & Federal (CTA)"
+  },
+  "IDcta10544": {
+   "id": "cta10544",
+   "stopId": "cta10544",
+   "latitude": 41.79426202,
+   "longitude": -87.62537359,
+   "name": "Garfield & State (CTA)"
+  },
+  "IDcta10545": {
+   "id": "cta10545",
+   "stopId": "cta10545",
+   "latitude": 41.79429222,
+   "longitude": -87.62380439,
+   "name": "Garfield & Wabash (CTA)"
+  },
+  "IDcta10547": {
+   "id": "cta10547",
+   "stopId": "cta10547",
+   "latitude": 41.7943505,
+   "longitude": -87.6205039,
+   "name": "Garfield & Indiana (CTA)"
+  },
+  "IDcta10548": {
+   "id": "cta10548",
+   "stopId": "cta10548",
+   "latitude": 41.79436219,
+   "longitude": -87.61833161,
+   "name": "Garfield Green Line Station (CTA)"
+  },
+  "IDcta10549": {
+   "id": "cta10549",
+   "stopId": "cta10549",
+   "latitude": 41.79442019,
+   "longitude": -87.61615813,
+   "name": "Garfield & King Drive (CTA)"
+  },
+  "IDcta10550": {
+   "id": "cta10550",
+   "stopId": "cta10550",
+   "latitude": 41.79363385,
+   "longitude": -87.61327903,
+   "name": "Morgan Drive & Russell Drive (CTA)"
+  },
+  "IDcta10551": {
+   "id": "cta10551",
+   "stopId": "cta10551",
+   "latitude": 41.7948711,
+   "longitude": -87.60735708,
+   "name": "Payne Drive & 55th Street (CTA)"
+  },
+  "IDcta10552": {
+   "id": "cta10552",
+   "stopId": "cta10552",
+   "latitude": 41.79488203,
+   "longitude": -87.60578617,
+   "name": "55th Street & Cottage Grove (CTA)"
+  },
+  "IDcta10553": {
+   "id": "cta10553",
+   "stopId": "cta10553",
+   "latitude": 41.79490103,
+   "longitude": -87.60374262,
+   "name": "55th Street & Drexel (CTA)"
+  },
+  "IDcta10559": {
+   "id": "cta10559",
+   "stopId": "cta10559",
+   "latitude": 41.79501487,
+   "longitude": -87.59503677,
+   "name": "55th Street & Kimbark (CTA)"
+  },
+  "IDcta10561": {
+   "id": "cta10561",
+   "stopId": "cta10561",
+   "latitude": 41.79474492,
+   "longitude": -87.59181987,
+   "name": "55th Street & Dorchester (CTA)"
+  },
+  "IDcta10562": {
+   "id": "cta10562",
+   "stopId": "cta10562",
+   "latitude": 41.79474812,
+   "longitude": -87.59044676,
+   "name": "55th Street & Blackstone (CTA)"
+  },
+  "IDcta10563": {
+   "id": "cta10563",
+   "stopId": "cta10563",
+   "latitude": 41.79512097,
+   "longitude": -87.58775464,
+   "name": "55th Street & Lake Park (CTA)"
+  },
+  "IDcta10565": {
+   "id": "cta10565",
+   "stopId": "cta10565",
+   "latitude": 41.79167425,
+   "longitude": -87.58353817,
+   "name": "Museum of Science & Industry (CTA)"
+  },
+  "IDcta10940": {
+   "id": "cta10940",
+   "stopId": "cta10940",
+   "latitude": 41.75852882,
+   "longitude": -87.60305415,
+   "name": "75th Street & Drexel (CTA)"
+  },
+  "IDcta10942": {
+   "id": "cta10942",
+   "stopId": "cta10942",
+   "latitude": 41.75855882,
+   "longitude": -87.60065415,
+   "name": "75th Street & Ellis (CTA)"
+  },
+  "IDcta10943": {
+   "id": "cta10943",
+   "stopId": "cta10943",
+   "latitude": 41.75855484,
+   "longitude": -87.59823773,
+   "name": "75th Street & Greenwood (CTA)"
+  },
+  "IDcta14050": {
+   "id": "cta14050",
+   "stopId": "cta14050",
+   "latitude": 41.68903532,
+   "longitude": -87.61318556,
+   "name": "King Drive & 113th Street (CTA)"
+  },
+  "IDcta14051": {
+   "id": "cta14051",
+   "stopId": "cta14051",
+   "latitude": 41.69087096,
+   "longitude": -87.61323073,
+   "name": "King Drive & 112th Street (CTA)"
+  },
+  "IDcta14052": {
+   "id": "cta14052",
+   "stopId": "cta14052",
+   "latitude": 41.69264574,
+   "longitude": -87.61329559,
+   "name": "King Drive & 111th Street (CTA)"
+  },
+  "IDcta14122": {
+   "id": "cta14122",
+   "stopId": "cta14122",
+   "latitude": 41.78637627,
+   "longitude": -87.73890144,
+   "name": "Midway Orange Line Station (CTA)"
+  },
+  "IDcta14482": {
+   "id": "cta14482",
+   "stopId": "cta14482",
+   "latitude": 41.88429339,
+   "longitude": -87.62362601,
+   "name": "Randolph & Michigan (CTA)"
+  },
+  "IDcta14485": {
+   "id": "cta14485",
+   "stopId": "cta14485",
+   "latitude": 41.87554805,
+   "longitude": -87.62413205,
+   "name": "Michigan & Ida B Wells Drive (CTA)"
+  },
+  "IDcta14553": {
+   "id": "cta14553",
+   "stopId": "cta14553",
+   "latitude": 41.7002115,
+   "longitude": -87.6080585,
+   "name": "Cottage Grove & 107th Street (CTA)"
+  },
+  "IDcta14573": {
+   "id": "cta14573",
+   "stopId": "cta14573",
+   "latitude": 41.76618084,
+   "longitude": -87.60547566,
+   "name": "Cottage Grove & 71st Street/South Chicago (CTA)"
+  },
+  "IDcta14574": {
+   "id": "cta14574",
+   "stopId": "cta14574",
+   "latitude": 41.80975571,
+   "longitude": -87.60646765,
+   "name": "Cottage Grove & 47th Street (CTA)"
+  },
+  "IDcta14760": {
+   "id": "cta14760",
+   "stopId": "cta14760",
+   "latitude": 41.8605098,
+   "longitude": -87.62388583,
+   "name": "Michigan & 16th Street (CTA)"
+  },
+  "IDcta14952": {
+   "id": "cta14952",
+   "stopId": "cta14952",
+   "latitude": 41.74794459,
+   "longitude": -87.6050282,
+   "name": "Cottage Grove & 81st Street (CTA)"
+  },
+  "IDcta15033": {
+   "id": "cta15033",
+   "stopId": "cta15033",
+   "latitude": 41.70782579,
+   "longitude": -87.60634234,
+   "name": "Cottage Grove & 103rd Street (CTA)"
+  },
+  "IDcta15148": {
+   "id": "cta15148",
+   "stopId": "cta15148",
+   "latitude": 41.79523892,
+   "longitude": -87.606154,
+   "name": "Cottage Grove & 55th Street (CTA)"
+  },
+  "IDcta15157": {
+   "id": "cta15157",
+   "stopId": "cta15157",
+   "latitude": 41.69651587,
+   "longitude": -87.60890511,
+   "name": "Cottage Grove & 109th Street (CTA)"
+  },
+  "IDcta15164": {
+   "id": "cta15164",
+   "stopId": "cta15164",
+   "latitude": 41.79163955,
+   "longitude": -87.6060732,
+   "name": "Cottage Grove & 57th Street (CTA)"
+  },
+  "IDcta15193": {
+   "id": "cta15193",
+   "stopId": "cta15193",
+   "latitude": 41.79493545,
+   "longitude": -87.60097895,
+   "name": "55th Street & Ellis (CTA)"
+  },
+  "IDcta15241": {
+   "id": "cta15241",
+   "stopId": "cta15241",
+   "latitude": 41.88067238,
+   "longitude": -87.62419229,
+   "name": "Michigan & Monroe (CTA)"
+  },
+  "IDcta15312": {
+   "id": "cta15312",
+   "stopId": "cta15312",
+   "latitude": 41.8531941,
+   "longitude": -87.62371448,
+   "name": "Michigan & Cermak (CTA)"
+  },
+  "IDcta15313": {
+   "id": "cta15313",
+   "stopId": "cta15313",
+   "latitude": 41.84946926,
+   "longitude": -87.62360839,
+   "name": "Michigan & 24th Street (CTA)"
+  },
+  "IDcta15314": {
+   "id": "cta15314",
+   "stopId": "cta15314",
+   "latitude": 41.83132429,
+   "longitude": -87.62168256,
+   "name": "Indiana & 35th Street (CTA)"
+  },
+  "IDcta15752": {
+   "id": "cta15752",
+   "stopId": "cta15752",
+   "latitude": 41.79498444,
+   "longitude": -87.59611748,
+   "name": "55th Street & Woodlawn (CTA)"
+  },
+  "IDcta15866": {
+   "id": "cta15866",
+   "stopId": "cta15866",
+   "latitude": 41.82623431,
+   "longitude": -87.60797112,
+   "name": "Cottage Grove & 38th Street (CTA)"
+  },
+  "IDcta15912": {
+   "id": "cta15912",
+   "stopId": "cta15912",
+   "latitude": 41.79318165,
+   "longitude": -87.72085249,
+   "name": "55th Street & Springfield (CTA)"
+  },
+  "IDcta15932": {
+   "id": "cta15932",
+   "stopId": "cta15932",
+   "latitude": 41.81152956,
+   "longitude": -87.60650113,
+   "name": "Cottage Grove & 46th Street (CTA)"
+  },
+  "IDcta16096": {
+   "id": "cta16096",
+   "stopId": "cta16096",
+   "latitude": 41.7941578,
+   "longitude": -87.62970253,
+   "name": "Garfield & LaSalle (CTA)"
+  },
+  "IDcta16119": {
+   "id": "cta16119",
+   "stopId": "cta16119",
+   "latitude": 41.83495645,
+   "longitude": -87.62175813,
+   "name": "Indiana & 33rd Boulevard (CTA)"
+  },
+  "IDcta17033": {
+   "id": "cta17033",
+   "stopId": "cta17033",
+   "latitude": 41.79410253,
+   "longitude": -87.63311547,
+   "name": "Garfield & Princeton (CTA)"
+  },
+  "IDcta17103": {
+   "id": "cta17103",
+   "stopId": "cta17103",
+   "latitude": 41.75488533,
+   "longitude": -87.60544367,
+   "name": "Cottage Grove & 77th Street (CTA)"
+  },
+  "IDcta17563": {
+   "id": "cta17563",
+   "stopId": "cta17563",
+   "latitude": 41.79504262,
+   "longitude": -87.59302328,
+   "name": "55th Street & Kenwood (CTA)"
+  },
+  "IDcta17572": {
+   "id": "cta17572",
+   "stopId": "cta17572",
+   "latitude": 41.78057559,
+   "longitude": -87.60582442,
+   "name": "Cottage Grove & 63rd Street (Green Line) (CTA)"
+  },
+  "IDcta17676": {
+   "id": "cta17676",
+   "stopId": "cta17676",
+   "latitude": 41.69310885,
+   "longitude": -87.60967137,
+   "name": "Cottage Grove & 111th Street (CTA)"
+  },
+  "IDcta18005": {
+   "id": "cta18005",
+   "stopId": "cta18005",
+   "latitude": 41.77332199,
+   "longitude": -87.60564409,
+   "name": "Cottage Grove & 67th Street (CTA)"
+  },
+  "IDcta18006": {
+   "id": "cta18006",
+   "stopId": "cta18006",
+   "latitude": 41.77701987,
+   "longitude": -87.60575071,
+   "name": "Cottage Grove & 65th Street (CTA)"
+  },
+  "IDcta18007": {
+   "id": "cta18007",
+   "stopId": "cta18007",
+   "latitude": 41.77878701,
+   "longitude": -87.60579406,
+   "name": "Cottage Grove & 64th Street (CTA)"
+  },
+  "IDcta18018": {
+   "id": "cta18018",
+   "stopId": "cta18018",
+   "latitude": 41.79496965,
+   "longitude": -87.59791458,
+   "name": "55th Street & University (CTA)"
+  },
+  "IDcta18241": {
+   "id": "cta18241",
+   "stopId": "cta18241",
+   "latitude": 41.68560486,
+   "longitude": -87.61233206,
+   "name": "115th Street Metra Station (CTA)"
+  },
+  "IDcta18318": {
+   "id": "cta18318",
+   "stopId": "cta18318",
+   "latitude": 41.86451556,
+   "longitude": -87.62396506,
+   "name": "Michigan & 14th Street (CTA)"
+  },
+  "IDcta18448": {
+   "id": "cta18448",
+   "stopId": "cta18448",
+   "latitude": 41.79304814,
+   "longitude": -87.73433645,
+   "name": "55th Street & Kenneth (CTA)"
+  },
+  "IDcta18653": {
+   "id": "cta18653",
+   "stopId": "cta18653",
+   "latitude": 41.75853846,
+   "longitude": -87.60521332,
+   "name": "75th Street & Cottage Grove (CTA)"
+  }
+ },
+ "routes": {
+  "4009": [
+   "Medical Shuttle",
+   "#1f77b4",
+   [
+    "1",
+    "10103",
+    0
+   ]
+  ],
+  "38601": [
+   "Friend Center/Metra",
+   "#8c4600",
+   [
+    "1",
+    "8612",
+    0
+   ],
+   [
+    "3",
+    "8613",
+    0
+   ],
+   [
+    "4",
+    "8615",
+    0
+   ],
+   [
+    "5",
+    "8616",
+    0
+   ],
+   [
+    "6",
+    "8617",
+    0
+   ],
+   [
+    "7",
+    "138838",
+    0
+   ],
+   [
+    "11",
+    "8635",
+    0
+   ],
+   [
+    "13",
+    "8618",
+    0
+   ],
+   [
+    "14",
+    "140009",
+    0
+   ],
+   [
+    "16",
+    "8645",
+    0
+   ],
+   [
+    "17",
+    "8619",
+    0
+   ],
+   [
+    "19",
+    "8658",
+    0
+   ],
+   [
+    "20",
+    "8612",
+    1
+   ]
+  ],
+  "38728": [
+   "Drexel",
+   "#ab79dc",
+   [
+    "1",
+    "8611",
+    0
+   ],
+   [
+    "5",
+    "8612",
+    0
+   ],
+   [
+    "7",
+    "8613",
+    0
+   ],
+   [
+    "8",
+    "8615",
+    0
+   ],
+   [
+    "9",
+    "8616",
+    0
+   ],
+   [
+    "10",
+    "8617",
+    0
+   ],
+   [
+    "11",
+    "8609",
+    0
+   ],
+   [
+    "14",
+    "8611",
+    1
+   ]
+  ],
+  "38729": [
+   "Apostolic",
+   "#0000ff",
+   [
+    "2",
+    "133007",
+    0
+   ],
+   [
+    "3",
+    "225833",
+    0
+   ],
+   [
+    "6",
+    "8612",
+    0
+   ],
+   [
+    "7",
+    "8613",
+    0
+   ],
+   [
+    "8",
+    "8615",
+    0
+   ],
+   [
+    "9",
+    "8616",
+    0
+   ],
+   [
+    "10",
+    "8617",
+    0
+   ],
+   [
+    "11",
+    "8609",
+    0
+   ],
+   [
+    "13",
+    "8630",
+    0
+   ],
+   [
+    "18",
+    "8614",
+    0
+   ],
+   [
+    "19",
+    "133007",
+    1
+   ]
+  ],
+  "38730": [
+   "Apostolic/Drexel",
+   "#ea7948",
+   [
+    "1",
+    "8612",
+    0
+   ],
+   [
+    "2",
+    "8613",
+    0
+   ],
+   [
+    "3",
+    "8615",
+    0
+   ],
+   [
+    "4",
+    "8616",
+    0
+   ],
+   [
+    "5",
+    "8617",
+    0
+   ],
+   [
+    "6",
+    "8609",
+    0
+   ],
+   [
+    "8",
+    "8630",
+    0
+   ],
+   [
+    "9",
+    "8611",
+    0
+   ],
+   [
+    "11",
+    "225834",
+    0
+   ],
+   [
+    "15",
+    "8614",
+    0
+   ],
+   [
+    "16",
+    "133007",
+    0
+   ],
+   [
+    "17",
+    "225833",
+    0
+   ],
+   [
+    "20",
+    "8612",
+    1
+   ]
+  ],
+  "38731": [
+   "Midway Metra",
+   "#008080",
+   [
+    "1",
+    "141882",
+    0
+   ],
+   [
+    "4",
+    "8658",
+    0
+   ],
+   [
+    "5",
+    "8607",
+    0
+   ],
+   [
+    "6",
+    "8654",
+    0
+   ],
+   [
+    "7",
+    "8612",
+    0
+   ],
+   [
+    "8",
+    "8615",
+    0
+   ],
+   [
+    "10",
+    "8655",
+    0
+   ],
+   [
+    "11",
+    "8589",
+    0
+   ],
+   [
+    "13",
+    "8631",
+    0
+   ],
+   [
+    "14",
+    "8598",
+    0
+   ],
+   [
+    "16",
+    "8632",
+    0
+   ],
+   [
+    "17",
+    "161844",
+    0
+   ],
+   [
+    "19",
+    "8594",
+    0
+   ],
+   [
+    "20",
+    "8624",
+    0
+   ],
+   [
+    "27",
+    "141882",
+    1
+   ]
+  ],
+  "38732": [
+   "53rd Street Express",
+   "#f7eb07",
+   [
+    "1",
+    "8596",
+    0
+   ],
+   [
+    "2",
+    "8811",
+    0
+   ],
+   [
+    "3",
+    "8628",
+    0
+   ],
+   [
+    "5",
+    "8595",
+    0
+   ],
+   [
+    "6",
+    "8629",
+    0
+   ],
+   [
+    "7",
+    "138837",
+    0
+   ],
+   [
+    "9",
+    "8630",
+    0
+   ],
+   [
+    "10",
+    "8612",
+    0
+   ],
+   [
+    "13",
+    "8589",
+    0
+   ],
+   [
+    "14",
+    "8631",
+    0
+   ],
+   [
+    "15",
+    "8632",
+    0
+   ],
+   [
+    "17",
+    "161844",
+    0
+   ],
+   [
+    "18",
+    "8594",
+    0
+   ],
+   [
+    "19",
+    "8624",
+    0
+   ],
+   [
+    "20",
+    "8599",
+    0
+   ],
+   [
+    "24",
+    "8626",
+    0
+   ],
+   [
+    "27",
+    "8596",
+    1
+   ]
+  ],
+  "38734": [
+   "Route North",
+   "#0099cc",
+   [
+    "1",
+    "8579",
+    0
+   ],
+   [
+    "2",
+    "8633",
+    0
+   ],
+   [
+    "3",
+    "8634",
+    0
+   ],
+   [
+    "4",
+    "8635",
+    0
+   ],
+   [
+    "6",
+    "140008",
+    0
+   ],
+   [
+    "16",
+    "140009",
+    0
+   ],
+   [
+    "17",
+    "8637",
+    0
+   ],
+   [
+    "20",
+    "8579",
+    1
+   ]
+  ],
+  "38735": [
+   "Route South",
+   "#dd550c",
+   [
+    "1",
+    "8631",
+    0
+   ],
+   [
+    "2",
+    "161849",
+    0
+   ],
+   [
+    "3",
+    "8659",
+    0
+   ],
+   [
+    "4",
+    "8660",
+    0
+   ],
+   [
+    "5",
+    "8661",
+    0
+   ],
+   [
+    "6",
+    "141863",
+    0
+   ],
+   [
+    "7",
+    "8589",
+    0
+   ],
+   [
+    "8",
+    "8623",
+    0
+   ],
+   [
+    "9",
+    "140011",
+    0
+   ],
+   [
+    "10",
+    "140010",
+    0
+   ],
+   [
+    "11",
+    "161844",
+    0
+   ],
+   [
+    "12",
+    "8624",
+    0
+   ],
+   [
+    "13",
+    "8658",
+    0
+   ],
+   [
+    "14",
+    "8652",
+    0
+   ],
+   [
+    "15",
+    "8633",
+    0
+   ],
+   [
+    "16",
+    "8630",
+    0
+   ],
+   [
+    "38",
+    "8631",
+    0
+   ]
+  ],
+  "38736": [
+   "Route East",
+   "#54bd00",
+   [
+    "1",
+    "8579",
+    0
+   ],
+   [
+    "2",
+    "8633",
+    0
+   ],
+   [
+    "3",
+    "8634",
+    0
+   ],
+   [
+    "4",
+    "8635",
+    0
+   ],
+   [
+    "5",
+    "140009",
+    0
+   ],
+   [
+    "6",
+    "20132",
+    0
+   ],
+   [
+    "8",
+    "8627",
+    0
+   ],
+   [
+    "13",
+    "8578",
+    0
+   ],
+   [
+    "15",
+    "140013",
+    0
+   ],
+   [
+    "16",
+    "140014",
+    0
+   ],
+   [
+    "18",
+    "140015",
+    0
+   ],
+   [
+    "19",
+    "8641",
+    0
+   ],
+   [
+    "21",
+    "8637",
+    0
+   ],
+   [
+    "24",
+    "8579",
+    1
+   ]
+  ],
+  "38737": [
+   "Central",
+   "#ff9900",
+   [
+    "1",
+    "8579",
+    0
+   ],
+   [
+    "5",
+    "141882",
+    0
+   ],
+   [
+    "8",
+    "8658",
+    0
+   ],
+   [
+    "9",
+    "9593",
+    0
+   ],
+   [
+    "10",
+    "8584",
+    0
+   ],
+   [
+    "13",
+    "8644",
+    0
+   ],
+   [
+    "15",
+    "8597",
+    0
+   ],
+   [
+    "16",
+    "8634",
+    0
+   ],
+   [
+    "17",
+    "8635",
+    0
+   ],
+   [
+    "18",
+    "140009",
+    0
+   ],
+   [
+    "23",
+    "140016",
+    0
+   ],
+   [
+    "24",
+    "141862",
+    0
+   ],
+   [
+    "25",
+    "140012",
+    0
+   ],
+   [
+    "29",
+    "8652",
+    0
+   ],
+   [
+    "32",
+    "8579",
+    1
+   ]
+  ],
+  "38738": [
+   "South Loop Shuttle",
+   "#ff99cc",
+   [
+    "1",
+    "8579",
+    0
+   ],
+   [
+    "3",
+    "8619",
+    0
+   ],
+   [
+    "7",
+    "8621",
+    0
+   ],
+   [
+    "11",
+    "141882",
+    0
+   ],
+   [
+    "12",
+    "9593",
+    0
+   ],
+   [
+    "14",
+    "8579",
+    1
+   ]
+  ],
+  "38809": [
+   "Midway Metra",
+   "#008080",
+   [
+    "1",
+    "8612",
+    0
+   ],
+   [
+    "2",
+    "8655",
+    0
+   ],
+   [
+    "3",
+    "8589",
+    0
+   ],
+   [
+    "4",
+    "8631",
+    0
+   ],
+   [
+    "5",
+    "8598",
+    0
+   ],
+   [
+    "6",
+    "8632",
+    0
+   ],
+   [
+    "7",
+    "161844",
+    0
+   ],
+   [
+    "8",
+    "8594",
+    0
+   ],
+   [
+    "9",
+    "8624",
+    0
+   ],
+   [
+    "10",
+    "8599",
+    0
+   ],
+   [
+    "11",
+    "8658",
+    0
+   ],
+   [
+    "12",
+    "8607",
+    0
+   ],
+   [
+    "13",
+    "8654",
+    0
+   ],
+   [
+    "24",
+    "8612",
+    1
+   ]
+  ],
+  "40515": [
+   "Regents Express",
+   "#393b79",
+   [
+    "7",
+    "8643",
+    0
+   ],
+   [
+    "8",
+    "8599",
+    0
+   ],
+   [
+    "10",
+    "72572",
+    0
+   ],
+   [
+    "11",
+    "72573",
+    0
+   ],
+   [
+    "12",
+    "8657",
+    0
+   ],
+   [
+    "13",
+    "8578",
+    0
+   ],
+   [
+    "15",
+    "8633",
+    0
+   ],
+   [
+    "17",
+    "8643",
+    0
+   ]
+  ],
+  "40922": [
+   "Hyde Park Convocation",
+   "#F9A51B",
+   [
+    "4",
+    "8591",
+    0
+   ]
+  ],
+  "40923": [
+   "Midway Convocation ",
+   "#ED1A3A",
+   [
+    "1",
+    "8624",
+    0
+   ]
+  ],
+  "48618": [
+   "Red Line/Arts Block",
+   "#d62728",
+   [
+    "1",
+    "67598",
+    0
+   ],
+   [
+    "2",
+    "67599",
+    0
+   ],
+   [
+    "3",
+    "8650",
+    0
+   ],
+   [
+    "4",
+    "67600",
+    0
+   ],
+   [
+    "5",
+    "67601",
+    0
+   ],
+   [
+    "6",
+    "161393",
+    0
+   ],
+   [
+    "7",
+    "67602",
+    0
+   ],
+   [
+    "8",
+    "69624",
+    0
+   ],
+   [
+    "9",
+    "161392",
+    0
+   ],
+   [
+    "10",
+    "67603",
+    0
+   ],
+   [
+    "11",
+    "138836",
+    0
+   ],
+   [
+    "19",
+    "67598",
+    0
+   ]
+  ],
+  "55466": [
+   "Gleacher Express",
+   "#000000",
+   [
+    "1",
+    "8605",
+    0
+   ],
+   [
+    "2",
+    "132963",
+    0
+   ]
+  ],
+  "61142": [
+   "Downtown Campus Connector",
+   "#0e5700",
+   [
+    "1",
+    "8591",
+    0
+   ],
+   [
+    "2",
+    "8654",
+    0
+   ],
+   [
+    "3",
+    "8612",
+    0
+   ],
+   [
+    "4",
+    "140009",
+    0
+   ],
+   [
+    "5",
+    "151794",
+    0
+   ],
+   [
+    "6",
+    "155005",
+    0
+   ],
+   [
+    "7",
+    "132965",
+    0
+   ],
+   [
+    "8",
+    "155006",
+    0
+   ],
+   [
+    "9",
+    "132963",
+    0
+   ],
+   [
+    "10",
+    "132964",
+    0
+   ],
+   [
+    "11",
+    "151792",
+    0
+   ],
+   [
+    "12",
+    "151793",
+    0
+   ],
+   [
+    "13",
+    "132967",
+    0
+   ],
+   [
+    "14",
+    "132968",
+    0
+   ],
+   [
+    "15",
+    "8591",
+    0
+   ]
+  ],
+  "62744": [
+   "Campus Convocation",
+   "#24AAE1",
+   [
+    "5",
+    "8607",
+    0
+   ]
+  ],
+  "cta4": [
+   "Cottage Grove (CTA)",
+   "#565a5c",
+   0,
+   [
+    "118",
+    "cta76",
+    0
+   ],
+   [
+    "119",
+    "cta15241",
+    0
+   ],
+   [
+    "120",
+    "cta2188",
+    0
+   ],
+   [
+    "121",
+    "cta14482",
+    0
+   ],
+   [
+    "122",
+    "cta2530",
+    0
+   ],
+   [
+    "1",
+    "cta18241",
+    0
+   ],
+   [
+    "2",
+    "cta14050",
+    0
+   ],
+   [
+    "3",
+    "cta14051",
+    0
+   ],
+   [
+    "4",
+    "cta14052",
+    0
+   ],
+   [
+    "5",
+    "cta2893",
+    0
+   ],
+   [
+    "6",
+    "cta17676",
+    0
+   ],
+   [
+    "7",
+    "cta2962",
+    0
+   ],
+   [
+    "8",
+    "cta15157",
+    0
+   ],
+   [
+    "9",
+    "cta2964",
+    0
+   ],
+   [
+    "10",
+    "cta14553",
+    0
+   ],
+   [
+    "11",
+    "cta2966",
+    0
+   ],
+   [
+    "12",
+    "cta2967",
+    0
+   ],
+   [
+    "13",
+    "cta2968",
+    0
+   ],
+   [
+    "14",
+    "cta15033",
+    0
+   ],
+   [
+    "15",
+    "cta2970",
+    0
+   ],
+   [
+    "16",
+    "cta2971",
+    0
+   ],
+   [
+    "17",
+    "cta2972",
+    0
+   ],
+   [
+    "18",
+    "cta2973",
+    0
+   ],
+   [
+    "19",
+    "cta2974",
+    0
+   ],
+   [
+    "20",
+    "cta2975",
+    0
+   ],
+   [
+    "21",
+    "cta2976",
+    0
+   ],
+   [
+    "22",
+    "cta2977",
+    0
+   ],
+   [
+    "23",
+    "cta2462",
+    0
+   ],
+   [
+    "24",
+    "cta2464",
+    0
+   ],
+   [
+    "25",
+    "cta2465",
+    0
+   ],
+   [
+    "26",
+    "cta2466",
+    0
+   ],
+   [
+    "27",
+    "cta2467",
+    0
+   ],
+   [
+    "28",
+    "cta2468",
+    0
+   ],
+   [
+    "29",
+    "cta2469",
+    0
+   ],
+   [
+    "30",
+    "cta2470",
+    0
+   ],
+   [
+    "31",
+    "cta2471",
+    0
+   ],
+   [
+    "32",
+    "cta2472",
+    0
+   ],
+   [
+    "33",
+    "cta2473",
+    0
+   ],
+   [
+    "34",
+    "cta2474",
+    0
+   ],
+   [
+    "35",
+    "cta2475",
+    0
+   ],
+   [
+    "36",
+    "cta14952",
+    0
+   ],
+   [
+    "37",
+    "cta2477",
+    0
+   ],
+   [
+    "38",
+    "cta2478",
+    0
+   ],
+   [
+    "39",
+    "cta2479",
+    0
+   ],
+   [
+    "40",
+    "cta17103",
+    0
+   ],
+   [
+    "41",
+    "cta2481",
+    0
+   ],
+   [
+    "42",
+    "cta18653",
+    0
+   ],
+   [
+    "43",
+    "cta10940",
+    0
+   ],
+   [
+    "44",
+    "cta10942",
+    0
+   ],
+   [
+    "45",
+    "cta10943",
+    0
+   ],
+   [
+    "46",
+    "cta7398",
+    0
+   ],
+   [
+    "47",
+    "cta7399",
+    0
+   ],
+   [
+    "48",
+    "cta7400",
+    0
+   ],
+   [
+    "49",
+    "cta7401",
+    0
+   ],
+   [
+    "50",
+    "cta14573",
+    0
+   ],
+   [
+    "51",
+    "cta2487",
+    0
+   ],
+   [
+    "52",
+    "cta2488",
+    0
+   ],
+   [
+    "53",
+    "cta2489",
+    0
+   ],
+   [
+    "54",
+    "cta18005",
+    0
+   ],
+   [
+    "55",
+    "cta2491",
+    0
+   ],
+   [
+    "56",
+    "cta18006",
+    0
+   ],
+   [
+    "57",
+    "cta18007",
+    0
+   ],
+   [
+    "58",
+    "cta17572",
+    0
+   ],
+   [
+    "59",
+    "cta2495",
+    0
+   ],
+   [
+    "60",
+    "cta2496",
+    0
+   ],
+   [
+    "61",
+    "cta2497",
+    0
+   ],
+   [
+    "62",
+    "cta2498",
+    0
+   ],
+   [
+    "63",
+    "cta2499",
+    0
+   ],
+   [
+    "64",
+    "cta15164",
+    0
+   ],
+   [
+    "65",
+    "cta2501",
+    0
+   ],
+   [
+    "66",
+    "cta15148",
+    0
+   ],
+   [
+    "67",
+    "cta2503",
+    0
+   ],
+   [
+    "68",
+    "cta2504",
+    0
+   ],
+   [
+    "69",
+    "cta2505",
+    0
+   ],
+   [
+    "70",
+    "cta2506",
+    0
+   ],
+   [
+    "71",
+    "cta2507",
+    0
+   ],
+   [
+    "72",
+    "cta2508",
+    0
+   ],
+   [
+    "73",
+    "cta2509",
+    0
+   ],
+   [
+    "74",
+    "cta2510",
+    0
+   ],
+   [
+    "75",
+    "cta14574",
+    0
+   ],
+   [
+    "76",
+    "cta15932",
+    0
+   ],
+   [
+    "77",
+    "cta2513",
+    0
+   ],
+   [
+    "78",
+    "cta2514",
+    0
+   ],
+   [
+    "79",
+    "cta2515",
+    0
+   ],
+   [
+    "80",
+    "cta2516",
+    0
+   ],
+   [
+    "81",
+    "cta2517",
+    0
+   ],
+   [
+    "82",
+    "cta2518",
+    0
+   ],
+   [
+    "83",
+    "cta2519",
+    0
+   ],
+   [
+    "84",
+    "cta2520",
+    0
+   ],
+   [
+    "85",
+    "cta15866",
+    0
+   ],
+   [
+    "86",
+    "cta2522",
+    0
+   ],
+   [
+    "87",
+    "cta2523",
+    0
+   ],
+   [
+    "88",
+    "cta2524",
+    0
+   ],
+   [
+    "89",
+    "cta7629",
+    0
+   ],
+   [
+    "90",
+    "cta2527",
+    0
+   ],
+   [
+    "91",
+    "cta2528",
+    0
+   ],
+   [
+    "92",
+    "cta7631",
+    0
+   ],
+   [
+    "93",
+    "cta15314",
+    0
+   ],
+   [
+    "94",
+    "cta1560",
+    0
+   ],
+   [
+    "95",
+    "cta16119",
+    0
+   ],
+   [
+    "96",
+    "cta1562",
+    0
+   ],
+   [
+    "97",
+    "cta1563",
+    0
+   ],
+   [
+    "98",
+    "cta1564",
+    0
+   ],
+   [
+    "99",
+    "cta1565",
+    0
+   ],
+   [
+    "100",
+    "cta1566",
+    0
+   ],
+   [
+    "101",
+    "cta1567",
+    0
+   ],
+   [
+    "102",
+    "cta1568",
+    0
+   ],
+   [
+    "103",
+    "cta15313",
+    0
+   ],
+   [
+    "104",
+    "cta1570",
+    0
+   ],
+   [
+    "105",
+    "cta15312",
+    0
+   ],
+   [
+    "106",
+    "cta1573",
+    0
+   ],
+   [
+    "107",
+    "cta1574",
+    0
+   ],
+   [
+    "108",
+    "cta1575",
+    0
+   ],
+   [
+    "109",
+    "cta14760",
+    0
+   ],
+   [
+    "110",
+    "cta18318",
+    0
+   ],
+   [
+    "111",
+    "cta1579",
+    0
+   ],
+   [
+    "112",
+    "cta1580",
+    0
+   ],
+   [
+    "113",
+    "cta1581",
+    0
+   ],
+   [
+    "114",
+    "cta1582",
+    0
+   ],
+   [
+    "115",
+    "cta1583",
+    0
+   ],
+   [
+    "116",
+    "cta1584",
+    0
+   ],
+   [
+    "117",
+    "cta14485",
+    0
+   ]
+  ],
+  "cta55": [
+   "Garfield (CTA)",
+   "#565a5c",
+   0,
+   [
+    "1",
+    "cta14122",
+    0
+   ],
+   [
+    "2",
+    "cta10495",
+    0
+   ],
+   [
+    "3",
+    "cta10496",
+    0
+   ],
+   [
+    "4",
+    "cta18448",
+    0
+   ],
+   [
+    "5",
+    "cta10498",
+    0
+   ],
+   [
+    "6",
+    "cta10499",
+    0
+   ],
+   [
+    "7",
+    "cta10500",
+    0
+   ],
+   [
+    "8",
+    "cta10501",
+    0
+   ],
+   [
+    "9",
+    "cta10502",
+    0
+   ],
+   [
+    "10",
+    "cta15912",
+    0
+   ],
+   [
+    "11",
+    "cta10504",
+    0
+   ],
+   [
+    "12",
+    "cta10505",
+    0
+   ],
+   [
+    "13",
+    "cta10506",
+    0
+   ],
+   [
+    "14",
+    "cta10507",
+    0
+   ],
+   [
+    "15",
+    "cta10509",
+    0
+   ],
+   [
+    "16",
+    "cta10510",
+    0
+   ],
+   [
+    "17",
+    "cta10511",
+    0
+   ],
+   [
+    "18",
+    "cta10512",
+    0
+   ],
+   [
+    "19",
+    "cta10513",
+    0
+   ],
+   [
+    "20",
+    "cta10514",
+    0
+   ],
+   [
+    "21",
+    "cta10515",
+    0
+   ],
+   [
+    "22",
+    "cta10516",
+    0
+   ],
+   [
+    "23",
+    "cta10517",
+    0
+   ],
+   [
+    "24",
+    "cta10518",
+    0
+   ],
+   [
+    "25",
+    "cta10519",
+    0
+   ],
+   [
+    "26",
+    "cta10520",
+    0
+   ],
+   [
+    "27",
+    "cta10521",
+    0
+   ],
+   [
+    "28",
+    "cta10522",
+    0
+   ],
+   [
+    "29",
+    "cta10523",
+    0
+   ],
+   [
+    "30",
+    "cta10524",
+    0
+   ],
+   [
+    "31",
+    "cta10525",
+    0
+   ],
+   [
+    "32",
+    "cta10526",
+    0
+   ],
+   [
+    "33",
+    "cta10527",
+    0
+   ],
+   [
+    "34",
+    "cta10528",
+    0
+   ],
+   [
+    "35",
+    "cta10529",
+    0
+   ],
+   [
+    "36",
+    "cta10530",
+    0
+   ],
+   [
+    "37",
+    "cta10531",
+    0
+   ],
+   [
+    "38",
+    "cta10532",
+    0
+   ],
+   [
+    "39",
+    "cta10533",
+    0
+   ],
+   [
+    "40",
+    "cta10534",
+    0
+   ],
+   [
+    "41",
+    "cta10535",
+    0
+   ],
+   [
+    "42",
+    "cta10536",
+    0
+   ],
+   [
+    "43",
+    "cta10537",
+    0
+   ],
+   [
+    "44",
+    "cta10538",
+    0
+   ],
+   [
+    "45",
+    "cta10539",
+    0
+   ],
+   [
+    "46",
+    "cta17033",
+    0
+   ],
+   [
+    "47",
+    "cta6524",
+    0
+   ],
+   [
+    "48",
+    "cta16096",
+    0
+   ],
+   [
+    "49",
+    "cta10543",
+    0
+   ],
+   [
+    "50",
+    "cta10544",
+    0
+   ],
+   [
+    "51",
+    "cta10545",
+    0
+   ],
+   [
+    "52",
+    "cta10547",
+    0
+   ],
+   [
+    "53",
+    "cta10548",
+    0
+   ],
+   [
+    "54",
+    "cta10549",
+    0
+   ],
+   [
+    "55",
+    "cta10550",
+    0
+   ],
+   [
+    "56",
+    "cta10551",
+    0
+   ],
+   [
+    "57",
+    "cta10552",
+    0
+   ],
+   [
+    "58",
+    "cta10553",
+    0
+   ],
+   [
+    "59",
+    "cta15193",
+    0
+   ],
+   [
+    "60",
+    "cta18018",
+    0
+   ],
+   [
+    "61",
+    "cta15752",
+    0
+   ],
+   [
+    "62",
+    "cta10559",
+    0
+   ],
+   [
+    "63",
+    "cta17563",
+    0
+   ],
+   [
+    "64",
+    "cta10561",
+    0
+   ],
+   [
+    "65",
+    "cta10562",
+    0
+   ],
+   [
+    "66",
+    "cta10563",
+    0
+   ],
+   [
+    "67",
+    "cta1654",
+    0
+   ],
+   [
+    "68",
+    "cta1655",
+    0
+   ],
+   [
+    "69",
+    "cta10565",
+    0
+   ]
+  ]
+ }
+}

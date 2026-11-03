@@ -1,28 +1,35 @@
 // Tests for the worker's rules, run against real saved Passio responses:
 //   fixtures/buses.json   getBuses, 2026-11-02 at 10:20 PM (7 buses)
 //   fixtures/routes.json  getRoutes, 2026-11-02 at 10:45 PM (20 UChicago + 13 CTA)
+//   fixtures/stops.json   getStops, 2026-11-03 at 10:00 AM, trimmed to the 20
+//                         UChicago routes, 2 CTA routes and their stops (the
+//                         full response is 2.2 MB, mostly route shapes)
 // Run with: npm run test:worker
 
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { describe, test } from "node:test";
-import type { Bus, BusRow, RouteRow } from "./lib.ts";
+import type { Bus, BusRow, RouteRow, StopRow } from "./lib.ts";
 import {
   changeReason,
   diffBuses,
   diffRoutes,
+  diffStops,
   distanceM,
   emptyStreak,
   MOVE_THRESHOLD_M,
   parseBuses,
   parseRoutes,
+  parseStops,
   safeEqual,
   shouldFetchRoutes,
+  shouldFetchStops,
   tooSoon,
 } from "./lib.ts";
 
 const busesJson: unknown = JSON.parse(readFileSync(new URL("./fixtures/buses.json", import.meta.url), "utf8"));
 const routesJson: unknown = JSON.parse(readFileSync(new URL("./fixtures/routes.json", import.meta.url), "utf8"));
+const stopsJson: unknown = JSON.parse(readFileSync(new URL("./fixtures/stops.json", import.meta.url), "utf8"));
 
 const T0 = "2026-11-03T04:19:40.000Z"; // first run
 const T1 = "2026-11-03T04:20:00.000Z"; // the run 20 seconds later
@@ -252,11 +259,117 @@ describe("diffRoutes", () => {
   });
 });
 
+describe("parseStops on the saved response", () => {
+  const { routeStops, stops, skipped } = parseStops(stopsJson);
+
+  test("keeps the 20 UChicago routes and their 95 stops, and drops CTA", () => {
+    assert.equal(routeStops.size, 20);
+    assert.equal(stops.length, 95);
+    assert.deepEqual(skipped, []);
+    assert.ok([...routeStops.keys()].every((id) => !id.startsWith("cta")));
+  });
+
+  test("lists a loop route's first stop once, not again at the end", () => {
+    const central = routeStops.get("38737");
+    assert.ok(central && central.length > 0);
+    assert.equal(new Set(central).size, central.length);
+  });
+
+  test("a stop on several routes is one stop", () => {
+    const uses = new Map<string, number>();
+    for (const ids of routeStops.values()) for (const id of ids) uses.set(id, (uses.get(id) ?? 0) + 1);
+    assert.ok([...uses.values()].some((n) => n > 1)); // 39 are shared in this response
+    assert.equal(new Set(stops.map((s) => s.id)).size, stops.length);
+  });
+
+  test("keeps the name and position", () => {
+    assert.deepEqual(
+      stops.find((s) => s.id === "10103"),
+      { id: "10103", name: "Medical Stop", lat: 41.79668374, lng: -87.595753286 },
+    );
+  });
+
+  test("skips a stop with a bad position but keeps it on its route", () => {
+    const json = {
+      routes: { "1": ["A", "#000", ["1", "10", 0], ["2", "11", 0]] },
+      stops: {
+        ID10: { name: "Good", latitude: 41.79, longitude: -87.6 },
+        ID11: { name: "Bad", latitude: "0", longitude: "0" },
+      },
+    };
+    const parsed = parseStops(json);
+    assert.deepEqual(parsed.stops.map((s) => s.id), ["10"]);
+    assert.deepEqual(parsed.routeStops.get("1"), ["10", "11"]);
+    assert.deepEqual(parsed.skipped.map((s) => s.id), ["11"]);
+  });
+
+  test("throws when a list is missing", () => {
+    assert.throws(() => parseStops({ stops: {} }), /no "routes" or "stops"/);
+    assert.throws(() => parseStops([]), /no "routes" or "stops"/);
+  });
+});
+
+describe("diffStops", () => {
+  const { routeStops, stops } = parseStops(stopsJson);
+  const stored: StopRow[] = diffStops(routeStops, stops, [], T0);
+  const byId = (rows: StopRow[], id: string) => rows.find((r) => r.id === id);
+  const shared = stored.find((r) => r.route_ids.length > 1);
+  assert.ok(shared);
+
+  test("first fetch writes all 95, each with its routes; the same again writes none", () => {
+    assert.equal(stored.length, 95);
+    assert.ok(stored.every((r) => r.route_ids.length > 0 && r.changed_at === T0));
+    assert.deepEqual(shared.route_ids, [...shared.route_ids].sort());
+    assert.equal(diffStops(routeStops, stops, stored, T1).length, 0);
+  });
+
+  test("a stop that moved is written", () => {
+    const moved = stops.map((s) => (s.id === "10103" ? { ...s, lat: s.lat + 0.001 } : s));
+    assert.deepEqual(diffStops(routeStops, moved, stored, T1).map((r) => r.id), ["10103"]);
+  });
+
+  test("a route that drops a stop is taken off that stop only", () => {
+    const [routeId] = shared.route_ids;
+    const fewer = new Map(routeStops);
+    fewer.set(routeId, (routeStops.get(routeId) ?? []).filter((id) => id !== shared.id));
+    const writes = diffStops(fewer, stops, stored, T1);
+    assert.deepEqual(writes.map((r) => r.id), [shared.id]);
+    assert.deepEqual(writes[0].route_ids, shared.route_ids.filter((r) => r !== routeId));
+  });
+
+  test("a route missing from the fetch keeps its stops", () => {
+    const [routeId] = shared.route_ids;
+    const missing = new Map(routeStops);
+    missing.delete(routeId);
+    assert.equal(diffStops(missing, stops, stored, T1).length, 0);
+  });
+
+  test("a stop no route uses any more stays, with no routes", () => {
+    const only = stored.find((r) => r.route_ids.length === 1);
+    assert.ok(only);
+    const routeId = only.route_ids[0];
+    const fewer = new Map(routeStops);
+    fewer.set(routeId, (routeStops.get(routeId) ?? []).filter((id) => id !== only.id));
+    const writes = diffStops(fewer, stops, stored, T1);
+    assert.deepEqual(byId(writes, only.id)?.route_ids, []);
+  });
+
+  test("an empty fetch changes nothing", () => {
+    assert.equal(diffStops(new Map(), [], stored, T1).length, 0);
+  });
+});
+
 describe("timing and key checks", () => {
   test("routes are fetched every 5 minutes", () => {
     assert.equal(shouldFetchRoutes(null), true);
     assert.equal(shouldFetchRoutes(4 * 60_000), false);
     assert.equal(shouldFetchRoutes(5 * 60_000), true);
+  });
+
+  test("stops are fetched every hour", () => {
+    assert.equal(shouldFetchStops(null), true);
+    assert.equal(shouldFetchStops(59 * 60_000), false);
+    assert.equal(shouldFetchStops(60 * 60_000), true);
   });
 
   test("a run within 15 seconds of the last one is turned away", () => {

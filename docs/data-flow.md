@@ -1,13 +1,13 @@
 # Data flow
 
-**Status: step 3 plan, tables approved; step 5 freshness states added at the end.** Decided: a bus counts as changed under [option B](#what-counts-as-a-change) with a 10 m threshold (we may tune it later). The worker fetches buses every 20 seconds and routes every 5 minutes.
+**Status: step 3 plan, tables approved; step 5 freshness states and stops added.** Decided: a bus counts as changed under [option B](#what-counts-as-a-change) with a 10 m threshold (we may tune it later). The worker fetches buses every 20 seconds, routes every 5 minutes and stops every hour.
 
 ```mermaid
 flowchart LR
   subgraph supabase["Supabase"]
     cron["Cron"]
     worker["Worker<br/>(Edge Function)"]
-    db[("Postgres<br/>routes · buses<br/>runs · follows")]
+    db[("Postgres<br/>routes · buses · stops<br/>runs · follows")]
     rt["Realtime"]
   end
   passio["Passio GO<br/>system 1068"]
@@ -29,12 +29,12 @@ flowchart LR
 | # | From → to | What it sends |
 |---|---|---|
 | 1 | Cron → Worker | An HTTP request every 20 seconds that starts one run. Nothing else. |
-| 2 | Worker → Passio | `POST getBuses=2` on every run, and `POST getRoutes=2` when the last route fetch was 5 or more minutes ago. Routes only change when a service starts or stops, so most runs make one Passio call instead of two. |
-| 3 | Passio → Worker | Every UChicago bus (about 15 by day, 7 at night) and, every 5 minutes, all 33 routes. Raw Passio values: latitude and longitude as strings, `created` only to the minute. |
-| 4 | Worker → Postgres | First the worker cleans the data: numbers instead of strings, trimmed names, true/false values, CTA routes dropped. Then it writes **only the bus and route rows that changed**, plus one `runs` row with its own fetch time and counts. It writes with the secret key, which bypasses row-level security. |
+| 2 | Worker → Passio | `POST getBuses=2` on every run, `POST getRoutes=2` when the last route fetch was 5 or more minutes ago, and `POST getStops=2` (same form field as buses) once an hour. Routes only change when a service starts or stops, and stops almost never, so most runs make one Passio call. |
+| 3 | Passio → Worker | Every UChicago bus (about 15 by day, 7 at night) and, every 5 minutes, all 33 routes. Every hour, the stop list: 95 UChicago stops, plus CTA stops and route shapes we don't use (2.2 MB in all). Raw Passio values: latitude and longitude as strings, `created` only to the minute. |
+| 4 | Worker → Postgres | First the worker cleans the data: numbers instead of strings, trimmed names, true/false values, CTA routes dropped. Then it writes **only the bus, route and stop rows that changed**, plus one `runs` row with its own fetch time and counts. It writes with the secret key, which bypasses row-level security. |
 | 5 | Postgres → Realtime | Every insert and update on `buses` and `runs`, which are added to Realtime. |
 | 6 | Realtime → Page | Over a websocket: bus updates filtered to `route_id=in.(my routes)`, plus each new `runs` row, for "updated 12 s ago". Realtime checks row-level security with the user's Clerk token before sending anything. |
-| 7 | Page → Postgres | When the page opens, it loads active routes, my follows, the buses on my routes and the latest run. Following or unfollowing a route inserts or deletes a row in `follows`. It uses the publishable key plus the Clerk token. |
+| 7 | Page → Postgres | When the page opens, it loads active routes, my follows, the buses and stops on my routes and the latest run. Following or unfollowing a route inserts or deletes a row in `follows`. It uses the publishable key plus the Clerk token. |
 | 8 | Clerk → Page | The signed-in user's session token. Its `sub` claim (`user_…`) is the user ID the row-level security policies check. |
 
 ## What counts as a change
@@ -54,7 +54,7 @@ A route row is written when its name, short name, color or active flag changes.
 
 ## Tables
 
-Row-level security is on for all four tables. Only `follows` holds user data, so only `follows` has `user_id`. The worker writes `routes`, `buses` and `runs` with the secret key. Signed-in users can only read them.
+Row-level security is on for all five tables. Only `follows` holds user data, so only `follows` has `user_id`. The worker writes `routes`, `buses`, `stops` and `runs` with the secret key. Signed-in users can only read them.
 
 **routes**: UChicago routes only. CTA routes (IDs starting with `cta`) are never saved.
 
@@ -85,6 +85,18 @@ Row-level security is on for all four tables. Only `follows` holds user data, so
 | `in_feed` | boolean | worker | Set to false when the bus disappears from Passio |
 | `changed_at` | timestamptz | worker's clock | Last write |
 
+**stops**: one row per UChicago stop (95 in November 2026). Added in step 5.
+
+| Column | Type | From Passio | Note |
+|---|---|---|---|
+| `id` | text, primary key | `stopId` | |
+| `name` | text | `name` | Trimmed |
+| `lat`, `lng` | double precision | `latitude`, `longitude` | |
+| `route_ids` | text[] | the `routes` list | UChicago routes that stop here, sorted. 36 stops are on more than one route. |
+| `changed_at` | timestamptz | worker's clock | Last write |
+
+Passio's stop response has two lists: each route's stops in order (a loop route lists its first stop again at the end), and each stop's name and position. The worker turns that into one row per stop with the routes that use it.
+
 **follows**: one row per user per route they follow.
 
 | Column | Type | Note |
@@ -106,6 +118,7 @@ The primary key is (`user_id`, `route_id`). Policies for select, insert and dele
 | `buses_seen` | integer | |
 | `buses_changed` | integer | |
 | `routes_changed` | integer | Null on runs that don't fetch routes |
+| `stops_changed` | integer | Null on runs that don't try stops. 0 on a failed try, so a broken stop fetch also waits an hour. |
 | `error` | text | Null when `ok` |
 
 ## Choices in this plan
@@ -114,6 +127,8 @@ The primary key is (`user_id`, `route_id`). Policies for select, insert and dele
 - **A bus that leaves the feed is marked, not deleted.** `in_feed = false` is an update, so Realtime can filter it by route. Realtime can't filter deletes, so every open page would receive every one.
 - **Per-bus staleness uses `gps_changed_at`**, because Passio's `outdated` flag stayed 0 on a frozen bus.
 - **No foreign key from `buses.route_id` to `routes`.** If a bus reported a route we haven't saved, the foreign key would make the worker's whole write fail. The page joins on the ID instead.
+- **Stops keep their routes in a list column (`route_ids`), not a separate table.** There are 95 stops, the page only reads them, and one table means one write and one query (`route_ids && my routes`). A route missing from a stop fetch keeps the stops it had, the same caution as the empty bus list. Stops are never deleted: a stop no route uses keeps its row with no routes, so the page doesn't show it.
+- **Stops aren't on Realtime.** They change about never, so the page loads them with everything else, which also happens after each reconnect and each follow or unfollow.
 - **Clerk user IDs are text (`user_…`), not UUIDs.** So `follows.user_id` is text, and the policies use `auth.jwt()->>'sub'`. `auth.uid()` expects a UUID.
 
 ## How fresh the page is (step 5)
