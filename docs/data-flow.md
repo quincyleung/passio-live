@@ -107,7 +107,7 @@ Passio's stop response has two lists: each route's stops in order (a loop route 
 
 The primary key is (`user_id`, `route_id`). Policies for select, insert and delete check `user_id = (select auth.jwt()->>'sub')`, so each person sees and changes only their own follows.
 
-**runs**: one row per worker run, about 4,300 a day. We'll trim old rows later.
+**runs**: one row per worker run, about 4,300 a day. A daily cron job (`cleanup-run-logs`, 4:15 AM Chicago time) keeps 7 days of runs and 1 day of cron's own history.
 
 | Column | Type | Note |
 |---|---|---|

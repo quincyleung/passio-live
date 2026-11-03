@@ -343,3 +343,17 @@
 - **Found:**
   - The live site uses Clerk's development keys (`pk_test_`). That's expected: Clerk doesn't allow production keys on a `*.vercel.app` address. Development instances are capped at 100 users.
   - Cron's run history and `runs` each grow by about 4,300 rows a day, and nothing deletes them. That's about 3 MB a day, so the 500 MB limit is roughly 5 months away. A daily cleanup job would fix it. Not built; it needs the user's OK.
+- **The user said yes** to the daily cleanup.
+  - Made: cron job `cleanup-run-logs` (migration `daily_cleanup_of_run_logs`). It runs at 10:15 UTC, 4:15 AM in Chicago in winter, and keeps 1 day of cron's history and 7 days of `runs`.
+  - First checked that the worker and page only read the newest runs (the oldest they need is within the hour).
+  - Ran both deletes inside a transaction and undid it: they work. Nothing is old enough to delete yet, so the first real cleanup is tomorrow morning.
+- **The Ask:** "Walk me through the free tier limits for each service my app uses, and how to set usage limits and spending alerts for each one."
+  - I read the current pricing and limit pages first: Supabase pricing, cost control and billing FAQ; Vercel Hobby and usage; Clerk pricing and environments; the OSM tile policy.
+  - Supabase Free: 500 MB database, 5 GB egress, 500,000 Edge Function calls a month, 2 million Realtime messages a month, 200 Realtime connections at once, 50,000 third-party users.
+    - Our use: about 130,000 worker calls a month (26%) and a 15 MB database.
+    - Egress is up to about 0.8 GB a month, if the worker's own reads count as egress.
+    - Realtime is about 13,000 messages a day per page left open all day.
+  - Vercel Hobby: 100 GB data transfer, 1 million CDN requests, 1 million function calls. If a limit is passed, that feature waits 30 days.
+  - Clerk: the development instance is capped at 100 users. The Free plan's 50,000 retained users only applies to a production instance, which can't use a vercel.app address.
+  - OSM tiles and Passio have no account and no published numbers. OSM has a usage policy we follow. For Passio, we set our own limits.
+  - None of the three accounts can charge without a card. Spend caps and spend management exist only on paid plans (Supabase Pro, Vercel Pro). On the free plans, the "limit" is that service stops or restricts, so the user's job is to confirm no card is attached and know where the usage pages and alerts are.
