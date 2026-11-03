@@ -31,6 +31,12 @@
   - `paxLoad` and `totalCap` were always 0, so there's no rider data.
   - 33 routes in total: 20 UChicago routes (8 marked `outdated`, meaning not running now) and 13 CTA routes that never show up in the bus feed. Midway Metra has two route IDs: 38809 is active and 38731 is outdated.
   - I explained each field (what it is, how often it changes, whether we keep it) and what that means for the design. Freshness has to come from the worker's own fetch time. Almost every shuttle changes on every run, so each page should only listen to the routes that person follows. Shuttles that drop out of the feed need a rule.
+- **Ask Your Agent ("Explain this response"):** Asked again before moving on, this time measuring instead of estimating. I made 6 calls 20 seconds apart (6:36 to 6:38 PM), each returning HTTP 200 in about 0.4 s. Across the 75 bus-to-bus comparisons:
+  - Latitude and longitude changed in 93%, heading in 87%, `created` in 39% and `more` in 19%. 14 fields never changed.
+  - Bus 2207 (Downtown Campus Connector) didn't move at all, and its `created` stayed at 6:33 PM, but Passio's `outdated` flag stayed 0. We need our own per-bus staleness check.
+  - East 1665 and South 1662 were parked and drifted only 1–4 m per call, from GPS jitter.
+  - Three routes marked active (GE Gleacher Express, Regents Express, MED Medical Shuttle) had no buses.
+  - `outdated` is the string `"0"` on UChicago routes but the number `0` on CTA routes. Route `id` repeats across routes, so it isn't a route ID. "Midway Convocation " has a trailing space.
 - **Decisions:**
   - Source: Passio GO, UChicago system 1068.
   - Keep the proposed fields, now listed in AGENTS.md. Drop `more`, `paxLoad`, `totalCap` and the internal IDs.
