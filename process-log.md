@@ -288,3 +288,8 @@
   - What I couldn't see from the server: the WebSocket delivery and the marker moving. Both happen in the browser.
   - Noticed: in the morning, 99 of Passio's 116 listed buses are CTA, so skipping them matters.
 - **The user did:** added `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` in Vercel.
+- **Pushed** `5f15283`. Vercel built it, and the live site's tracker script contains the Supabase URL and publishable key, so the user's Vercel settings worked. (The publishable key is meant to be public. RLS protects the data.)
+- **The user asked** for the trace explained "as if to a 5 year old", and whether the map could show stops.
+  - I checked Passio once before answering. `getStops=2` (same form field as buses) lists 95 UChicago stops on the 20 routes, with names, positions and order. The route IDs match ours.
+  - The same response has each route's shape as a line. Most of its 2.2 MB is CTA shapes; the UChicago part is about 260 KB.
+  - Not built: the user hasn't decided yet.
